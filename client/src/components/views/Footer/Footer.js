@@ -6,9 +6,10 @@ function Footer() {
         <div style={{
             height: '80px', display: 'flex',
             flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center', fontSize:'1rem'
+            justifyContent: 'center', fontSize:'1rem',
+            backgroundColor: 'lightgray'
         }}>
-           <p> Happy Coding  <Icon type="smile" /></p>
+           <p> Copyrights © Advanced Web Programming Team Projcet Tobamto </p>
         </div>
     )
 }
