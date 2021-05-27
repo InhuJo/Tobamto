@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Typography } from 'antd';
 import Slider from 'react-slick'
 import './slick.css';
@@ -36,15 +36,15 @@ function MainPage() {
                 <Slider {...settings}>
                     <div>
                         <h2 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>1인 미디어, 규제해야 한다</i></strong> </h2>
-                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>-
+                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>
                     </div>
                     <div>
                         <h2 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>코뚱땡이는 바보다</i></strong> </h2>
-                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>-
+                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>
                     </div>
                     <div>
                         <h2 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>조궁뎅이는 궁뎅이다</i></strong> </h2>
-                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>-
+                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>
                     </div>
                 </Slider>
             </div>
