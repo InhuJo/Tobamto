@@ -1,5 +1,4 @@
-import React from 'react'
-import {Icon} from 'antd';
+import React from 'react';
 
 function Footer() {
     return (
@@ -9,7 +8,7 @@ function Footer() {
             justifyContent: 'center', fontSize:'1rem',
             backgroundColor: 'lightgray'
         }}>
-           <p> Copyrights © Advanced Web Programming Team Projcet Tobamto </p>
+           <p> Copyrights © Advanced Web Programming Team Projcet Tobamto  </p>
         </div>
     )
 }
