@@ -16,7 +16,7 @@
 .menu__logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 19px 20px;
+
 }
 
 .menu__container .ant-menu-item {
@@ -38,6 +38,7 @@
 
 .menu__container .menu_left {
   float: left;
+  padding-left: 10px;
 }
 
 .menu__container .menu_rigth {
@@ -50,7 +51,7 @@
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #3e91f7;
+  background: #f4bf4e;
 }
 
 .menu_drawer .ant-drawer-body {
@@ -78,10 +79,41 @@
 
   .menu__container .ant-menu-item,
   .menu__container .ant-menu-submenu-title {
-    padding: 1px 20px;
+    padding: 10px 20px;
   }
 
   .menu__logo a {
-    padding: 10px 20px;
+    padding: 20px;
   }
+}
+
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: #f4bf4e;
+  border-bottom: 2px solid #f4bf4e;
+}
+
+.ant-menu-submenu-title:hover {
+  color: #f4bf4e;
+}
+
+
+/*하단 메뉴 글 색*/
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+  color: #f4bf4e;
+}
+
+/*우측 메뉴 글 색*/
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+  color: #f4bf4e;
 }

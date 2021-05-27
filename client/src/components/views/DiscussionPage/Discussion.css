@@ -1,0 +1,27 @@
+.top {
+    margin-top: 3rem;
+}
+
+.title {
+    display: inline-block;    
+}
+
+.writeBtn {
+    position: absolute;
+    right: 5%;
+    display: inline-block;
+    width: 120px;
+    height: 43px;
+    background-color: #1f294f;
+    color: white;
+    font-size: 18px;
+    border: 1px solid transparent;
+    border-color: white;
+    border-radius: 8px;
+}
+
+.board {
+    display:flex;
+    justify-content: center;
+    margin-top: 50px;
+}
