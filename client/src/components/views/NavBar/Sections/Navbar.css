@@ -86,3 +86,34 @@
     padding: 20px;
   }
 }
+
+.ant-menu-horizontal > .ant-menu-item:hover,
+.ant-menu-horizontal > .ant-menu-submenu:hover,
+.ant-menu-horizontal > .ant-menu-item-active,
+.ant-menu-horizontal > .ant-menu-submenu-active,
+.ant-menu-horizontal > .ant-menu-item-open,
+.ant-menu-horizontal > .ant-menu-submenu-open,
+.ant-menu-horizontal > .ant-menu-item-selected,
+.ant-menu-horizontal > .ant-menu-submenu-selected {
+  color: #f4bf4e;
+  border-bottom: 2px solid #f4bf4e;
+}
+
+.ant-menu-submenu-title:hover {
+  color: #f4bf4e;
+}
+
+
+/*하단 메뉴 글 색*/
+.ant-menu-item:hover,
+.ant-menu-item-active,
+.ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
+.ant-menu-submenu-active,
+.ant-menu-submenu-title:hover {
+  color: #f4bf4e;
+}
+
+/*우측 메뉴 글 색*/
+.ant-menu-horizontal > .ant-menu-item > a:hover {
+  color: #f4bf4e;
+}
