@@ -16,7 +16,7 @@
 .menu__logo a {
   display: inline-block;
   font-size: 20px;
-  padding: 19px 20px;
+
 }
 
 .menu__container .ant-menu-item {
@@ -38,6 +38,7 @@
 
 .menu__container .menu_left {
   float: left;
+  padding-left: 10px;
 }
 
 .menu__container .menu_rigth {
@@ -50,7 +51,7 @@
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #3e91f7;
+  background: #f4bf4e;
 }
 
 .menu_drawer .ant-drawer-body {
@@ -78,10 +79,10 @@
 
   .menu__container .ant-menu-item,
   .menu__container .ant-menu-submenu-title {
-    padding: 1px 20px;
+    padding: 10px 20px;
   }
 
   .menu__logo a {
-    padding: 10px 20px;
+    padding: 20px;
   }
 }
