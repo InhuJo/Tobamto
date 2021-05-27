@@ -33,6 +33,7 @@ body {
   margin-left: 90px;
   font-size: xx-large;
   font-weight: 500;
+  color: black;
 }
 
 .submitBtn {
@@ -44,12 +45,12 @@ body {
   line-height: 1.5;
   border: 1px solid transparent;
   border-color:#d9d9d9;
-  font-size: 20px;
+  font-size: 18px;
 }
 
 .submitBtn:hover {
   cursor: pointer;
-  
+
 }
 
 input.error {
