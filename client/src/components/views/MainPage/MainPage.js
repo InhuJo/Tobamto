@@ -19,7 +19,7 @@ function MainPage() {
      return (
         <div>
             { /* 현재 가장 뜨거운 토론 */}
-            <div class="hot-topic" style={{ width: '85%', margin: '6rem auto', textAlign: 'center'}}>
+            <div class="hot-topic" style={{ width: '85%', margin: '6rem auto', textAlign: 'center' }}>
                 <Title level={2} > &#x1F525; 현재 가장 뜨거운 토론 &#x1F525; </Title>
                 <h2> <strong>안락사, 허용해야 한다</strong> </h2>
                 <span style={{backgroundColor: 'lightgray'}}>코뚱땡이님</span>
