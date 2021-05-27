@@ -94,8 +94,9 @@ function RegisterPage(props) {
           handleReset,
         } = props;
         return (
-          <div className="app">
-            <h2>회원가입</h2>
+          <div>
+            <div className="app">
+            <div className="register">회원가입</div>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
               <Form.Item required label="닉네임">
@@ -167,11 +168,12 @@ function RegisterPage(props) {
               </Form.Item>
 
               <Form.Item {...tailFormItemLayout}>
-                <Button onClick={handleSubmit} type="primary" disabled={isSubmitting}>
-                  Submit
-                </Button>
+                <button className="submitBtn" onClick={handleSubmit} disabled={isSubmitting}>
+                  완료
+                </button>
               </Form.Item>
             </Form>
+          </div>
           </div>
         );
       }}
