@@ -10,6 +10,7 @@ import ContactPage from './views/ContactPage/ContactPage.js';
 import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
 import SubjectApplyPage2 from "./views/DiscussionPage/SubjectApplyPage2";
 import OngoingDiscussionPage from "./views/DiscussionPage/OngoingDiscussionPage";
+import CompleteDiscussionPage from "./views/DiscussionPage/CompleteDiscussionPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import DeveloperPage from './views/InformationPage/Developer';
@@ -28,9 +29,8 @@ function App() {
           <Route exact path="/" component={Auth(MainPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/Information" component={Auth(InformationPage, false)} />
           <Route exact path="/Developer" component={Auth(DeveloperPage, false)} />
-
+          <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, false)} />
           <Route exact path="/information" component={Auth(InformationPage, false)} />
           <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
           <Route exact path="/contact" component={Auth(ContactPage, false)} />
