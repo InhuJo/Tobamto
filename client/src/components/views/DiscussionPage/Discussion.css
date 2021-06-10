@@ -1,5 +1,7 @@
+@import '~antd/dist/antd.css';
+
 .top {
-    margin-top: 5rem;
+    margin-top: 7rem;
 }
 
 .title {
@@ -7,21 +9,48 @@
 }
 
 .writeBtn {
-    position: absolute;
-    right: 5%;
     display: inline-block;
-    width: 120px;
-    height: 43px;
+    width: 130px;
+    height: 50px;
+    position: absolute;
+    right: 10%;
+    margin-top: 10px;
     background-color: #1f294f;
     color: white;
-    font-size: 18px;
+    font-size: 20px;
     border: 1px solid transparent;
     border-color: white;
     border-radius: 8px;
 }
 
 .board {
-    display:flex;
-    justify-content: center;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 30px;
+}
 
+.ant-table-thead > tr > th {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    font-size: 20px;
+    text-align: left;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+}
+
+.ant-table-tbody > tr > td {
+    font-size: 17px;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-transition: all 0.3s, border 0s;
+    transition: all 0.3s, border 0s;
+}
+
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-thead > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td {
+  background: #f4bf4e1f
 }
