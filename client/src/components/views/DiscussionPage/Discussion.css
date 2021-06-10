@@ -23,6 +23,10 @@
     border-radius: 8px;
 }
 
+.writeBtn:hover {
+    cursor: pointer;
+}
+
 .board {
     width: 80%;
     text-align: center;

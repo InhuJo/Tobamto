@@ -1,9 +1,8 @@
 import React from 'react';
 import { Table } from 'antd';
 import './Discussion.css';
-import { Link } from 'react-router-dom';
 
-function SubjectApplyPage(props) {
+function DiscussionMorePage(props) {
     const data = [
         {
             key: '1',
@@ -88,7 +87,7 @@ function SubjectApplyPage(props) {
 
     const routeChange = (e)=> {
         e.preventDefault();
-        props.history.push('/discussion/apply2');
+        props.history.push('/discussion/apply');
     }
 
     return (
@@ -113,4 +112,4 @@ function SubjectApplyPage(props) {
     )
 }
 
-export default SubjectApplyPage
+export default DiscussionMorePage
