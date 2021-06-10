@@ -55,7 +55,16 @@
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #f4bf4e;
+  background: #f4bf4e !important;
+}
+
+.ant-btn-primary {
+  border-color: #f4bf4e !important;
+  background-color:#f4bf4e !important;
+}
+
+html.--antd-wave-shadow-color {
+  color: #f4bf4e !important;
 }
 
 .menu_drawer .ant-drawer-body {
@@ -98,15 +107,26 @@
 .ant-menu-horizontal > .ant-menu-submenu-open,
 .ant-menu-horizontal > .ant-menu-item-selected,
 .ant-menu-horizontal > .ant-menu-submenu-selected {
-  color: #f4bf4e;
+  color: #f4bf4e !important;
   /* padding-bottom: 5px; */
-  border-bottom: 2px solid #f4bf4e;
+  border-bottom: 2px solid #f4bf4e !important;
 }
 
 .ant-menu-submenu-title:hover {
-  color: #f4bf4e;
+  color: #f4bf4e !important;
 }
 
+button.ant-btn menu__mobile-button ant-btn-primary:hover {
+  color: #f4bf4e !important;
+}
+
+a:hover {
+  color: #f4bf4e !important;
+}
+
+a:active {
+  color: #f4bf4e !important;
+}
 
 /*하단 메뉴 글 색*/
 .ant-menu-item:hover,
@@ -114,10 +134,11 @@
 .ant-menu:not(.ant-menu-inline) .ant-menu-submenu-open,
 .ant-menu-submenu-active,
 .ant-menu-submenu-title:hover {
-  color: #f4bf4e;
+  color: #f4bf4e !important;
 }
+
 
 /*우측 메뉴 글 색*/
 .ant-menu-horizontal > .ant-menu-item > a:hover {
-  color: #f4bf4e;
+  color: #f4bf4e !important;
 }

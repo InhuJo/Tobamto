@@ -127,7 +127,7 @@ function LoginPage(props) {
               <Form.Item>
                 <Checkbox id="rememberMe" onChange={handleRememberMe} checked={rememberMe} >로그인 유지하기</Checkbox>
                 <div>
-                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%', backgroundColor:"#1f294f", borderColor:"#1f294f" }} disabled={isSubmitting} onSubmit={handleSubmit}>
+                  <Button type="primary" htmlType="submit" className="login-form-button" style={{ minWidth: '100%', backgroundColor:"#1f294f", borderColor:"#1f294f", height:"45px", fontSize:'18px'}} disabled={isSubmitting} onSubmit={handleSubmit}>
                     로그인
                 </Button>
                 </div>

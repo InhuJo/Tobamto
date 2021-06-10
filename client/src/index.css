@@ -30,7 +30,7 @@ body {
 
 .register {
   margin-bottom: 30px;
-  margin-left: 90px;
+  margin-left: 3%;
   font-size: xx-large;
   font-weight: 500;
   color: black;
@@ -46,11 +46,11 @@ body {
   border: 1px solid transparent;
   border-color:#d9d9d9;
   font-size: 18px;
+  margin-left: -13%;
 }
 
 .submitBtn:hover {
   cursor: pointer;
-
 }
 
 input.error {
