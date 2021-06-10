@@ -17,10 +17,10 @@ function NavBar() {
   };
 
   return (
-    <nav className="menu" style={{ position: 'fixed', zIndex: 5, width: '100%' }}>
+    <nav className="menu" style={{ position: 'fixed',  }}>
       <div className="menu__logo">
-        <a href="/">
-        <img alt="img-concert" width="180" src={logo}/>
+        <a src="Tobamto_logo.png" href="/">
+        <img alt="img-concert" width="140" src={logo}/>
         </a>
       </div>
       <div className="menu__container">
