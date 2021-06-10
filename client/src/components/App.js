@@ -5,10 +5,11 @@ import Auth from "../hoc/auth";
 import MainPage from "./views/MainPage/MainPage.js"
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
-import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
+import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage.js";
+import InformationPage from './views/InformationPage/Information.js';
+import ContactPage from './views/ContactPage/ContactPage.js';
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
-import InformationPage from './views/InformationPage/Information';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -23,8 +24,9 @@ function App() {
           <Route exact path="/" component={Auth(MainPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/Information" component={Auth(InformationPage, false)} />
+          <Route exact path="/information" component={Auth(InformationPage, false)} />
           <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
+          <Route exact path="/contact" component={Auth(ContactPage, false)} />
         </Switch>
       </div>
       <Footer />
