@@ -1,18 +1,15 @@
 import React from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import {
-  Form,
-  Input,
-  Typography
-} from 'antd';
+import { Form, Input, Typography } from 'antd';
+import './ContactPage.css';
 
 const { Title } = Typography;
 
 const formItemLayout = {
   labelCol: {
     xs: { span: 24 },
-    sm: { span: 8 },
+    sm: { span: 5 },
   },
   wrapperCol: {
     xs: { span: 24 },
@@ -70,10 +67,10 @@ function ContactPage(props) {
           <div style={{ textAlign: 'center' }}>
             <div className="app">
               <div className="contact">
-                <Title level={2}>문의하기</Title>
+                <Title level={2} style={{paddingLeft: '40px'}}>문의하기</Title>
               </div>
               <Form
-                style={{ minWidth: "40%"}}
+                style={{ minWidth: "40%" }}
                 {...formItemLayout}
                 onSubmit={handleSubmit}
               >
@@ -154,7 +151,7 @@ function ContactPage(props) {
                     className="submitBtn"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    style={{ width: '30%' }}
+                    style={{ width: '30%', marginLeft:'-33%'}}
                   >
                     제출
                   </button>

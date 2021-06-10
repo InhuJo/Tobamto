@@ -17,7 +17,9 @@ function LeftMenu(props) {
         <Menu.Item key="setting:1">
           <a href="/discussion/ongoing">▶ 진행중인 토론</a>
           </Menu.Item>
-        <Menu.Item key="setting:2">▶ 지난 토론</Menu.Item>
+        <Menu.Item key="setting:2">
+        <a href="/discussion/complete">▶ 지난 토론</a>
+        </Menu.Item>
         <Menu.Item key="setting:3">
           <a href="/discussion/apply">▶ 토론 주제 신청</a>
         </Menu.Item>
