@@ -7,8 +7,8 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import InformationPage from './views/InformationPage/Information.js';
 import ContactPage from './views/ContactPage/ContactPage.js';
-import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
-import SubjectApplyPage2 from "./views/DiscussionPage/SubjectApplyPage2";
+import DiscussionMorePage from "./views/DiscussionPage/DiscussionMorePage";
+import DiscussionApplyPage from "./views/DiscussionPage/DiscussionApplyPage";
 import OngoingDiscussionPage from "./views/DiscussionPage/OngoingDiscussionPage";
 import CompleteDiscussionPage from "./views/DiscussionPage/CompleteDiscussionPage";
 import NavBar from "./views/NavBar/NavBar";
@@ -33,9 +33,9 @@ function App() {
           <Route exact path="/Developer" component={Auth(DeveloperPage, false)} />
           <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, false)} />
           <Route exact path="/information" component={Auth(InformationPage, false)} />
-          <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
+          <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, false)} />
           <Route exact path="/contact" component={Auth(ContactPage, false)} />
-          <Route exact path="/discussion/apply2" component={Auth(SubjectApplyPage2, false)} />
+          <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, false)} />
           <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, false)} />
           <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, false)} />
         </Switch>
