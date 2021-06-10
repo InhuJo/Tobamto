@@ -9,6 +9,7 @@ import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import InformationPage from './views/InformationPage/Information';
+import DeveloperPage from './views/InformationPage/Developer';
 
 //null   Anyone Can go inside
 //true   only logged in user can go inside
@@ -24,6 +25,7 @@ function App() {
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
           <Route exact path="/Information" component={Auth(InformationPage, false)} />
+          <Route exact path="/Developer" component={Auth(DeveloperPage, false)} />
           <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
         </Switch>
       </div>
