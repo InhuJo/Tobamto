@@ -11,7 +11,6 @@ import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
 import SubjectApplyPage2 from "./views/DiscussionPage/SubjectApplyPage2";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
-import InformationPage from './views/InformationPage/Information';
 import DeveloperPage from './views/InformationPage/Developer';
 
 
