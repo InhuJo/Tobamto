@@ -9,6 +9,7 @@ import InformationPage from './views/InformationPage/Information.js';
 import ContactPage from './views/ContactPage/ContactPage.js';
 import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
 import SubjectApplyPage2 from "./views/DiscussionPage/SubjectApplyPage2";
+import OngoingDiscussionPage from "./views/DiscussionPage/OngoingDiscussionPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 
@@ -29,6 +30,7 @@ function App() {
           <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
           <Route exact path="/contact" component={Auth(ContactPage, false)} />
           <Route exact path="/discussion/apply2" component={Auth(SubjectApplyPage2, false)} />
+          <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, false)} />
         </Switch>
       </div>
       <Footer />
