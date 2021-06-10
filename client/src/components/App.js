@@ -5,9 +5,10 @@ import Auth from "../hoc/auth";
 import MainPage from "./views/MainPage/MainPage.js"
 import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
-import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage.js";
 import InformationPage from './views/InformationPage/Information.js';
 import ContactPage from './views/ContactPage/ContactPage.js';
+import SubjectApplyPage from "./views/DiscussionPage/SubjectApplyPage";
+import SubjectApplyPage2 from "./views/DiscussionPage/SubjectApplyPage2";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 
@@ -27,6 +28,7 @@ function App() {
           <Route exact path="/information" component={Auth(InformationPage, false)} />
           <Route exact path="/discussion/apply" component={Auth(SubjectApplyPage, false)} />
           <Route exact path="/contact" component={Auth(ContactPage, false)} />
+          <Route exact path="/discussion/apply2" component={Auth(SubjectApplyPage2, false)} />
         </Switch>
       </div>
       <Footer />
