@@ -4,12 +4,14 @@ import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
-
 import {
   Form,
   Input,
   Button,
+  Typography
 } from 'antd';
+
+const { Title } = Typography;
 
 const formItemLayout = {
   labelCol: {
@@ -96,7 +98,7 @@ function RegisterPage(props) {
         return (
           <div>
             <div className="app">
-            <div className="register">회원가입</div>
+            <div className="register"><Title level={2}>회원가입</Title></div>
             <Form style={{ minWidth: '375px' }} {...formItemLayout} onSubmit={handleSubmit} >
 
               <Form.Item required label="닉네임">
