@@ -7,10 +7,10 @@ function LeftMenu(props) {
     <Menu mode={props.mode}>
     <SubMenu title={<span>이용 안내</span>}>
         <Menu.Item key="setting:0">
-        <a href="/Information">▶ 이용 안내</a>
+        <a href="/information">▶ 이용 안내</a>
         </Menu.Item>
         <Menu.Item key="setting:1">
-        <a href="/Developer">▶ 개발자 소개</a>
+        <a href="/developer">▶ 개발자 소개</a>
         </Menu.Item>
     </SubMenu>
     <SubMenu title={<span>토론의 장</span>}>
@@ -21,7 +21,8 @@ function LeftMenu(props) {
         </Menu.Item>
     </SubMenu>
     <SubMenu title={<span>문의하기</span>}>
-        <Menu.Item key="setting:5">▶ 문의하기</Menu.Item>
+        <Menu.Item key="setting:5">
+          <a href="/contact">▶ 문의하기</a></Menu.Item>
     </SubMenu>
   </Menu>
   )
