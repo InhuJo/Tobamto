@@ -5,7 +5,7 @@ function Developer() {
     return (
 
         <div>
-            <div class="Dev-info" style={{ width: '85%', marginLeft: '120px', marginTop: '100px', textAlign: 'center' }}>
+            <div class="Dev-info" style={{ marginTop: '100px', textAlign: 'center' }}>
                 <h1> <strong>개발자 소개</strong> </h1>
             </div>
 
