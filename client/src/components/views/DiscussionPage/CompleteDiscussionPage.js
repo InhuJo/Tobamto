@@ -9,7 +9,9 @@ function CompleteDiscussionPage() {
         <h1> <strong>지난 토론</strong> </h1>
         <br/>
             <div style={{ width: '20%', height:'10%', background: '#F0F0F0', display: 'inline-block', margin: '2%', padding: '1rem' }}>
-                <h3><strong> 안락사, 허용해야 한다 </strong></h3>
+                <h3><strong>
+                      <a href="/discussion/detail">안락사, 허용해야 한다.</a>
+                      </strong></h3>
                 <br />
                 <p>2021-05-22 | 17개의 의견 </p>
             </div>

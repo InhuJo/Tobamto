@@ -14,6 +14,7 @@ import CompleteDiscussionPage from "./views/DiscussionPage/CompleteDiscussionPag
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import DeveloperPage from './views/InformationPage/Developer';
+import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetail';
 
 
 //null   Anyone Can go inside
@@ -36,6 +37,7 @@ function App() {
           <Route exact path="/contact" component={Auth(ContactPage, false)} />
           <Route exact path="/discussion/apply2" component={Auth(SubjectApplyPage2, false)} />
           <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, false)} />
+          <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, false)} />
         </Switch>
       </div>
       <Footer />
