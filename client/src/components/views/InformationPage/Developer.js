@@ -9,7 +9,8 @@ function Developer() {
         <h1> <strong>개발자 소개</strong> </h1>
         </div>
 
-        <div class="juyoung" style={{ display:'inline-block',  textAlign: 'center', paddingLeft:'310px'}} >
+    <div style = {{ display: 'flex', justifyContent: 'center', alignItems: 'center'}}>
+    <div class="juyoung" style={{ display:'inline-block',  textAlign: 'center'}} >
         <img src={require("./Dev_juyoung.jpg")} width="250"/>
         <p></p>
         <h4>경북대학교 컴퓨터학부</h4>
@@ -37,6 +38,8 @@ function Developer() {
         <h4> inhudev@gmail.com</h4>
         </div>
         </div>
+    </div>
+        
     )
 }
 
