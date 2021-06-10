@@ -3,8 +3,8 @@ import { FaCode } from "react-icons/fa";
 
 function Information() {
     return (
-        <div class="hot-topic" style={{ width: '85%', margin: '6rem auto', textAlign: 'center' }}>
-        <h2> <strong>이용 안내</strong> </h2>
+        <div class="information" style={{ width: '85%', margin: '6rem auto', textAlign: 'center' }}>
+        <h1> <strong>이용 안내</strong> </h1>
         <br/>
         <img src="Tobamto_logo.png" width="500"></img>
         <br/>
