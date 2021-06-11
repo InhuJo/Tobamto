@@ -8,7 +8,7 @@ const { Title } = Typography;
 const formItemLayout = {
     labelCol: {
       xs: { span: 24 },
-      sm: { span: 5 },
+      sm: { span: 6 },
     },
     wrapperCol: {
       xs: { span: 24 },
