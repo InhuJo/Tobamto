@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Table } from 'antd';
 import './Discussion.css';
+import Axios from 'axios';
 
 function DiscussionMorePage(props) {
     const data = [
@@ -66,13 +68,28 @@ function DiscussionMorePage(props) {
             date: '2021-05-25 17:11'
         },
     ]
+    const user = useSelector(state => state.user);
+
+    const [Discussions, setDiscussions] = useState([])
+
+    useEffect(() => {
+        Axios.get('/api/discussion/getDiscussions')
+            .then(response => {
+                if (response.data.success) {
+                    console.log(response.data.discussions)
+                    setDiscussions(response.data.discussions)
+                } else {
+                    alert('목록을 불러오는 데에 실패했습니다.')
+                }
+            })
+    }, [])
 
     const columns = [
         {
             title: '제목',
             dataIndex: 'title',
             key: 'title',
-            render: text => <a href ='/discussion/detail'>{text}</a>,
+            render: text => <a href ='/discussion/more/:_id'>{text}</a>,
         },
         {
             title: '글쓴이',
@@ -81,7 +98,7 @@ function DiscussionMorePage(props) {
         },
         {
             title: '날짜',
-            dataIndex: 'data',
+            dataIndex: 'date',
             key: 'date'
         },
     ];
@@ -90,6 +107,7 @@ function DiscussionMorePage(props) {
         e.preventDefault();
         props.history.push('/discussion/apply');
     }
+
 
     return (
         <div>
@@ -100,7 +118,7 @@ function DiscussionMorePage(props) {
             <div className="board">
                 <Table
                     columns={columns}
-                    dataSource={data}
+                    dataSource={data.reverse()}
                     pagination={{
                         total: 100,
                         pageSize: 7,
