@@ -69,6 +69,7 @@ function EditInfoPage(props) {
         password: '',
         confirmPassword: ''
       }}
+      
       validationSchema={Yup.object().shape({
         password: Yup.string()
           .min(6, '비밀번호는 6자리 이상이어야 합니다')
@@ -77,6 +78,7 @@ function EditInfoPage(props) {
           .oneOf([Yup.ref('password'), null], '비밀번호가 일치하지 않습니다')
           .required('비밀번호를 한번 더 입력해주세요')
       })}
+
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
           let dataToSubmit = {
