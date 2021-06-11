@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
 import axios from 'axios';
-import MyOpinion from './MyOpinionList';
+import MyOpinion from './Sections/MyOpinion';
 
-function MyPage(props) {
+function MyOpinionPage(props) {
     const userId = localStorage.getItem('userId');
     const variable = { userId:userId };
     const [MyPros, setMyPros] = useState([]);
@@ -50,7 +50,7 @@ function MyPage(props) {
                     </a>   
                     <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%'}}> | </h2>
                     <a href="/mypage/title">
-                        <span style={{fontSize: '21px', color: '#b3b3b3'}}>작성한 의견</span>
+                        <span style={{fontSize: '21px', color: '#b3b3b3'}}>작성한 주제</span>
                     </a>
                     
                 </div>
@@ -63,4 +63,4 @@ function MyPage(props) {
     )
 }
 
-export default MyPage
+export default MyOpinionPage
