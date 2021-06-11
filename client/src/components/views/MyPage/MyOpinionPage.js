@@ -50,7 +50,7 @@ function MyOpinionPage(props) {
                     </a>   
                     <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%'}}> | </h2>
                     <a href="/mypage/title">
-                        <span style={{fontSize: '21px', color: '#b3b3b3'}}>작성한 의견</span>
+                        <span style={{fontSize: '21px', color: '#b3b3b3'}}>작성한 주제</span>
                     </a>
                     
                 </div>
