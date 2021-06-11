@@ -10,8 +10,7 @@ const { auth } = require("../middleware/auth");
 
 router.post("/saveDiscussion", (req, res) => {
     const discussion = new Discussion(req.body)
-    console.log("111")
-
+    
     discussion.save((err, discussion) => {
         if(err) return res.json({success: false, err})
         
@@ -25,7 +24,7 @@ router.post("/saveDiscussion", (req, res) => {
 });
 
 router.get("/getDiscussions", (req, res) => {
-    console.log("getDiscussions")
+    
     Discussion.find()
         .populate('userId')
         .exec((err, discussions) => {

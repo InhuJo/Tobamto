@@ -60,7 +60,7 @@ function DiscussionMorePage(props) {
             <div className="board">
                 <Table
                     columns={columns}
-                    dataSource={data}
+                    dataSource={data.reverse()}
                     pagination={{
                         total: 100,
                         pageSize: 7,
