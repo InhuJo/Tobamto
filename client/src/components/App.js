@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/Developer" component={Auth(DeveloperPage, null)} />
           <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
           <Route exact path="/information" component={Auth(InformationPage, null)} />
-          <Route exact path="/DiscussionMorePageDetail" component={Auth(DiscussionMorePageDetailPage, null)} />
+          <Route exact path="/discussion/more/:_id" component={Auth(DiscussionMorePageDetailPage, null)} />
           <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, null)} />
           <Route exact path="/contact" component={Auth(ContactPage, null)} />
           <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, null)} />

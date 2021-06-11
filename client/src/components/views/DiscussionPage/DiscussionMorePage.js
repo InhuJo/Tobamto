@@ -9,7 +9,7 @@ function DiscussionMorePage(props) {
             title: '겨울에 얼어 죽어도 아아인가?',
             writer: '엔젤빌',
             date: '2021-05-25 21:19',
-            render: text => <a href ='/discussion/detail'></a>
+            
         },
         {
             key: '2',
@@ -71,7 +71,8 @@ function DiscussionMorePage(props) {
         {
             title: '제목',
             dataIndex: 'title',
-            key: 'title'
+            key: 'title',
+            render: text => <a href ='/discussion/detail'>{text}</a>,
         },
         {
             title: '글쓴이',
