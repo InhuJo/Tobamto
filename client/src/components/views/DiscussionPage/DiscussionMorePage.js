@@ -25,7 +25,11 @@ function DiscussionMorePage(props) {
         {
             title: '제목',
             dataIndex: 'title',
-            key: 'title'
+            key: 'title',
+            render: (text, record, index) => {
+                var id = data[index].discussionId;
+                return <a href={`/discussion/more/${id}`}>{text}</a>
+            }
         },
         {
             title: '글쓴이',
@@ -48,7 +52,8 @@ function DiscussionMorePage(props) {
         key: index,
         title: discussion.subject,
         writer: discussion.userId.name,
-        date: discussion.createdAt.substr(0, 10)
+        date: discussion.createdAt.substr(0, 10),
+        discussionId: discussion._id,
     }))
 
     return (
