@@ -8,16 +8,16 @@ function MyTitleListPage(props) {
     const userId = localStorage.getItem('userId');
     const variable = { userId:userId };
 
-    // useEffect(() => {
-    //     axios.post('/api/discussion/mydiscussion', variable)
-    //     .then(response => {
-    //         if(response.data.success) {
-
-    //         } else {
-    //             alert('my discussion load fail')
-    //         }
-    //     })
-    // }, []);
+    useEffect(() => {
+        axios.post('/api/discussion/mydiscussion', variable)
+        .then(response => {
+            if(response.data.success) {
+                console.log(response.data)
+            } else {
+                alert('my discussion load fail')
+            }
+        })
+    }, []);
 
     const data = [
         {

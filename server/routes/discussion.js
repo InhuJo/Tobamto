@@ -37,7 +37,6 @@ router.get("/getDiscussions", (req, res) => {
 router.post("/mydiscussion", (req, res) => {
     
     Discussion.find({'userId':req.body.userId})
-        .populate('userId')
         .exec((err, discussions) => {
             console.log(discussions)
             if(err) return res.status(400).send(err);
