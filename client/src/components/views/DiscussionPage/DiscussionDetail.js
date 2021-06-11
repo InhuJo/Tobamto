@@ -92,11 +92,11 @@ function DiscussionDetail() {
                 <form >
                 <div style={{display:'flex', justifyContent:'center', alignContent:'center'}}>
                 <textarea
-                    style={{ width: '90%', height:'150px', resize:'none',borderRadius: '5px',textAlign:'center'}}
+                    style={{ width: '80%', height:'150px', resize:'none',borderRadius: '5px',textAlign:'center'}}
 
 
                 />
-                <button style={{background:'#1f294f', width: '10%', height: '10%', marginLeft:'5%', display:'inline-block'}} >작성</button>
+                <button style={{background:'#1f294f',color:'white', width: '100px', height: '100px',marginTop:'2%',borderRadius: '10px', marginLeft:'5%', display:'inline-block'}} >작성</button>
                 </div>
                 <br />
                 <p style={{color:'red', marginLeft:'5%'}}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다. 
