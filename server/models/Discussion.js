@@ -8,6 +8,10 @@ const discussionSchema = mongoose.Schema({
         ref: 'User'
     },
     // 주제
+    subject: {
+        type: String
+    },
+    // 신청 이유
     content: {
         type: String
     },

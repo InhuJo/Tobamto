@@ -21,7 +21,7 @@ router.get("/auth", auth, (req, res) => {
     });
 });
 
-router.post("/register", (req, res) => {
+router.post("/comment", (req, res) => {
 
     const user = new User(req.body);
 
