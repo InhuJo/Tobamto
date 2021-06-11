@@ -151,7 +151,7 @@ function ContactPage(props) {
                     className="submitBtn"
                     onClick={handleSubmit}
                     disabled={isSubmitting}
-                    style={{ width: '30%', marginLeft:'-33%'}}
+                    style={{ width: '30%', marginLeft:'-35%'}}
                   >
                     제출
                   </button>
