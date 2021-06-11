@@ -9,13 +9,14 @@ const { auth } = require("../middleware/auth");
 //             opinion
 //=================================
 
-router.post("/SaveComment", (req, res) => {
-    const comment = new Comment(req.body)
+router.post("/savePros", (req, res) => {
+    
+    const pros = new Pros(req.body);
 
-    comment.save((err, comment) => {
+    pros.save((err, pros) => {
         if(err) return res.json({success: false, err})
         
-        Comment.find({'_id' : comment._id})
+        Pros.find({'_id' : pros._id})
         .populate('writer')
         .exec((err, result) => {
             if(err) return res.json({success: false, err})
@@ -23,6 +24,25 @@ router.post("/SaveComment", (req, res) => {
         })
     })
 })
+
+
+router.post("/saveCons", (req, res) => {
+    
+    const cons = new Cons(req.body);
+    console.log("222");
+
+    cons.save((err, cons) => {
+        if(err) return res.json({success: false, err})
+        
+        Pros.find({'_id' : cons._id})
+        .populate('writer')
+        .exec((err, result) => {
+            if(err) return res.json({success: false, err})
+            return res.status(200).json({success: true, result})
+        })
+    })
+})
+
 
 
 

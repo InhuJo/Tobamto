@@ -1,8 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Typography } from 'antd';
+import Axios from 'axios';
 const { Title } = Typography;
 
-function DiscussionDetail() {
+function DiscussionDetail(props) {
+    const [Opinion, setOpinion] = useState("");
+
+    const handleChange = (event) => {
+        setOpinion(event.currentTarget.value);
+    }
+
+    const onProsSubmit = (event) => {
+
+        const variables = {
+            writer: localStorage.getItem('userId'),
+            discussionId: '60c337aa3a6dc2455092d64b',
+            content: Opinion,
+        }
+
+        Axios.post('/api/opinion/savePros', variables)
+        .then(response => {
+            if(response.data.success) {
+                alert('의견이 등록되었습니다.');
+                setOpinion("");
+            } else {
+                alert('의견 등록에 실패했습니다.');
+            }
+        })
+    }
+
+    
+    const onConsSubmit = (event) => {
+
+        const variables = {
+            writer: localStorage.getItem('userId'),
+            discussionId: '60c337aa3a6dc2455092d64b',
+            content: Opinion,
+        }
+
+        Axios.post('/api/opinion/saveCons', variables)
+        .then(response => {
+            if(response.data.success) {
+                alert('의견이 등록되었습니다.');
+                setOpinion("");
+            } else {
+                alert('의견 등록에 실패했습니다.');
+            }
+        })
+    }
 
     return (
         <div>
@@ -88,19 +133,28 @@ function DiscussionDetail() {
             </div>
 
             <div className="comment" style={{ margin: '5%' }}>
-                <h2 style={{ marginLeft: '5%', display:'inline', marginRight:'3%' }}>의견 남기기</h2>
-                <input type='radio' name='op' value='agree' /> 찬성 
-                <input type='radio' name='op' value='disagree' marginLeft='50px' style={{marginLeft:'10px'}}/> 반대
+                <h2 style={{ marginLeft: '3%', display:'inline', marginRight:'3%' }}>의견 남기기</h2>
                 <form >
                     <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                         <textarea
+                            value={Opinion}
+                            onChange={handleChange}
                             style={{ width: '80%', height: '150px', resize: 'none', borderRadius: '5px', textAlign: 'center' }}
                         />
                       
-                        <button style={{ background: '#1f294f', color: 'white', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%', display: 'inline-block' }} >작성</button>
+                        <button
+                            onClick={onProsSubmit}
+                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%'}} >
+                                찬성
+                        </button>
+                        <button
+                            onClick={onConsSubmit} 
+                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%' }} >
+                                반대
+                        </button>
                     </div>
                     <br />
-                    <p style={{ color: 'red', marginLeft: '5%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
+                    <p style={{ color: 'red', marginLeft: '3%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
 </p>
                 </form>
             </div>
