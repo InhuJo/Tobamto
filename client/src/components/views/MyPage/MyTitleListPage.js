@@ -1,9 +1,9 @@
-import React from 'react'
+import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
 import './Discussion.css';
 import { Table } from 'antd';
 
-function MyPage(props) {
+function MyTitleListPage(props) {
     const data = [
         {
             key: '1',
@@ -92,7 +92,7 @@ function MyPage(props) {
 
                 <div className="mylist" style={{ marginTop: '3%' }}>
                     <div>
-                        <a href="/mypage">
+                        <a href="/mypage/opinion">
                             <span style={{ fontSize: '21px', color: '#b3b3b3' }}>작성한 의견</span>
                         </a>
                         <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%' }}> | </h2>
@@ -123,4 +123,4 @@ function MyPage(props) {
     )
 }
 
-export default MyPage
+export default MyTitleListPage

@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
 import axios from 'axios';
-import MyOpinion from './MyOpinionList';
+import MyOpinion from './Sections/MyOpinion';
 
-function MyPage(props) {
+function MyOpinionPage(props) {
     const userId = localStorage.getItem('userId');
     const variable = { userId:userId };
     const [MyPros, setMyPros] = useState([]);
@@ -63,4 +63,4 @@ function MyPage(props) {
     )
 }
 
-export default MyPage
+export default MyOpinionPage
