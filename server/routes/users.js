@@ -1,8 +1,9 @@
 const express = require('express');
 const router = express.Router();
 const { User } = require("../models/User");
-
 const { auth } = require("../middleware/auth");
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 //=================================
 //             User
@@ -20,7 +21,7 @@ router.get("/auth", auth, (req, res) => {
     });
 });
 
-router.post("/register", (req, res) => {
+router.post("/comment", (req, res) => {
 
     const user = new User(req.body);
 
@@ -66,5 +67,34 @@ router.get("/logout", auth, (req, res) => {
         });
     });
 });
+
+/* mypage에 사용자 정보 표시하기 위함 */
+router.post("/info", (req, res) => {
+    User.findOne({'_id':req.body.userId})
+    .exec((err, userInfo) => {
+        if(err) return res.status(400).send(err);
+        return res.status(200).json({ success: true, userInfo });
+    })
+});
+
+/* 사용자 정보 수정 */
+router.post("/edit", (req, res) => {
+    bcrypt.genSalt(saltRounds, function(err, salt) {
+        if(err) return res.status(400).send(err);
+
+        bcrypt.hash(req.body.password, salt, function(err, hash) {
+            if(err) return res.status(400).send(err);
+            else {
+                const password = { password:hash }
+                
+                User.findOneAndUpdate({'_id':req.body.userId}, password)
+                .exec((err) => {
+                    if(err) return res.status(400).send(err);
+                    res.status(200).json({ success: true });
+                })
+            }
+        })
+    })
+})
 
 module.exports = router;
