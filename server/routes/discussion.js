@@ -8,7 +8,7 @@ const { auth } = require("../middleware/auth");
 //             DIscussion
 //=================================
 
-router.post("/saveDiscussion", auth, (req, res) => {
+router.post("/saveDiscussion", (req, res) => {
     const discussion = new Discussion(req.body)
     console.log("111")
 
@@ -22,6 +22,18 @@ router.post("/saveDiscussion", auth, (req, res) => {
             return res.status(200).json({success: true, result})
         })
     })
+});
+
+
+router.get("/getDiscussions", (req, res) => {
+    console.log("getDiscussions")
+    Discussion.find()
+        .populate('userId')
+        .exec((err, discussions) => {
+            console.log(discussions)
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, discussions })
+        })
 });
 
 module.exports = router;

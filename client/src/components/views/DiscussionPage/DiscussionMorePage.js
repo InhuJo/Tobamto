@@ -1,71 +1,25 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSelector } from 'react-redux';
 import { Table } from 'antd';
 import './Discussion.css';
+import Axios from 'axios';
 
 function DiscussionMorePage(props) {
-    const data = [
-        {
-            key: '1',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            writer: '엔젤빌',
-            date: '2021-05-25 21:19',
-            render: text => <a href ></a>,
-        },
-        {
-            key: '2',
-            title: '롤할 쮸들 괌',
-            writer: '이누',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '3',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            writer: '엔젤빌',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '4',
-            title: '롤할 쮸들 괌',
-            writer: '이누',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '5',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            writer: '엔젤빌',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '6',
-            title: '롤할 쮸들 괌',
-            writer: '이누',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '7',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            writer: '엔젤빌',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '8',
-            title: '롤할 쮸들 괌',
-            writer: '이누',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '9',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            writer: '엔젤빌',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '10',
-            title: '롤할 쮸들 괌',
-            writer: '이누',
-            date: '2021-05-25 17:11'
-        },
-    ]
+    const user = useSelector(state => state.user);
+
+    const [Discussions, setDiscussions] = useState([])
+
+    useEffect(() => {
+        Axios.get('/api/discussion/getDiscussions')
+            .then(response => {
+                if (response.data.success) {
+                    console.log(response.data.discussions)
+                    setDiscussions(response.data.discussions)
+                } else {
+                    alert('목록을 불러오는 데에 실패했습니다.')
+                }
+            })
+    }, [])
 
     const columns = [
         {
@@ -80,7 +34,7 @@ function DiscussionMorePage(props) {
         },
         {
             title: '날짜',
-            dataIndex: 'data',
+            dataIndex: 'date',
             key: 'date'
         },
     ];
@@ -89,6 +43,13 @@ function DiscussionMorePage(props) {
         e.preventDefault();
         props.history.push('/discussion/apply');
     }
+
+    const data = Discussions.map((discussion, index) => ({
+        key: index,
+        title: discussion.subject,
+        writer: discussion.userId.name,
+        date: discussion.createdAt.substr(0, 10)
+    }))
 
     return (
         <div>
