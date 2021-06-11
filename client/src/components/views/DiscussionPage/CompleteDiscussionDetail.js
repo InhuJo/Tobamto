@@ -2,7 +2,7 @@ import React from 'react';
 import { Typography } from 'antd';
 const { Title } = Typography;
 
-function DiscussionDetail() {
+function CompleteDiscussionDetail() {
 
     return (
         <div>
@@ -16,12 +16,12 @@ function DiscussionDetail() {
 
                 </div>
             </div>
-            <h4 style={{ display: 'inline-block', float: 'left', marginLeft: '10%' }}> 찬성 (안락사 허용) </h4>
+            <h4 style={{ display: 'inline-block', float:'left', marginLeft: '10%' }}> 찬성 (안락사 허용) </h4>
             <h4 style={{ display: 'inline-block', float: 'right', marginRight: '10%' }}> 반대 (안락사 금지) </h4>
 
 
-            <div calss="chat" style={{ display: 'inline-block', width: '100%' }}>
-                <div class="agree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
+            <div calss="chat" style={{ display: 'inline-block', width: '100%'}}>
+                <div class="agree" style={{ overflow:'auto',width:'40%',height:'500px', float: 'left',  background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
 
                     <div class="opnion">
                         <div class="name" >
@@ -58,7 +58,7 @@ function DiscussionDetail() {
                 </div>
 
 
-                <div class="disagree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
+                <div class="disagree" style={{ overflow:'auto',width:'40%',height:'500px',float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
 
                     <div class="opnion">
                         <div class="name" >
@@ -71,6 +71,8 @@ function DiscussionDetail() {
                         </div>
                     </div>
 
+                    
+
                     <div class="opnion2" style={{ marginTop: '5%' }}>
                         <div class="name">
                             <p style={{ display: 'inline', marginTop: '5%', marginRight: '2%' }}>게임중독맞습니다</p>
@@ -82,32 +84,18 @@ function DiscussionDetail() {
                         </div>
                     </div>
 
-
-
+                
+                    
                 </div>
             </div>
 
-            <div className="comment" style={{ margin: '5%' }}>
-                <h2 style={{ marginLeft: '5%', display:'inline', marginRight:'3%' }}>의견 남기기</h2>
-                <input type='radio' name='op' value='agree' /> 찬성 
-                <input type='radio' name='op' value='disagree' marginLeft='50px' style={{marginLeft:'10px'}}/> 반대
-                <form >
-                    <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-                        <textarea
-                            style={{ width: '80%', height: '150px', resize: 'none', borderRadius: '5px', textAlign: 'center' }}
-                        />
-                      
-                        <button style={{ background: '#1f294f', color: 'white', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%', display: 'inline-block' }} >작성</button>
-                    </div>
-                    <br />
-                    <p style={{ color: 'red', marginLeft: '5%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
-</p>
-                </form>
-            </div>
+            <div className="comment" style={{margin:'5%'}}>
+                <h2 style={{marginLeft:'5%', textAlign:'center',color:'gray'}}>종료된 토론입니다.</h2>
+                 </div>
 
         </div>
 
     )
 }
 
-export default DiscussionDetail
+export default CompleteDiscussionDetail
