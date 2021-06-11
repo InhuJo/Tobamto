@@ -135,7 +135,7 @@ function DiscussionDetail(props) {
             </div>
 
             <div className="comment" style={{ margin: '5%' }}>
-                <h2 style={{ marginLeft: '3%', display:'inline', marginRight:'3%' }}>의견 남기기</h2>
+                <h2 style={{ marginLeft: '2%', marginRight:'3%', marginBottom:'1%' }}>의견 남기기</h2>
                 <form >
                     <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                         <textarea
@@ -146,17 +146,17 @@ function DiscussionDetail(props) {
                       
                         <button
                             onClick={onProsSubmit}
-                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%'}} >
+                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', margin: '2%'}} >
                                 찬성
                         </button>
                         <button
                             onClick={onConsSubmit} 
-                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%' }} >
+                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px' }} >
                                 반대
                         </button>
                     </div>
                     <br />
-                    <p style={{ color: 'red', marginLeft: '3%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
+                    <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
 </p>
                 </form>
             </div>
