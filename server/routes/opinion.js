@@ -46,12 +46,12 @@ router.post("/saveCons", (req, res) => {
 
 router.post("/myopinion", (req, res) => {
     Cons.find({'writer': req.body.userId })
-    .populate('writer')
+    .populate('discussionId')
     .exec((err, cons) => {
         if (err) return res.status(400).send(err);
 
         Pros.find({'writer':req.body.userId})
-        .populate('writer')
+        .populate('discussionId')
         .exec((err, pros) => {
             if(err) return res.status(400).send(err);
 
