@@ -25,7 +25,8 @@ function MyTitleListPage(props) {
     const data = MySubject.map((subject, index) => ({
         key: index,
         title: subject.subject,
-        date: subject.createdAt.substr(0, 10)
+        date: subject.createdAt.substr(0, 10),
+        discussionId: subject._id,
     }))
 
     const columns = [
@@ -33,7 +34,10 @@ function MyTitleListPage(props) {
             title: '제목',
             dataIndex: 'title',
             key: 'title',
-            // render: text => <a href={`/discussion/detail/${SubjectId}`}>{text}</a>
+            render: (text, record, index) => {
+                var id =  data[index].discussionId;
+                return <a href={`/discussion/more/${id}`}>{text}</a>
+            }
         },
         {
             title: '날짜',
