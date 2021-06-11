@@ -1,0 +1,87 @@
+@import '~antd/dist/antd.css';
+
+.top {
+    margin-top: 7rem;
+}
+
+.title {
+    display: inline-block;    
+}
+
+.writeBtn {
+    display: inline-block;
+    width: 130px;
+    height: 50px;
+    position: absolute;
+    right: 10%;
+    margin-top: 10px;
+    background-color: #1f294f;
+    color: white;
+    font-size: 20px;
+    border: 1px solid transparent;
+    border-color: white;
+    border-radius: 8px;
+}
+
+.writeBtn:hover {
+    cursor: pointer;
+}
+
+.board {
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+.ant-table-thead > tr > th {
+    color: rgba(0, 0, 0, 0.85);
+    font-weight: 600;
+    font-size: 20px;
+    text-align: left;
+    background: #fafafa;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-transition: background 0.3s ease;
+    transition: background 0.3s ease;
+}
+
+.ant-table-tbody > tr > td {
+    font-size: 17px;
+    border-bottom: 1px solid #e8e8e8;
+    -webkit-transition: all 0.3s, border 0s;
+    transition: all 0.3s, border 0s;
+}
+
+.ant-table-thead > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-tbody > tr.ant-table-row-hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-thead > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td,
+.ant-table-tbody > tr:hover:not(.ant-table-expanded-row):not(.ant-table-row-selected) > td {
+  background: #f4bf4e1f
+}
+
+.ongoing-discussion {
+    display: flex;
+    align-items: center;
+    width: 200px;
+    height: 150px;
+    background: #F0F0F0;
+    padding: '1rem';
+    flex-wrap: 'wrap';
+    justify-content: 'center';
+    margin-top: '1rem';
+    margin-bottom: '1rem';
+    margin-left: '0.5rem';
+    margin-right: '0.5rem';
+}
+
+.ongoing-discussion-lists {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 100%;
+    min-width: 60%;
+    padding-left: 100px;
+    padding-right: 100px;
+}
