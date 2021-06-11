@@ -29,18 +29,18 @@ function MyPage() {
             <div className="myopnion" style={{border: '2px solid lightgray', width:'80%',borderRadius:'20px', marginTop:'3%', padding:'2%'}}>
                 <div>
                 <h4 style={{display:'inline'}}>토론 주제 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>딱딱한 복숭아(딱복)이 물렁한 복숭아(물복)보다 더 낫다.</p>
+                <p style={{display:'inline',paddingLeft:'10px'}}>딱딱한 복숭아(딱복)이 물렁한 복숭아(물복)보다 더 낫다.</p>
                 <p></p>
                 </div>
                 <div>
                 <h4 style={{display:'inline'}}>내 입장 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>찬성</p>
+                <p style={{display:'inline',paddingLeft:'25px'}}>찬성</p>
                 <p></p>
 
                 </div>
                 <div>
                 <h4 style={{display:'inline' }}>내 의견 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>딱딱한 복숭아는 위급시 흉기로 사용 가능하다.</p>
+                <p style={{display:'inline',paddingLeft:'25px'}}>딱딱한 복숭아는 위급시 흉기로 사용 가능하다.</p>
 
                 </div>
             </div>
@@ -48,18 +48,18 @@ function MyPage() {
             <div className="myopnion" style={{border: '2px solid lightgray', width:'80%',borderRadius:'20px', marginTop:'3%', padding:'2%',marginBottom:'8%'}}>
                 <div>
                 <h4 style={{display:'inline'}}>토론 주제 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>1인 미디어는 규제되어야 하는가</p>
+                <p style={{display:'inline',paddingLeft:'10px'}}>1인 미디어는 규제되어야 하는가</p>
                 <p></p>
                 </div>
                 <div>
                 <h4 style={{display:'inline'}}>내 입장 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>찬성</p>
+                <p style={{display:'inline',paddingLeft:'25px'}}>찬성</p>
                 <p></p>
 
                 </div>
                 <div>
                 <h4 style={{display:'inline' }}>내 의견 : </h4>
-                <p style={{display:'inline',paddingLeft:'2%'}}>현재 유튜브에서 연령제한이나 청소년에게 적합하지 않는 영상들이 제재없이 무분별하게 업로드 되고 있습니다.</p>
+                <p style={{display:'inline',paddingLeft:'25px'}}>현재 유튜브에서 연령제한이나 청소년에게 적합하지 않는 영상들이 제재없이 무분별하게 업로드 되고 있습니다.</p>
 
                 </div>
             </div>
