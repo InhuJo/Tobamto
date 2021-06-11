@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
-import { Typography } from 'antd';
+import React, { useEffect,useState } from 'react';
+import { Tooltip, Icon, Typography } from 'antd';
 import Axios from 'axios';
+import Like from './Like';
+
 const { Title } = Typography;
 
 function DiscussionDetail(props) {
@@ -75,7 +77,7 @@ function DiscussionDetail(props) {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>내가 태어나고 싶어서 태어난것도 아니고 죽을 권리정도는 사람한테 있지 ㅋㅋㅋ</p>
-                            <p style={{ color: 'red' }}>♡ 55</p>
+                            <Like />
                         </div>
                     </div>
 
@@ -86,7 +88,7 @@ function DiscussionDetail(props) {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>제발 안락사 합법화 부탁드립니다..</p>
-                            <p style={{ color: 'red' }}>♥ 38</p>
+                            <Like />
                         </div>
                     </div>
 
@@ -97,7 +99,7 @@ function DiscussionDetail(props) {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>죽는 게 사는 것보다 낫다니까</p>
-                            <p style={{ color: 'red' }}>♥ 12</p>
+                            <Like />
                         </div>
                     </div>
                 </div>
@@ -112,7 +114,7 @@ function DiscussionDetail(props) {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>님들 자식들이 안락사 시킨다고 할 때 괜찮은 사람들만 찬성에 있는 거 맞죠?</p>
-                            <p style={{ color: 'red' }}>♡ 55</p>
+                            <Like />
                         </div>
                     </div>
 
@@ -123,7 +125,7 @@ function DiscussionDetail(props) {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>공대가 미래다님 사람한테 죽을 권리가 대체 어딨는데요? ㅋㅋ 님 이과죠?</p>
-                            <p style={{ color: 'red' }}>♥ 38</p>
+                            <Like />
                         </div>
                     </div>
 
@@ -133,7 +135,7 @@ function DiscussionDetail(props) {
             </div>
 
             <div className="comment" style={{ margin: '5%' }}>
-                <h2 style={{ marginLeft: '3%', display:'inline', marginRight:'3%' }}>의견 남기기</h2>
+                <h2 style={{ marginLeft: '2%', marginRight:'3%', marginBottom:'1%' }}>의견 남기기</h2>
                 <form >
                     <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
                         <textarea
@@ -144,17 +146,17 @@ function DiscussionDetail(props) {
                       
                         <button
                             onClick={onProsSubmit}
-                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%'}} >
+                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', margin: '2%'}} >
                                 찬성
                         </button>
                         <button
                             onClick={onConsSubmit} 
-                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', marginLeft: '5%' }} >
+                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px' }} >
                                 반대
                         </button>
                     </div>
                     <br />
-                    <p style={{ color: 'red', marginLeft: '3%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
+                    <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
 </p>
                 </form>
             </div>
