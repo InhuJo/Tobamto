@@ -15,6 +15,8 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import DeveloperPage from './views/InformationPage/Developer';
 import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetail';
+import MyPage from './views/MyPage/MyPage';
+import EditInfoPage from './views/MyPage/EditInfoPage';
 import CompleteDiscussionDetailPage from './views/DiscussionPage/CompleteDiscussionDetail';
 
 
@@ -40,6 +42,8 @@ function App() {
           <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, false)} />
           <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, false)} />
           <Route exact path="/discussion/completedetail" component={Auth(CompleteDiscussionDetailPage, false)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route exact path="/mypage/edit" component={Auth(EditInfoPage, true)} />
         </Switch>
       </div>
       <Footer />

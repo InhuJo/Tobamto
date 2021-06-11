@@ -55,12 +55,12 @@
   padding: 6px;
   margin-top: 8px;
   display: none !important; /* use of important to overwrite ant-btn */
-  background: #f4bf4e !important;
+  background: #f4bf4e;
 }
 
 .ant-btn-primary {
-  border-color: #f4bf4e !important;
-  background-color:#f4bf4e !important;
+  border-color: #f4bf4e;
+  background-color:#f4bf4e;
 }
 
 html.--antd-wave-shadow-color {
