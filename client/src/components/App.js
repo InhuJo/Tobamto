@@ -15,6 +15,9 @@ import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import DeveloperPage from './views/InformationPage/Developer';
 import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetail';
+import MyPage from './views/MyPage/MyPage';
+import MyTitleListPage from './views/MyPage/MyTitleListPage';
+import EditInfoPage from './views/MyPage/EditInfoPage';
 import CompleteDiscussionDetailPage from './views/DiscussionPage/CompleteDiscussionDetail';
 
 
@@ -31,15 +34,18 @@ function App() {
           <Route exact path="/" component={Auth(MainPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/Developer" component={Auth(DeveloperPage, false)} />
-          <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, false)} />
-          <Route exact path="/information" component={Auth(InformationPage, false)} />
-          <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, false)} />
-          <Route exact path="/contact" component={Auth(ContactPage, false)} />
-          <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, false)} />
-          <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, false)} />
-          <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, false)} />
-          <Route exact path="/discussion/completedetail" component={Auth(CompleteDiscussionDetailPage, false)} />
+          <Route exact path="/Developer" component={Auth(DeveloperPage, null)} />
+          <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
+          <Route exact path="/information" component={Auth(InformationPage, null)} />
+          <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, null)} />
+          <Route exact path="/contact" component={Auth(ContactPage, null)} />
+          <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, null)} />
+          <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, null)} />
+          <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, null)} />
+          <Route exact path="/discussion/completedetail" component={Auth(CompleteDiscussionDetailPage, null)} />
+          <Route exact path="/mypage" component={Auth(MyPage, true)} />
+          <Route exact path="/mypage/title" component={Auth(MyTitleListPage, true)} />
+          <Route exact path="/mypage/edit" component={Auth(EditInfoPage, true)} />
         </Switch>
       </div>
       <Footer />
