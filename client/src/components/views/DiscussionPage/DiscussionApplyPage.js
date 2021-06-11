@@ -63,7 +63,7 @@ function DiscussionApplyPage(props) {
           <div style={{ textAlign: 'center' }}>
             <div className="app">
               <div className="contact">
-                <Title level={2} style={{paddingLeft: '40px'}}>토론 주제 신청</Title>
+                <Title level={2} style={{marginLeft: '70px', marginBottom: '30px'}}>토론 주제 신청</Title>
               </div>
               <Form
                 style={{ minWidth: "40%" }}
