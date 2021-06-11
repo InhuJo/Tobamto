@@ -92,7 +92,7 @@ function MyPage(props) {
                 <div className="mylist" style={{ marginTop: '3%' }}>
                     <div>
                         <a href="/mypage">
-                            <h2 style={{ display: 'inline' }}> <strong>작성한 의견</strong> </h2>
+                            <h2 style={{ display: 'inline' }}>작성한 의견</h2>
                         </a>
                         <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%' }}> | </h2>
                         <a href="/mypage/title">

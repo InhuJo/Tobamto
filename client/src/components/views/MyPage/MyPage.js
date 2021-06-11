@@ -21,7 +21,7 @@ function MyPage() {
                     </a>   
                     <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%'}}> | </h2>
                     <a href="/mypage/title">
-                        <h2 style={{ display: 'inline' }}> <strong>작성한 주제</strong> </h2>
+                        <h2 style={{ display: 'inline' }}> 작성한 주제</h2>
                     </a>
                 </div>
             </div>
