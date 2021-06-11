@@ -41,7 +41,7 @@ function App() {
           <Route exact path="/contact" component={Auth(ContactPage, null)} />
           <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, null)} />
           <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, null)} />
-          <Route exact path="/discussion/detail" component={Auth(DiscussionDetailPage, null)} />
+          <Route exact path="/discussion/detail/:subjectid" component={Auth(DiscussionDetailPage, null)} />
           <Route exact path="/discussion/completedetail" component={Auth(CompleteDiscussionDetailPage, null)} />
           <Route exact path="/mypage/opinion" component={Auth(MyOpinionPage, true)} />
           <Route exact path="/mypage/title" component={Auth(MyTitleListPage, true)} />

@@ -7,89 +7,40 @@ import axios from 'axios';
 function MyTitleListPage(props) {
     const userId = localStorage.getItem('userId');
     const variable = { userId:userId };
+    const [MySubject, setMySubject] = useState([]);
+    const [SubjectCount, setSubjectCount] = useState(0);
 
     useEffect(() => {
         axios.post('/api/discussion/mydiscussion', variable)
         .then(response => {
             if(response.data.success) {
-                console.log(response.data)
+                setMySubject(response.data.discussions);
+                setSubjectCount(response.data.discussions.length);
             } else {
                 alert('my discussion load fail')
             }
         })
     }, []);
 
-    const data = [
-        {
-            key: '1',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            date: '2021-05-25 21:19',
-            render: text => <a href ></a>,
-        },
-        {
-            key: '2',
-            title: '롤할 쮸들 괌',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '3',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '4',
-            title: '롤할 쮸들 괌',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '5',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '6',
-            title: '롤할 쮸들 괌',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '7',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '8',
-            title: '롤할 쮸들 괌',
-            date: '2021-05-25 17:11'
-        },
-        {
-            key: '9',
-            title: '겨울에 얼어 죽어도 아아인가?',
-            date: '2021-05-25 21:19'
-        },
-        {
-            key: '10',
-            title: '롤할 쮸들 괌',
-            date: '2021-05-25 17:11'
-        },
-    ]
+    const data = MySubject.map((subject, index) => ({
+        key: index,
+        title: subject.subject,
+        date: subject.createdAt.substr(0, 10)
+    }))
 
     const columns = [
         {
             title: '제목',
             dataIndex: 'title',
-            key: 'title'
+            key: 'title',
+            // render: text => <a href={`/discussion/detail/${SubjectId}`}>{text}</a>
         },
         {
             title: '날짜',
-            dataIndex: 'data',
+            dataIndex: 'date',
             key: 'date'
         },
     ];
-
-    const routeChange = (e) => {
-        e.preventDefault();
-        props.history.push('/discussion/apply');
-    }
 
     return (
         <div>
@@ -116,18 +67,15 @@ function MyTitleListPage(props) {
                         </a>
                     </div>
                 </div>
-
-
             </div>
 
-
-            <div className="board" style={{ marginLeft: '10%' }}>
+            <div className="board" style={{ marginLeft: '13%' }}>
                 <Table
                     columns={columns}
                     dataSource={data}
                     pagination={{
-                        total: 100,
-                        pageSize: 7,
+                        total: {SubjectCount},
+                        pageSize: 6,
                         hideOnSinglePage: true,
                         //position: ['none', 'bottomCenter']
                     }}

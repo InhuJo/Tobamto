@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from "react";
-import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { registerUser } from "../../../_actions/user_actions";
 import { useDispatch } from "react-redux";
 import { Form, Input, Typography, message } from 'antd';
 import axios from 'axios';
@@ -34,18 +32,12 @@ const tailFormItemLayout = {
 };
 
 function EditInfoPage(props) {
-  const dispatch = useDispatch();
 
   const userId = localStorage.getItem('userId');
   const variable = { userId:userId };
 
   const [UserEmail, setUserEmail] = useState('');
   const [UserName, setUserName] = useState('');
-  const [UserPassword, setUserPassword] = useState('');
-  
-  const onPasswordChange = (e) => {
-    setUserPassword(e.currentTarget.value);
-  }
 
   useEffect(() => {
     

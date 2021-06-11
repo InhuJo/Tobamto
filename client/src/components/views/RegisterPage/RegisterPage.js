@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../_actions/user_actions";
@@ -7,7 +6,6 @@ import { useDispatch } from "react-redux";
 import {
   Form,
   Input,
-  Button,
   Typography
 } from 'antd';
 
@@ -87,12 +85,10 @@ function RegisterPage(props) {
           values,
           touched,
           errors,
-          dirty,
           isSubmitting,
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div>
