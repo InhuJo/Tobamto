@@ -55,7 +55,7 @@ function DiscussionMorePage(props) {
         date: discussion.createdAt.substr(0, 10),
         discussionId: discussion._id,
     }))
-
+    
     return (
         <div>
             <div className="top">

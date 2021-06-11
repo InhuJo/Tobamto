@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 
-function MyOpinionList(props) {
+function MyOpinion(props) {
     return (
         <div className="myopnion" style={{border: '2px solid lightgray', width:'80%',borderRadius:'20px', marginTop:'3%', padding:'2%'}}>
             <div>
@@ -21,4 +21,4 @@ function MyOpinionList(props) {
     )
 }
 
-export default MyOpinionList
+export default MyOpinion
