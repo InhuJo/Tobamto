@@ -57,14 +57,12 @@ function DiscussionApplyPage(props) {
         Axios.post('/api/discussion/saveDiscussion', variables)
         .then(response => {
             if(response.data.success) {
-              setSubject("")
-              setContent("")
+              alert('주제가 등록되었습니다.');
+              props.history.push("/");
             } else {
                 alert('성공적으로 등록하지 못했습니다.')
             }
         })
-          alert('주제가 등록되었습니다.');
-          props.history.push("/");
           setSubmitting(false);
         }, 500);
       }}
