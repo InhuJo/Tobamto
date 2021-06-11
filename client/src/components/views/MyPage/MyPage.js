@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
 import axios from 'axios';
 import MyOpinion from './MyOpinionList';
@@ -6,20 +6,32 @@ import MyOpinion from './MyOpinionList';
 function MyPage(props) {
     const userId = localStorage.getItem('userId');
     const variable = { userId:userId };
+    const [MyPros, setMyPros] = useState([]);
+    const [MyCons, setMyCons] = useState([]);
 
     useEffect(() => {
         axios.post('/api/opinion/myopinion', variable)
         .then(response => {
             if(response.data.success) {
-                console.log(response.data);
+                setMyPros(response.data.pros);
+                setMyCons(response.data.cons);
             } else {
                 alert('fail to load opinions');
             }
         });
-    }, [])
+    }, []);
+
+    const mypros = MyPros.map((pros, index) => {
+        console.log(pros);
+        return <MyOpinion key={index} subject={pros.discussionId.subject} side="찬성" content={pros.content}></MyOpinion>
+    })
+
+    const mycons = MyCons.map((cons, index) => {
+        return <MyOpinion key={index} subject={cons.discussionId.subject} side="반대" content={cons.content}></MyOpinion>
+    })
 
     return (
-        <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '13%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+        <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '13%', marginBottom: '8%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
             
             <div className='welcome'>
             <span style={{fontSize: '20px'}}><strong>{localStorage.getItem('userName')}</strong>님, 환영합니다.</span>
@@ -44,26 +56,9 @@ function MyPage(props) {
                 </div>
             </div>
 
-            <MyOpinion></MyOpinion>
-
-            <div className="myopnion" style={{border: '2px solid lightgray', width:'80%',borderRadius:'20px', marginTop:'3%', padding:'2%',marginBottom:'8%'}}>
-                <div>
-                <h4 style={{display:'inline'}}>토론 주제 : </h4>
-                <p style={{display:'inline',paddingLeft:'10px'}}>1인 미디어는 규제되어야 하는가</p>
-                <p></p>
-                </div>
-                <div>
-                <h4 style={{display:'inline'}}>내 입장 : </h4>
-                <p style={{display:'inline',paddingLeft:'25px'}}>찬성</p>
-                <p></p>
-
-                </div>
-                <div>
-                <h4 style={{display:'inline' }}>내 의견 : </h4>
-                <p style={{display:'inline',paddingLeft:'25px'}}>현재 유튜브에서 연령제한이나 청소년에게 적합하지 않는 영상들이 제재없이 무분별하게 업로드 되고 있습니다.</p>
-
-                </div>
-            </div>
+            {mypros}
+            {mycons}
+            
         </div>
     )
 }
