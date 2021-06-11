@@ -78,25 +78,26 @@ function MyPage(props) {
 
     return (
         <div>
-            <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '10%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+            <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '13%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
 
                 <div className='welcome'>
-                    <span>
-                        <strong>{localStorage.getItem('userName')}</strong>님, 환영합니다.
-                </span>
-                    <Button type="primary" style={{ marginLeft: '3%', backgroundColor: "#1f294f", borderColor: "#1f294f" }} href="/mypage/edit">
+                    <span style={{fontSize: '20px'}}><strong>{localStorage.getItem('userName')}</strong>님, 환영합니다.</span>
+                    <Button 
+                        type="primary" 
+                        style={{ marginLeft: '1.5%', backgroundColor: "#1f294f", borderColor: "#1f294f" }} 
+                        href="/mypage/edit">
                         개인 정보 수정
-                </Button>
+                    </Button>
                 </div>
 
                 <div className="mylist" style={{ marginTop: '3%' }}>
                     <div>
                         <a href="/mypage">
-                            <h2 style={{ display: 'inline' }}>작성한 의견</h2>
+                            <span style={{ fontSize: '21px', color: '#b3b3b3' }}>작성한 의견</span>
                         </a>
                         <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%' }}> | </h2>
                         <a href="/mypage/title">
-                            <h2 style={{ display: 'inline' }}> <strong>작성한 주제</strong> </h2>
+                            <span style={{ fontSize: '21px', color: '#1f294f', fontWeight: '750' }}>작성한 의견</span>
                         </a>
                     </div>
                 </div>
@@ -105,19 +106,19 @@ function MyPage(props) {
             </div>
 
 
-                <div className="board" style={{ marginLeft:'10%'}}>
-                    <Table
-                        columns={columns}
-                        dataSource={data}
-                        pagination={{
-                            total: 100,
-                            pageSize: 7,
-                            hideOnSinglePage: true,
-                            //position: ['none', 'bottomCenter']
-                        }}
-                    />
-                </div>
+            <div className="board" style={{ marginLeft: '10%' }}>
+                <Table
+                    columns={columns}
+                    dataSource={data}
+                    pagination={{
+                        total: 100,
+                        pageSize: 7,
+                        hideOnSinglePage: true,
+                        //position: ['none', 'bottomCenter']
+                    }}
+                />
             </div>
+        </div>
 
     )
 }

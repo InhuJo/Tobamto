@@ -4,6 +4,7 @@ const { Pros } = require("../models/Pros");
 const { Cons } = require("../models/Cons");
 
 const { auth } = require("../middleware/auth");
+const { User } = require('../models/User');
 
 //=================================
 //             opinion
@@ -39,6 +40,22 @@ router.post("/saveCons", (req, res) => {
         .exec((err, result) => {
             if(err) return res.json({success: false, err})
             return res.status(200).json({success: true, result})
+        })
+    })
+})
+
+router.post("/myopinion", (req, res) => {
+    Cons.find({'writer': req.body.userId })
+    .populate('writer')
+    .exec((err, cons) => {
+        if (err) return res.status(400).send(err);
+
+        Pros.find({'writer':req.body.userId})
+        .populate('writer')
+        .exec((err, pros) => {
+            if(err) return res.status(400).send(err);
+
+            return res.status(200).json({success: true, cons, pros});
         })
     })
 })
