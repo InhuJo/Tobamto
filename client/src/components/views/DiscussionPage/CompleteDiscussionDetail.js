@@ -30,7 +30,7 @@ function CompleteDiscussionDetail() {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>내가 태어나고 싶어서 태어난것도 아니고 죽을 권리정도는 사람한테 있지 ㅋㅋㅋ</p>
-                            <p style={{ color: 'red' }}>♡ 55</p>
+                            <p style={{ color: 'gray' }}>♡ 55</p>
                         </div>
                     </div>
 
@@ -41,7 +41,7 @@ function CompleteDiscussionDetail() {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>제발 안락사 합법화 부탁드립니다..</p>
-                            <p style={{ color: 'red' }}>♥ 38</p>
+                            <p style={{ color: 'gray' }}>♥ 38</p>
                         </div>
                     </div>
 
@@ -52,7 +52,7 @@ function CompleteDiscussionDetail() {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>죽는 게 사는 것보다 낫다니까</p>
-                            <p style={{ color: 'red' }}>♥ 12</p>
+                            <p style={{ color: 'gray' }}>♥ 12</p>
                         </div>
                     </div>
                 </div>
@@ -67,7 +67,7 @@ function CompleteDiscussionDetail() {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>님들 자식들이 안락사 시킨다고 할 때 괜찮은 사람들만 찬성에 있는 거 맞죠?</p>
-                            <p style={{ color: 'red' }}>♡ 55</p>
+                            <p style={{ color: 'gray' }}>♡ 55</p>
                         </div>
                     </div>
 
@@ -80,7 +80,7 @@ function CompleteDiscussionDetail() {
                         </div>
                         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
                             <p>공대가 미래다님 사람한테 죽을 권리가 대체 어딨는데요? ㅋㅋ 님 이과죠?</p>
-                            <p style={{ color: 'red' }}>♥ 38</p>
+                            <p style={{ color: 'gray' }}>♥ 38</p>
                         </div>
                     </div>
 
