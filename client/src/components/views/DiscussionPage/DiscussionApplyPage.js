@@ -58,7 +58,7 @@ function DiscussionApplyPage(props) {
         .then(response => {
             if(response.data.success) {
               alert('주제가 등록되었습니다.');
-              props.history.push("/");
+              props.history.push("/discussion/more");
             } else {
                 alert('성공적으로 등록하지 못했습니다.')
             }
