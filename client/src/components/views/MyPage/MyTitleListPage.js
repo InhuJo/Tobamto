@@ -2,8 +2,23 @@ import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
 import './Discussion.css';
 import { Table } from 'antd';
+import axios from 'axios';
 
 function MyTitleListPage(props) {
+    const userId = localStorage.getItem('userId');
+    const variable = { userId:userId };
+
+    // useEffect(() => {
+    //     axios.post('/api/discussion/mydiscussion', variable)
+    //     .then(response => {
+    //         if(response.data.success) {
+
+    //         } else {
+    //             alert('my discussion load fail')
+    //         }
+    //     })
+    // }, []);
+
     const data = [
         {
             key: '1',

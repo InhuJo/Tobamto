@@ -24,10 +24,20 @@ router.post("/saveDiscussion", (req, res) => {
     })
 });
 
-
 router.get("/getDiscussions", (req, res) => {
     console.log("getDiscussions")
     Discussion.find()
+        .populate('userId')
+        .exec((err, discussions) => {
+            console.log(discussions)
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, discussions })
+        })
+});
+
+router.post("/mydiscussion", (req, res) => {
+    
+    Discussion.find({'userId':req.body.userId})
         .populate('userId')
         .exec((err, discussions) => {
             console.log(discussions)
