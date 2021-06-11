@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
+import { useSelector } from 'react-redux';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Form, Input, Typography } from 'antd';
+import Axios from 'axios'
 
 const { Title } = Typography;
 
@@ -28,7 +30,11 @@ const formItemLayout = {
     },
   };
 
+
+
 function DiscussionApplyPage(props) {
+    const user = useSelector(state => state.user);
+
     return (
     <Formik
       initialValues={{
@@ -41,7 +47,24 @@ function DiscussionApplyPage(props) {
       })}
       onSubmit={(values, { setSubmitting }) => {
         setTimeout(() => {
+          const variables = {
+            userId: user.userData._id,
+            subject: values.title,
+            content: values.content,
+            state: 0,
+        }
+      
+        Axios.post('/api/discussion/saveDiscussion', variables)
+        .then(response => {
+            if(response.data.success) {
+              setSubject("")
+              setContent("")
+            } else {
+                alert('성공적으로 등록하지 못했습니다.')
+            }
+        })
           alert('주제가 등록되었습니다.');
+          props.history.push("/");
           setSubmitting(false);
         }, 500);
       }}
@@ -118,7 +141,6 @@ function DiscussionApplyPage(props) {
                 <Form.Item {...tailFormItemLayout}>
                   <button
                     className="submitBtn"
-                    onClick={handleSubmit}
                     disabled={isSubmitting}
                     style={{ width: '30%', marginLeft:'-33%', marginTop:'10px'}}
                   >
