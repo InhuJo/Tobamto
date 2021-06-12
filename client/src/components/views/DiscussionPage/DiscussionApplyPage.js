@@ -30,8 +30,6 @@ const formItemLayout = {
     },
   };
 
-
-
 function DiscussionApplyPage(props) {
     const user = useSelector(state => state.user);
 
