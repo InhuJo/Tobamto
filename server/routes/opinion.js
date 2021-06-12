@@ -2,9 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { Pros } = require("../models/Pros");
 const { Cons } = require("../models/Cons");
-
-const { auth } = require("../middleware/auth");
-const { User } = require('../models/User');
+const { OpinionRecommend } = require("../models/OpinionRecommend");
 
 //=================================
 //             opinion
@@ -61,7 +59,7 @@ router.post("/myopinion", (req, res) => {
 
 router.post("/count", (req, res) => {
     const list = req.body;
-    const opinionCount = [];
+    let opinionCount = [];
 
     for (let i = 0; i < list.length; i++) {
         Cons.find({ 'discussionId': list[i]._id })
@@ -81,6 +79,26 @@ router.post("/count", (req, res) => {
                     })
             })
     }
+})
+
+router.post("/hotPros", (req, res) => {
+
+    Pros.findOne({ 'discussionId':req.body._id })
+    .populate('writer')
+    .exec((err, pros) => {
+        if(err) return res.status(400).send(err);
+        return res.status(200).json({ success: true, pros});
+    })
+})
+
+router.post("/hotCons", (req, res) => {
+
+    Cons.findOne({ 'discussionId':req.body._id })
+    .populate('writer')
+    .exec((err, cons) => {
+        if(err) return res.status(400).send(err);
+        return res.status(200).json({ success: true, cons});
+    })
 })
 
 module.exports = router;

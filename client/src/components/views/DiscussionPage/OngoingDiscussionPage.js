@@ -21,7 +21,6 @@ function OngoingDiscussionPage() {
                 Axios.post('/api/opinion/count', response.data.discussions)
                         .then(res => {
                             if (res.data.success) {
-                                console.log(res.data.opinionCount)
                                 setOpinionCount(res.data.opinionCount);
                             } else {
                                 alert('complete discussion opinion count load fail')
