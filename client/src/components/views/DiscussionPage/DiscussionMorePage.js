@@ -13,7 +13,6 @@ function DiscussionMorePage(props) {
         Axios.get('/api/discussion/getDiscussions')
             .then(response => {
                 if (response.data.success) {
-                    console.log(response.data.discussions)
                     setDiscussions(response.data.discussions)
                 } else {
                     alert('목록을 불러오는 데에 실패했습니다.')
@@ -27,8 +26,8 @@ function DiscussionMorePage(props) {
             dataIndex: 'title',
             key: 'title',
             render: (text, record, index) => {
-                var id = data[index].discussionId;
-                return <a href={`/discussion/more/${id}`}>{text}</a>
+                var _id = data[index].discussionId;
+                return <a href={`/discussion/more/${_id}`}>{text}</a>
             }
         },
         {
@@ -55,7 +54,7 @@ function DiscussionMorePage(props) {
         date: discussion.createdAt.substr(0, 10),
         discussionId: discussion._id,
     }))
-    
+
     return (
         <div>
             <div className="top">
