@@ -4,11 +4,11 @@ import Axios from 'axios'
 import Slider from 'react-slick'
 import './slick.css';
 import './slick-theme.css';
-import './main.css'
-const { Title } = Typography;
+import './main.css';
 
 function MainPage() {
-    const [Discussions, setDiscussions] = useState([])
+    const [Discussions, setDiscussions] = useState([]);
+    const [maxCount, setmaxCount] = useState(0);
 
     var settings = {
         dots: true,
@@ -23,14 +23,14 @@ function MainPage() {
     useEffect(() => {
 
         Axios.get('/api/discussion/getOngoingDiscussions')
-        .then(response => {
-            if (response.data.success) {
-                setDiscussions(response.data.discussions)
-                console.log(Discussions)
-            } else {
-                alert('진행 중인 토론을 불러오는 데에 실패했습니다.')
-            }
-        })
+            .then(response => {
+                if (response.data.success) {
+                    setDiscussions(response.data.discussions)
+                    console.log(Discussions)
+                } else {
+                    alert('진행 중인 토론을 불러오는 데에 실패했습니다.')
+                }
+            })
 
     }, [])
 
@@ -41,45 +41,44 @@ function MainPage() {
         </div>
     })
 
-     return (
+    return (
         <div>
             { /* 현재 가장 뜨거운 토론 */}
-            <div className="box">
-                <div className="hot-topic" >
-                <h3><strong> &#x1F525; 현재 가장 뜨거운 토론 &#x1F525; </strong></h3>
-                <Title level={1}> <i>안락사, 허용해야 한다</i> 
-                </Title>
-                <div className="opinion" >
-                    <div className="opinion-pros" >
-                        <p className="nickname"> &#x1F646; 조궁뎅 님 </p>
-                        <p>고통 없이 죽여준다고? 이거 완전 이득아님?</p>
+            <div className="hot-topic-box">
+                <div className="hot-topic-area" >
+                    <div className="title">&#x1F525; Hottest Discussion &#x1F525;</div>
+                    <div className="topic"> &lt; 안락사, 허용해야 한다 &gt;</div>
+                    <div className="opinion-area">
+                        <div className="opinion" >
+                            <p className="nickname"> &#x1F646; <strong>조궁뎅</strong> 님 </p>
+                            <div>고통 없이 죽여준다고? 이거 완전 이득아님?</div>
+                        </div>
+                        <span className="vs">VS</span>
+                        <div className="opinion" style={{ backgroundColor: '#fbe5d6' }}>
+                            <p className="nickname"> &#x1F645; <strong>코뚱땡이</strong> 님 </p>
+                            <div>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</div>
+                        </div>
                     </div>
-                    <h1 style={{ display: 'inline'}}><strong><i> VS </i></strong></h1>
-                    <div className="opinion-cons" >
-                        <p className="nickname"> &#x1F645; 코뚱땡이 님 </p>
-                        <p>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</p>
-                    </div>
-                </div>
-                <br/>
-                <br/>
-                <a> <span>&#x27A1;</span> 지금 바로 토론하러 가기 </a>
+                    <br />
+                    <br />
+                    <a>지금 바로 토론하러 가기&#x27A1;</a>
                 </div>
             </div>
-           
+
 
             { /* 진행 중인 토론 슬라이더 */}
-            <div className="box" >
+            <div className="slide-box" >
                 <div className="ongoing">
-                <h3><strong> 현재 진행 중인 토론 </strong></h3>
-                <br/>
-                <Slider {...settings}>
-                    {sliderList}
-                </Slider>
+                    <h3><strong> 현재 진행 중인 토론 </strong></h3>
+                    <br />
+                    <Slider {...settings}>
+                        {sliderList}
+                    </Slider>
                 </div>
             </div>
-            
+
         </div>
-                
+
     )
 }
 
