@@ -12,9 +12,8 @@ function DiscussionDetailPage(props) {
     const [Pros, setPros] = useState([]);
     const [Cons, setCons] = useState([]);
     const state = props.match.params.state;
+    const discussionId =  window.location.pathname.substr(20, 24);
 
-    const discussionId = "60c380c2dfdfb236381fe9aa";
-    //const discussionId = window.location.pathname.substr(20, 24);
     const variable = { _id: discussionId };
 
 
@@ -23,7 +22,7 @@ function DiscussionDetailPage(props) {
         Axios.post('/api/discussion/getSubjectDetail', variable)
         .then(response => {
             if (response.data.success) {
-                setSubject(response.data.discussion.subject);
+                setSubject(response.data.discussion.subject)
             } else {
                 alert('토론 주제를 불러오는 데에 실패했습니다.')
             }
@@ -93,8 +92,8 @@ function DiscussionDetailPage(props) {
 
     const prosList = Pros.map((pros, index) => {
 
-        return <div class="opnion" style={{ marginBottom: '1rem'}}>
-        <div class="name" >
+        return <div className="opinion" style={{ marginBottom: '1rem'}}>
+        <div className="name" >
             <p style={{ display: 'inline', marginRight: '2%' }}>{pros.writer.name}</p>
             <img src={require("./alarm.png")} width="20" />
             </div>
@@ -108,8 +107,8 @@ function DiscussionDetailPage(props) {
 
     const consList = Cons.map((cons, index) => {
 
-        return <div class="opnion" style={{ marginBottom: '1rem'}}>
-        <div class="name" >
+        return <div className="opinion" style={{ marginBottom: '1rem'}}>
+        <div className="name" >
             <p style={{ display: 'inline', marginRight: '2%' }}>{cons.writer.name}</p>
             <img src={require("./alarm.png")} width="20" />
             </div>
@@ -123,8 +122,10 @@ function DiscussionDetailPage(props) {
 
     return (
         <div>
-            <div class="complete" style={{ width: '85%', margin: 'auto', textAlign: 'center' }}>
-                <Title level={2} style={{ marginTop: '100px'}}> {Subject} </Title>
+            <div className="complete" style={{ width: '85%', margin: 'auto', textAlign: 'center' }}>
+                <Title level={2} style={{ marginTop: '100px'}}>  
+                    {Subject}
+                </Title>
                     <br />
                 <div style={{ display: 'inline-block', padding: '1rem' }}>
                     <h1 style={{ display: 'inline' }}><strong>찬성 63%</strong></h1>
@@ -134,14 +135,14 @@ function DiscussionDetailPage(props) {
             </div>
 
 
-            <div calss="chat" style={{ display: 'inline-block', width: '100%' }}>
-                <div class="agree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
+            <div className="chat" style={{ display: 'inline-block', width: '100%' }}>
+                <div className="agree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
                     <div>
                         {prosList}
                     </div>
                 </div>
 
-                <div class="disagree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
+                <div className="disagree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
                     <div>
                         {consList}
                     </div>

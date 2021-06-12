@@ -60,7 +60,7 @@ function OngoingDiscussionPage() {
             <Title level={3} style={{ width: '100%' }}> 현재 진행중인 토론
             </Title>
             <div className="ongoing-discussion-lists" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', width: '100%', minWidth: '60%', paddingLeft: '100px', paddingRight: '100px'}}>
-                {ongoingList}
+                {ongoingList.reverse()}
             </div>
         </div>
     )

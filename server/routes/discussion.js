@@ -36,10 +36,12 @@ router.get("/getSubjects", (req, res) => {
 });
 
 router.post("/getSubjectDetail", (req, res) => {
+    console.log(req.body._id)
     
-    Discussion.find({ "_id" : req.body._id})
+    Discussion.findOne({ "_id" : req.body._id})
         .populate('userId')
         .exec((err, discussion) => {
+            console.log(discussion.subject)
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussion })
         })
