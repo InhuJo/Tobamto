@@ -4,8 +4,27 @@ const { OpinionRecommend } = require("../models/OpinionRecommend");
 
 
 //=================================
-//         opinionrecommend
+//         recommend
 //=================================
+
+router.post("/getOpinionRecommend", (req, res) => {
+
+    let variable = {}
+
+    if(req.body.ProsId) {
+        variable = { ProsId: req.body.ProsId }
+    } else {
+        variable = { ConsId: req.body.ConsId }
+    }
+
+    OpinionRecommend.find(variable)
+        .exec((err, recommend) => {
+            if(err) return res.status(400).send(err)
+            res.status(200).json({ success: true, recommend})
+        })
+
+});
+
 
 router.post("/saveOpinionRecommend", (req, res) => {
 
@@ -22,23 +41,9 @@ router.post("/saveOpinionRecommend", (req, res) => {
 
     recommend.save((err, recommend) => {
         if(err) return res.json({ success: false, err })
-        res.status(200).json({ success: true })
+        res.status(200).json({ success: true, recommend })
 
     })
-});
-
-
-router.post("/getOpinionRecommend", (req, res) => {
-
-    let variable = {}
-
-
-    OpinionRecommend.find(variable)
-        .exec((err, opinionRecommend) => {
-            if(err) return res.status(400).send(err)
-            res.status(200).json({ success: true, opinionRecommend})
-        })
-
 });
 
 

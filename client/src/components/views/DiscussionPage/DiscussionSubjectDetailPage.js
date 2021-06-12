@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Divider } from 'antd';
 import Axios from 'axios';
-import Like from './Sections/Like';
+import Recommend from './Sections/Recommend';
 const { Title } = Typography;
 
 function DiscussionSubjectDetailPage(props) {
@@ -44,7 +44,7 @@ function DiscussionSubjectDetailPage(props) {
                         좋아요 수가 일정 수를 넘기면 다음 토론 주제로 채택됩니다!
                     </i>
                 </div>
-                <Like />
+                <Recommend />
             </div>
         </div>
     )
