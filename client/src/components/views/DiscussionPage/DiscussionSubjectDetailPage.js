@@ -44,7 +44,7 @@ function DiscussionSubjectDetailPage(props) {
                         좋아요 수가 일정 수를 넘기면 다음 토론 주제로 채택됩니다!
                     </i>
                 </div>
-                <Recommend />
+                <Recommend Discussion userId={localStorage.getItem('userId')} discussionId={id} />
             </div>
         </div>
     )

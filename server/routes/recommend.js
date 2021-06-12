@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { OpinionRecommend } = require("../models/OpinionRecommend");
+const { DiscussionRecommend } = require("../models/DiscussionRecommend");
 
 
 //=================================
@@ -46,8 +47,7 @@ router.post("/saveOpinionRecommend", (req, res) => {
     })
 });
 
-
-router.post("/unRecommend", (req, res) => {
+router.post("/unOpinionRecommend", (req, res) => {
 
     let variable = {}
 
@@ -58,6 +58,40 @@ router.post("/unRecommend", (req, res) => {
     }
 
     OpinionRecommend.findOneAndDelete(variable)
+        .exec((err, result)=> {
+            if(err) return res.status(400).json({ success: false, err })
+            res.status(200).json({ success: true })
+        })
+
+});
+
+
+router.post("/getDiscussionRecommend", (req, res) => {
+
+    DiscussionRecommend.find({ discussionId: req.body.discussionId})
+        .exec((err, recommend) => {
+            if(err) return res.status(400).send(err)
+            res.status(200).json({ success: true, recommend})
+        })
+
+});
+
+
+router.post("/saveDiscussionRecommend", (req, res) => {
+
+    const recommend = new DiscussionRecommend(req.body)
+
+    recommend.save((err, recommend) => {
+        if(err) return res.json({ success: false, err })
+        res.status(200).json({ success: true, recommend })
+
+    })
+});
+
+
+router.post("/unDiscussionRecommend", (req, res) => {
+
+    DiscussionRecommend.findOneAndDelete(req.body)
         .exec((err, result)=> {
             if(err) return res.status(400).json({ success: false, err })
             res.status(200).json({ success: true })
