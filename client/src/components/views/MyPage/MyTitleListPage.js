@@ -37,7 +37,7 @@ function MyTitleListPage(props) {
             key: 'title',
             render: (text, record, index) => {
                 var id =  data[index].discussionId;
-                return <a href={`/discussion/more/${id}`}>{text}</a>
+                return <a href={`/discussion/subject/${id}`}>{text}</a>
             }
         },
         {
@@ -57,7 +57,7 @@ function MyTitleListPage(props) {
                         type="primary" 
                         style={{ marginLeft: '1.5%', backgroundColor: "#1f294f", borderColor: "#1f294f" }} 
                         href="/mypage/edit">
-                        개인 정보 수정
+                        비밀번호 수정
                     </Button>
                 </div>
 

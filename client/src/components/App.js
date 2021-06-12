@@ -2,18 +2,18 @@ import React, { Suspense } from 'react';
 import { Route, Switch } from "react-router-dom";
 import Auth from "../hoc/auth";
 // pages for this product
-import MainPage from "./views/MainPage/MainPage.js"
-import LoginPage from "./views/LoginPage/LoginPage.js";
-import RegisterPage from "./views/RegisterPage/RegisterPage.js";
-import InformationPage from './views/InformationPage/Information.js';
-import ContactPage from './views/ContactPage/ContactPage.js';
+import MainPage from "./views/MainPage/MainPage"
+import LoginPage from "./views/LoginPage/LoginPage";
+import RegisterPage from "./views/RegisterPage/RegisterPage";
+import InformationPage from './views/InformationPage/InformationPage';
+import DeveloperPage from './views/InformationPage/DeveloperPage';
+import ContactPage from './views/ContactPage/ContactPage';
 import DiscussionSubjectPage from "./views/DiscussionPage/DiscussionSubjectPage";
 import DiscussionApplyPage from "./views/DiscussionPage/DiscussionApplyPage";
 import OngoingDiscussionPage from "./views/DiscussionPage/OngoingDiscussionPage";
 import CompleteDiscussionPage from "./views/DiscussionPage/CompleteDiscussionPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
-import DeveloperPage from './views/InformationPage/Developer';
 import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetailPage';
 import MyOpinionPage from './views/MyPage/MyOpinionPage';
 import MyTitleListPage from './views/MyPage/MyTitleListPage';
@@ -34,9 +34,9 @@ function App() {
           <Route exact path="/" component={Auth(MainPage, null)} />
           <Route exact path="/login" component={Auth(LoginPage, false)} />
           <Route exact path="/register" component={Auth(RegisterPage, false)} />
-          <Route exact path="/Developer" component={Auth(DeveloperPage, null)} />
-          <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
+          <Route exact path="/developer" component={Auth(DeveloperPage, null)} />
           <Route exact path="/information" component={Auth(InformationPage, null)} />
+          <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
           <Route exact path="/discussion/subject/:_id" component={Auth(DiscussionSubjectDetailPage, null)} />
           <Route exact path="/discussion/subject" component={Auth(DiscussionSubjectPage, null)} />
           <Route exact path="/contact" component={Auth(ContactPage, null)} />

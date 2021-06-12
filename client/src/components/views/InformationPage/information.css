@@ -1,0 +1,26 @@
+.information {
+    width: 85%;
+    margin: 6rem auto;
+    text-align: center;
+}
+
+.information h4 {
+    font-size: 20px;
+}
+
+.dev-info {
+    width: 85%;
+    margin: 6rem auto;
+    text-align: center;
+}
+
+.dev-info .developers {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.dev-info .developer-one {
+    display: inline-block;
+    text-align: center;
+}

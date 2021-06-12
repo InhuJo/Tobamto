@@ -5,7 +5,7 @@ import Slider from 'react-slick'
 import MainTopic from './Sections/MainTopic';
 import './slick.css';
 import './slick-theme.css';
-import './main.css';
+import './Sections/main.css';
 
 function MainPage() {
     const [Discussions, setDiscussions] = useState([]);
@@ -65,7 +65,6 @@ function MainPage() {
         <div>
             { /* 현재 가장 뜨거운 토론 */}
             <MainTopic />
-
 
             { /* 진행 중인 토론 슬라이더 */}
             <div className="slide-box" >

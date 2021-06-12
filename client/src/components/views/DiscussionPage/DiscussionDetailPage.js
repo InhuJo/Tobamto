@@ -91,12 +91,58 @@ function DiscussionDetailPage(props) {
             })
     }
 
+    /* 신고하기 */
+    const onReport = (writer, flag, opinionId) => {
+         const user = localStorage.getItem('userId');
+
+         if(user=="") {
+             alert('로그인 후 이용해주세요.');
+         }
+        
+        const whyReport = prompt(`${writer.name}님을 신고하시겠습니까? 신고 이유를 작성해 주세요.`, '욕설/비방글 사용');
+
+        if(whyReport==null) {
+            alert("신고가 취소되었습니다.");
+        } else {
+            
+            let reportVariables = {}
+
+            if(flag==0) {
+                reportVariables = {
+                    writer: writer,
+                    reporter: user,
+                    ProsId: opinionId,
+                    content: whyReport,
+                }
+            } else {
+                reportVariables = {
+                    writer: writer,
+                    reporter: user,
+                    ConsId: opinionId,
+                    content: whyReport,
+                }
+            }
+
+            Axios.post('/api/report/onReport', reportVariables)
+            .then(response => {
+                if (response.data.success) {
+                    alert('신고되었습니다.');
+                } else {
+                    alert('신고에 실패했습니다.');
+                }
+            })
+        }
+    }
+
     const prosList = Pros.map((pros, index) => {
 
         return <div className="opinion">
         <div className="name" >
             <p>{pros.writer.name}</p>
-            <img src={require("./alarm.png")} width="20" />
+            <img 
+                src={require("./alarm.png")} 
+                width="20" 
+                onClick={() => onReport(pros.writer, 0, pros._id)} />
             </div>
         <div className="content" >
             <p>{pros.content}</p>
@@ -111,7 +157,10 @@ function DiscussionDetailPage(props) {
         return <div className="opinion" style={{ marginBottom: '1rem'}}>
         <div className="name" >
             <p>{cons.writer.name}</p>
-            <img src={require("./alarm.png")} width="20" />
+            <img 
+                src={require("./alarm.png")} 
+                width="20"
+                onClick={() => onReport(cons.writer, 1, cons._id)} />
             </div>
         <div className="content">
             <p>{cons.content}</p>
