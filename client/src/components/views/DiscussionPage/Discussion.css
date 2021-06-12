@@ -59,22 +59,13 @@
   background: #f4bf4e1f
 }
 
-.ongoing-discussion {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 150px;
-    background: #F0F0F0;
-    padding: '1rem';
-    flex-wrap: 'wrap';
-    justify-content: 'center';
-    margin-top: '1rem';
-    margin-bottom: '1rem';
-    margin-left: '0.5rem';
-    margin-right: '0.5rem';
+.discussion {
+    text-align: center;
+    width: 85%;
+    margin: 4rem auto;
 }
 
-.ongoing-discussion-lists {
+.discussion-list {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -82,8 +73,27 @@
     flex-wrap: wrap;
     width: 100%;
     min-width: 60%;
-    padding-left: 100px;
-    padding-right: 100px;
+}
+
+.discussion-list-one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+    width: 300px;
+    height: 200px;
+    padding: 1rem;
+    background: #F0F0F0;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.discussion a {
+    font-size: 18px;
+    color: black;
 }
 
 .discussion-card {
