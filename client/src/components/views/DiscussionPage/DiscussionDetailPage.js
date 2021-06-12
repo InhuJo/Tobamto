@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Typography } from 'antd';
+import { Typography, Divider } from 'antd';
 import Axios from 'axios';
 import Recommend from './Sections/Recommend';
 import './Discussion.css'
@@ -129,10 +129,13 @@ function DiscussionDetailPage(props) {
                     {Subject}
                 </Title>
                     <br />
+                    <Divider />
                 <div className="agree-disagree">
-                    <h1>찬성 63%</h1>
+                    <h3>찬성 </h3>
+                    <h1> 63% </h1>
                     <h2>  VS  </h2>
-                    <h1>37% 반대</h1>
+                    <h1> 37% </h1>
+                    <h3> 반대</h3>
                 </div>
             </div>
 
