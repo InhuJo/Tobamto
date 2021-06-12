@@ -10,7 +10,6 @@ function OngoingDiscussionPage() {
     const state = 'ongoing';
     const [Discussions, setDiscussions] = useState([]);
     const [OpinionCount, setOpinionCount] = useState([]);
-    let opinionCount = [];
 
     useEffect(() => {
         
@@ -19,20 +18,15 @@ function OngoingDiscussionPage() {
             if (response.data.success) {
                 setDiscussions(response.data.discussions);
                 
-                for (let i = 0; i < response.data.discussions.length; i++) {
-                    Axios.post('/api/opinion/count', response.data.discussions[i])
+                Axios.post('/api/opinion/count', response.data.discussions)
                         .then(res => {
                             if (res.data.success) {
-                                opinionCount.push(res.data.count)
-
-                                if(i === response.data.discussions.length - 1) {
-                                    setOpinionCount(opinionCount);
-                                }
+                                console.log(res.data.opinionCount)
+                                setOpinionCount(res.data.opinionCount);
                             } else {
                                 alert('complete discussion opinion count load fail')
                             }
                         })
-                }
             } else {
                 alert('진행중인 불러오는 데에 실패했습니다.')
             }

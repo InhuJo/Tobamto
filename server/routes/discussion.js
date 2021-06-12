@@ -90,7 +90,6 @@ router.get("/getOngoingDiscussions", (req, res) => {
     }
 
     Discussion.find({ "state": 1 })
-        .populate('writer')
         .exec((err, Discussions) => {
             if (err) return res.status(400).send(err);
             for (let discussion of Discussions) {
