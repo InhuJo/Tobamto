@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Button } from 'antd';
-import './Discussion.css';
+import './MyPage.css';
 import { Table } from 'antd';
 import axios from 'axios';
 

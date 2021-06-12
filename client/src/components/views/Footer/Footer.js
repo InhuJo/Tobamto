@@ -3,12 +3,12 @@ import React from 'react';
 function Footer() {
     return (
         <div style={{
-            height: '80px', display: 'flex',
+            height: '50px', display: 'flex',
             flexDirection: 'column', alignItems: 'center',
-            justifyContent: 'center', fontSize:'1rem',
+            justifyContent: 'center', fontSize:'0.8rem',
             backgroundColor: 'lightgray'
         }}>
-           <p> Copyrights © Advanced Web Programming Team Projcet Tobamto  </p>
+           <p style={{paddingTop: '10px'}}> Copyrights © Advanced Web Programming Team Projcet Tobamto  </p>
         </div>
     )
 }

@@ -28,7 +28,6 @@ router.get("/getDiscussions", (req, res) => {
     Discussion.find()
         .populate('userId')
         .exec((err, discussions) => {
-            console.log(discussions)
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussions })
         })

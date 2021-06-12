@@ -30,7 +30,6 @@ router.post("/savePros", (req, res) => {
 router.post("/saveCons", (req, res) => {
     
     const cons = new Cons(req.body);
-    console.log("222");
 
     cons.save((err, cons) => {
         if(err) return res.json({success: false, err})
@@ -59,8 +58,5 @@ router.post("/myopinion", (req, res) => {
         })
     })
 })
-
-
-
 
 module.exports = router;
