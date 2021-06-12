@@ -37,11 +37,22 @@ router.get("/getSubjects", (req, res) => {
 
 router.post("/getSubjectDetail", (req, res) => {
     
-    Discussion.findOne({ "_id" : req.body._id})
+    Discussion.find({ "_id" : req.body._id})
         .populate('userId')
         .exec((err, discussion) => {
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussion })
+        })
+});
+
+router.get("/getOngoingDiscussions", (req, res) => {
+    
+    Discussion.find({ "state" : 1 })
+        .populate('writer')
+        .exec((err, discussions) => {
+            console.log(discussions)
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, discussions })
         })
 });
 

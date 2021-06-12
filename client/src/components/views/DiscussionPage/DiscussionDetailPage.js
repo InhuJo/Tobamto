@@ -23,7 +23,6 @@ function DiscussionDetailPage(props) {
         Axios.post('/api/discussion/getSubjectDetail', variable)
         .then(response => {
             if (response.data.success) {
-                console.log()
                 setSubject(response.data.discussion.subject);
             } else {
                 alert('토론 주제를 불러오는 데에 실패했습니다.')
@@ -116,7 +115,7 @@ function DiscussionDetailPage(props) {
             </div>
         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
             <p>{cons.content}</p>
-            <Like userId={localStorage.getItem('userId')} ProsId={cons._id}/>
+            <Like userId={localStorage.getItem('userId')} ConsId={cons._id}/>
         </div>
     </div>
 
