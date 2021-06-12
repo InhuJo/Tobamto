@@ -69,9 +69,9 @@ router.post("/getConsOpinions", (req, res) => {
 router.post("/mydiscussion", (req, res) => {
     
     Discussion.find({'userId':req.body.userId})
-        .exec((err, Discussions) => {
+        .exec((err, discussions) => {
             if(err) return res.status(400).send(err);
-            res.status(200).json({ success: true, Discussions })
+            res.status(200).json({ success: true, discussions })
         })
 });
 
