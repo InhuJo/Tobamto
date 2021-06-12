@@ -36,7 +36,6 @@ router.get("/getSubjects", (req, res) => {
 });
 
 router.post("/getSubjectDetail", (req, res) => {
-    
     Discussion.findOne({ "_id" : req.body._id})
         .populate('userId')
         .exec((err, discussion) => {

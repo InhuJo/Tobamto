@@ -4,11 +4,22 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR&display=swap');
 
 .slide-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     border: 1px solid lightgrey;
     margin: 7rem auto;
     width: 80%;
     height: calc(100vh - 220px);
     background-color: rgba(253, 252, 250, 0.89);
+}
+
+.slide-subject {
+    font-family: 'Noto Sans KR', sans-serif;
+    font-size: 1.8rem;
+    color: black;
+    font-weight: 600;
+    margin: 6rem auto;
 }
 
 .hot-topic-box{
@@ -28,8 +39,15 @@
     padding-bottom: 3rem;
 }
 
-.hot-topic-area a {
+.hot-topic-area a, .slide-link a {
     font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.hot-topic-area a:hover, .slide-link a:hover {
+    font-weight: 800;
+    color: #1890ff !important;
+    text-decoration: underline;
 }
 
 .title {
@@ -39,6 +57,17 @@
     font-size: 1.4rem;
     font-weight: 500;
     color: black;
+}
+
+.toron {
+    font-size: 1.2rem;
+    text-decoration: underline;
+}
+
+.toron:hover {
+    font-weight: 800;
+    color: #1890ff !important;
+    text-decoration: underline;
 }
 
 .topic {

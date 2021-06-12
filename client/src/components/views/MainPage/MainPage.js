@@ -2,13 +2,14 @@ import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import Axios from 'axios'
 import Slider from 'react-slick'
+import MainTopic from './Sections/MainTopic';
 import './slick.css';
 import './slick-theme.css';
 import './main.css';
 
 function MainPage() {
     const [Discussions, setDiscussions] = useState([]);
-    const [maxCount, setmaxCount] = useState(0);
+    const [maxIndex, setmaxIndex] = useState(0);
 
     var settings = {
         dots: true,
@@ -26,7 +27,26 @@ function MainPage() {
             .then(response => {
                 if (response.data.success) {
                     setDiscussions(response.data.discussions)
-                    console.log(Discussions)
+
+                    Axios.post('/api/opinion/count', response.data.discussions)
+                        .then(res => {
+                            if (res.data.success) {
+                                let max = res.data.opinionCount[0];
+
+                                for (let i = 1; i < res.data.opinionCount.length; i++) {
+                                    if (max < res.data.opinionCount[i]) {
+                                        max = res.data.opinionCount[i];
+                                        setmaxIndex(i);
+                                    }
+
+                                    if (i === res.data.opinionCount.length - 1) {
+                                        window.localStorage.setItem('hot', response.data.discussions[maxIndex]._id);
+                                    }
+                                }
+                            } else {
+                                alert('complete discussion opinion count load fail')
+                            }
+                        })
                 } else {
                     alert('진행 중인 토론을 불러오는 데에 실패했습니다.')
                 }
@@ -35,45 +55,28 @@ function MainPage() {
     }, [])
 
     const sliderList = Discussions.map((discussion, index) => {
-        return <div className="ongoing-content" >
-            <h1> <strong><i>{discussion.subject}</i></strong> </h1>
-            <a href={`/discussion/ongoing/${discussion._id}`}><u>지금 바로 토론하러 가기</u> </a>
+        return <div key={index} className="ongoing-content" >
+            <div className="slide-subject">{discussion.subject}</div>
+            <div className="slide-link"><a href={`/discussion/ongoing/${discussion._id}`}>지금 바로 토론하러 가기&#x27A1;</a></div>
         </div>
     })
 
     return (
         <div>
             { /* 현재 가장 뜨거운 토론 */}
-            <div className="hot-topic-box">
-                <div className="hot-topic-area" >
-                    <div className="title">&#x1F525; Hottest Discussion &#x1F525;</div>
-                    <div className="topic"> &lt; 안락사, 허용해야 한다 &gt;</div>
-                    <div className="opinion-area">
-                        <div className="opinion" >
-                            <p className="nickname"> &#x1F646; <strong>조궁뎅</strong> 님 </p>
-                            <div>고통 없이 죽여준다고? 이거 완전 이득아님?</div>
-                        </div>
-                        <span className="vs">VS</span>
-                        <div className="opinion" style={{ backgroundColor: '#fbe5d6' }}>
-                            <p className="nickname"> &#x1F645; <strong>코뚱땡이</strong> 님 </p>
-                            <div>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</div>
-                        </div>
-                    </div>
-                    <br />
-                    <br />
-                    <a>지금 바로 토론하러 가기&#x27A1;</a>
-                </div>
-            </div>
+            <MainTopic />
 
 
             { /* 진행 중인 토론 슬라이더 */}
             <div className="slide-box" >
                 <div className="ongoing">
-                    <h3><strong> 현재 진행 중인 토론 </strong></h3>
+                    <div className="topic">현재 진행 중인 토론</div>
                     <br />
-                    <Slider {...settings}>
-                        {sliderList}
-                    </Slider>
+                    <div className="slide-area">
+                        <Slider {...settings}>
+                            {sliderList}
+                        </Slider>
+                    </div>
                 </div>
             </div>
 

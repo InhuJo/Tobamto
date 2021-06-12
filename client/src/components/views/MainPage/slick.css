@@ -3,7 +3,8 @@
 {
     background: #F2F2F2;
     position: relative;
-
+    border: 2px solid #00000041;
+    border-radius: 10px;
     display: block;
     box-sizing: border-box;
 
