@@ -19,7 +19,7 @@ import MyOpinionPage from './views/MyPage/MyOpinionPage';
 import MyTitleListPage from './views/MyPage/MyTitleListPage';
 import EditInfoPage from './views/MyPage/EditInfoPage';
 import CompleteDiscussionDetailPage from './views/DiscussionPage/CompleteDiscussionDetail';
-import DiscussionMorePageDetailPage from './views/DiscussionPage/DiscussionMorePageDetail';
+import DiscussionMoreDetailPage from './views/DiscussionPage/DiscussionMoreDetailPage';
 
 
 //null   Anyone Can go inside
@@ -38,7 +38,7 @@ function App() {
           <Route exact path="/Developer" component={Auth(DeveloperPage, null)} />
           <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
           <Route exact path="/information" component={Auth(InformationPage, null)} />
-          <Route exact path="/discussion/more/:_id" component={Auth(DiscussionMorePageDetailPage, null)} />
+          <Route exact path="/discussion/more/:_id" component={Auth(DiscussionMoreDetailPage, null)} />
           <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, null)} />
           <Route exact path="/contact" component={Auth(ContactPage, null)} />
           <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, null)} />

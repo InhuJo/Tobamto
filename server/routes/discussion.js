@@ -10,7 +10,7 @@ const { auth } = require("../middleware/auth");
 
 router.post("/saveDiscussion", (req, res) => {
     const discussion = new Discussion(req.body)
-    
+
     discussion.save((err, discussion) => {
         if(err) return res.json({success: false, err})
         
@@ -25,12 +25,21 @@ router.post("/saveDiscussion", (req, res) => {
 
 router.get("/getDiscussions", (req, res) => {
     
-    Discussion.find()
+    Discussion.find({'state' : 0})
         .populate('userId')
         .exec((err, discussions) => {
-            console.log(discussions)
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussions })
+        })
+});
+
+router.post("/getTopicDetail", (req, res) => {
+    
+    Discussion.findOne({ "_id" : req.body._id})
+        .populate('userId')
+        .exec((err, discussion) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, discussion })
         })
 });
 
@@ -38,10 +47,11 @@ router.post("/mydiscussion", (req, res) => {
     
     Discussion.find({'userId':req.body.userId})
         .exec((err, discussions) => {
-            console.log(discussions)
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussions })
         })
 });
+
+
 
 module.exports = router;
