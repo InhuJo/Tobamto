@@ -26,17 +26,24 @@ function DiscussionSubjectDetailPage(props) {
 
 
     return (
-        <div style={{ marginTop:'150px' }}>
-            <div style={{ width: '90%', height: '100%', margin: '0 auto', textAlign: 'center' }}>
+        <div style={{ marginTop:'120px' }}>
+            <div style={{ width: '90%', height: '100%', margin: '0 auto', textAlign: 'center', border: '1px solid lightgrey', padding: '4rem' }}>
                 <Title level={3}>
                     {Subject}
                 </Title>
                 <p> written by. <strong>{UserName}</strong> </p>
                 <Divider />
-                <p>
-                    {Content}
-                </p>
+                <div style={{ height: '100px', textAlign: 'center'}}>
+                    <p>{Content}</p>
+                </div>
                 <br />
+                <div style={{ fontSize: '80%', color: 'grey', marginTop: '2rem', marginBottom: '1rem' }}>
+                    <i>
+                        이 주제로 토론하고 싶으신가요?
+                        <br />
+                        좋아요 수가 일정 수를 넘기면 다음 토론 주제로 채택됩니다!
+                    </i>
+                </div>
                 <Like />
             </div>
         </div>

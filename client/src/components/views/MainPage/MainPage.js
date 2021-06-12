@@ -29,7 +29,7 @@ function MainPage() {
                         <p><strong> &#x1F646; 조궁뎅 님 </strong></p>
                         <p>고통 없이 죽여준다고? 이거 완전 이득아님?</p>
                     </div>
-                    <h1 style={{ display: 'inline'}}><strong> VS </strong></h1>
+                    <h1 style={{ display: 'inline'}}><strong><i> VS </i></strong></h1>
                     <div style={{ width: '30%', backgroundColor: '#FBE5D6', display: 'inline-block', padding: '2rem', margin: '2rem' }}>
                         <p className="main-cons"><strong> &#x1F645; 코뚱땡이 님 </strong></p>
                         <p>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</p>
