@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import Axios from 'axios';
+import './Discussion.css'
 const { Title } = Typography;
 
 function OngoingDiscussionPage() {
@@ -47,7 +48,7 @@ function OngoingDiscussionPage() {
         //     }
         // })
 
-        return <div className="ongoing-discussion" style={{ display: 'flex', alignItems: 'center', width: '200px', height:'150px', background: '#F0F0F0', padding: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem', marginBottom: '1rem', marginLeft: '0.5rem', marginRight: '0.5rem'}}>
+        return <div className="discussion-list-one">
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
             <p> {discussion.createdAt.substr(0, 10)} | 개의 의견 </p>
@@ -56,10 +57,10 @@ function OngoingDiscussionPage() {
 
 
      return (
-        <div style={{ textAlign: 'center', marginTop: '100px', marginBottom: '50px' }}>
-            <Title level={3} style={{ width: '100%' }}> 현재 진행중인 토론
-            </Title>
-            <div className="ongoing-discussion-lists" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', width: '100%', minWidth: '60%', paddingLeft: '100px', paddingRight: '100px'}}>
+        <div className="discussion">
+            <Title level={2}>현재 진행중인 토론</Title>
+            <hr />
+            <div className="discussion-list">
                 {ongoingList.reverse()}
             </div>
         </div>

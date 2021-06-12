@@ -59,29 +59,3 @@
   background: #f4bf4e1f
 }
 
-.ongoing-discussion {
-    display: flex;
-    align-items: center;
-    width: 200px;
-    height: 150px;
-    background: #F0F0F0;
-    padding: '1rem';
-    flex-wrap: 'wrap';
-    justify-content: 'center';
-    margin-top: '1rem';
-    margin-bottom: '1rem';
-    margin-left: '0.5rem';
-    margin-right: '0.5rem';
-}
-
-.ongoing-discussion-lists {
-    display: flex;
-    justify-content: space-around;
-    align-items: center;
-    flex-direction: row;
-    flex-wrap: wrap;
-    width: 100%;
-    min-width: 60%;
-    padding-left: 100px;
-    padding-right: 100px;
-}
