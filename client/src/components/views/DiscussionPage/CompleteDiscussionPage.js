@@ -33,24 +33,53 @@ function CompleteDiscussionPage() {
             })
     }, [])
 
-    const renderCard = Discussions.map((discussion, index) => {
+    const ongoingList = Discussions.map((discussion, index) => {
+        
+        const variable =  { _id: discussion._id };
 
-        return <Col key={index} lg={4} md={6} xs={24}>
-            <div className="discussion-card">
-                <h3><strong><a href={`/discussion/${state}/${id}`}>안락사, 허용해야할까?</a></strong></h3>
-                <br />
-                <p className="discussion-date">2021-05-22 | 16개의 의견 </p>
-            </div>
-        </Col>
+        // Axios.post('/api/discussion/getProsOpinions', variable)
+        // .then(response => {
+        //     if (response.data.success) {
+        //         setPros(response.data.pros)
+        //     } else {
+        //         alert('찬성 의견을 불러오는 데에 실패했습니다.')
+        //     }
+        // })
+
+        // Axios.post('/api/discussion/getConsOpinions', variable)
+        // .then(response => {
+        //     if (response.data.success) {
+        //         setCons(response.data.cons)
+        //     } else {
+        //         alert('반대 의견을 불러오는 데에 실패했습니다.')
+        //     }
+        // })
+
+        return <div className="discussion-list-one">
+            <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
+            <br />
+            <p> {discussion.createdAt.substr(0, 10)} | 개의 의견 </p>
+        </div>
     })
 
+    // const renderCard = Discussions.map((discussion, index) => {
+
+    //     return <Col key={index} lg={4} md={6} xs={24}>
+    //         <div className="discussion-card">
+    //             <h3><strong><a href={`/discussion/${state}/${id}`}>안락사, 허용해야할까?</a></strong></h3>
+    //             <br />
+    //             <p className="discussion-date">2021-05-22 | 16개의 의견 </p>
+    //         </div>
+    //     </Col>
+    // })
+
     return (
-        <div style={{width: '85%', margin: '4rem auto' }}>
-            <Title level={2}>지난 토론</Title>
+        <div className="discussion">
+            <Title level={2}>현재 진행중인 토론</Title>
             <hr />
-            <Row gutter={[16, 16]} style={{marginLeft: '3rem', marginTop: '1rem'}}>
-                {renderCard}
-            </Row>
+            <div className="discussion-list">
+                {ongoingList.reverse()}
+            </div>
         </div>
     )
 }
