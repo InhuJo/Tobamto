@@ -1,0 +1,57 @@
+.box {
+    border: 1px solid lightgrey;
+    margin: 6rem auto;
+    width: 80%;
+}
+
+.hot-topic {
+    margin: 3rem auto;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.opinion {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 120%;
+}
+
+.opinion-pros {
+    width: 30%;
+    background-color: #B4C7E7;
+    display: inline-block;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.opinion-cons {
+    width: 30%;
+    background-color: #FBE5D6;
+    display: inline-block;
+    padding: 2rem;
+    margin: 2rem;
+}
+
+.opinion .nickname {
+    font-weight: bold;
+}
+
+.ongoing {
+    width: 50%;
+    margin: 3rem auto;
+    text-align: center;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+}
+
+.ongoing-content {
+    text-align: center;
+    margin: 2rem auto;
+}
+
+p .nickname {
+    font-size: 150%;
+    font-weight: bold;
+}

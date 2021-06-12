@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
+import Axios from 'axios'
 import Slider from 'react-slick'
 import './slick.css';
 import './slick-theme.css';
+import './main.css'
 const { Title } = Typography;
 
 function MainPage() {
+    const [Discussions, setDiscussions] = useState([])
+
     var settings = {
         dots: true,
         arrows: true,
@@ -16,22 +20,43 @@ function MainPage() {
         slidesToScroll: 1
     };
 
+    useEffect(() => {
+
+        Axios.get('/api/discussion/getOngoingDiscussions')
+        .then(response => {
+            if (response.data.success) {
+                setDiscussions(response.data.discussions)
+                console.log(Discussions)
+            } else {
+                alert('진행 중인 토론을 불러오는 데에 실패했습니다.')
+            }
+        })
+
+    }, [])
+
+    const sliderList = Discussions.map((discussion, index) => {
+        return <div className="ongoing-content" >
+            <h1> <strong><i>{discussion.subject}</i></strong> </h1>
+            <a href={`/discussion/ongoing/${discussion._id}`}><u>지금 바로 토론하러 가기</u> </a>
+        </div>
+    })
+
      return (
-        <div style={{ margin: '0 auto', textAlign: 'center' }}>
+        <div>
             { /* 현재 가장 뜨거운 토론 */}
-            <div className="box" style={{ border: '1px solid lightgrey', margin: '6rem'}}>
-                <div className="hot-topic" style={{ margin: '3rem auto', textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem' }}>
-                <h3><strong> <span>&#x1F525;</span> 현재 가장 뜨거운 토론 <span>&#x1F525;</span> </strong></h3>
+            <div className="box">
+                <div className="hot-topic" >
+                <h3><strong> &#x1F525; 현재 가장 뜨거운 토론 &#x1F525; </strong></h3>
                 <Title level={1}> <i>안락사, 허용해야 한다</i> 
                 </Title>
-                <div className="opinion" style={{ display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <div style={{ width: '30%', backgroundColor: '#B4C7E7', display: 'inline-block', padding: '2rem', margin: '2rem' }}>
-                        <p><strong> <span>&#x1F646;</span> 조궁뎅 님 </strong></p>
+                <div className="opinion" >
+                    <div className="opinion-pros" >
+                        <p className="nickname"> &#x1F646; 조궁뎅 님 </p>
                         <p>고통 없이 죽여준다고? 이거 완전 이득아님?</p>
                     </div>
                     <h1 style={{ display: 'inline'}}><strong><i> VS </i></strong></h1>
-                    <div style={{ width: '30%', backgroundColor: '#FBE5D6', display: 'inline-block', padding: '2rem', margin: '2rem' }}>
-                        <p className="main-cons"><strong> <span>&#x1F646;</span> 코뚱땡이 님 </strong></p>
+                    <div className="opinion-cons" >
+                        <p className="nickname"> &#x1F645; 코뚱땡이 님 </p>
                         <p>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</p>
                     </div>
                 </div>
@@ -43,23 +68,12 @@ function MainPage() {
            
 
             { /* 진행 중인 토론 슬라이더 */}
-            <div className="box" style={{ border: '1px solid lightgrey', margin: '6rem'}}>
-                <div className="ongoing" style={{ width: '50%', margin: '3rem auto', textAlign: 'center', paddingTop: '3rem', paddingBottom: '3rem'  }}>
+            <div className="box" >
+                <div className="ongoing">
                 <h3><strong> 현재 진행 중인 토론 </strong></h3>
                 <br/>
                 <Slider {...settings}>
-                    <div>
-                        <h1 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>1인 미디어, 규제해야 한다</i></strong> </h1>
-                        <a href='http://www.naver.com' target="_blank"><u>지금 바로 토론하러 가기</u> </a>
-                    </div>
-                    <div>
-                        <h1 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>코뚱땡이는 바보다</i></strong> </h1>
-                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>
-                    </div>
-                    <div>
-                        <h1 style={{ textAlign: 'center', margin: '2rem auto' }}> <strong><i>조궁뎅이는 궁뎅이다</i></strong> </h1>
-                        <a href='http://www.naver.com' target="_blank"> <u>지금 바로 토론하러 가기</u> </a>
-                    </div>
+                    {sliderList}
                 </Slider>
                 </div>
             </div>

@@ -12,7 +12,7 @@ function DiscussionDetailPage(props) {
     const [Pros, setPros] = useState([]);
     const [Cons, setCons] = useState([]);
     const state = props.match.params.state;
-    const discussionId =  window.location.pathname.substr(20, 24);
+    const discussionId =  props.match.params._id;
 
     const variable = { _id: discussionId };
 
@@ -136,13 +136,13 @@ function DiscussionDetailPage(props) {
 
 
             <div className="chat" style={{ display: 'inline-block', width: '100%' }}>
-                <div className="agree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
+                <div className="agree" style={{ overflow: 'auto', width: '44%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
                     <div>
                         {prosList}
                     </div>
                 </div>
 
-                <div className="disagree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
+                <div className="disagree" style={{ overflow: 'auto', width: '44%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
                     <div>
                         {consList}
                     </div>

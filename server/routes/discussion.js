@@ -16,7 +16,7 @@ router.post("/saveDiscussion", (req, res) => {
 
     discussion.save((err, discussion) => {
         if(err) return res.json({success: false, err})
-        
+        console.log(discussion)
         Discussion.find({'_id' : discussion._id})
         .populate('userId')
         .exec((err, result) => {
