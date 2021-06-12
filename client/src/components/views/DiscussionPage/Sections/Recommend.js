@@ -20,7 +20,6 @@ function Recommend(props) {
         Axios.post('/api/recommend/getOpinionRecommend', variable) 
         .then(response => {
             if(response.data.success) {
-                
                 // 얼마나 많은 좋아요를 받았는지
                 setRecommend(response.data.recommend.length)
 
@@ -53,6 +52,20 @@ function Recommend(props) {
 
                 }else {
                     alert('추천하지 못했습니다.')
+                }
+            })
+
+        } else {
+
+            Axios.post('/api/recommend/unRecommend', variable)
+            .then(response => {
+                if(response.data.success) {
+
+                    setRecommend(Recommend - 1)
+                    setRecommendAction(null)
+
+                }else {
+                    alert('추천을 취소하지 못했습니다.')
                 }
             })
 
