@@ -1,11 +1,13 @@
 @import '~antd/dist/antd.css';
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
 
 .top {
     margin-top: 5rem;
 }
 
-.title {
-    display: inline-block;    
+.subject-title {
+    display: inline-block;  
+    color:black;
 }
 
 .writeBtn {
