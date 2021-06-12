@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Button } from 'antd';
-import './MyPage.css';
 import { Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
+import MyPageMenu from './Sections/MyPageMenu';
 
 function MyTitleListPage(props) {
     const userId = localStorage.getItem('userId');
@@ -48,33 +47,14 @@ function MyTitleListPage(props) {
     ];
 
     return (
-        <div>
-            <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '13%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+        <div style={{ width: '85%', margin: '0 auto' }}>
+            <div style={{ marginTop: '100px', textAlign: 'left',marginBottom: '8%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+            
+            <MyPageMenu title></MyPageMenu>
 
-                <div className='welcome'>
-                    <span style={{fontSize: '20px'}}><strong>{localStorage.getItem('userName')}</strong>님, 환영합니다.</span>
-                    <Button 
-                        type="primary" 
-                        style={{ marginLeft: '1.5%', backgroundColor: "#1f294f", borderColor: "#1f294f" }} 
-                        href="/mypage/edit">
-                        비밀번호 수정
-                    </Button>
-                </div>
-
-                <div className="mylist" style={{ marginTop: '3%' }}>
-                    <div>
-                        <a href="/mypage/opinion">
-                            <span style={{ fontSize: '21px', color: '#b3b3b3' }}>작성한 의견</span>
-                        </a>
-                        <h2 style={{ display: 'inline', marginLeft: '1%', marginRight: '1%' }}> | </h2>
-                        <a href="/mypage/title">
-                            <span style={{ fontSize: '21px', color: '#1f294f', fontWeight: '750' }}>작성한 주제</span>
-                        </a>
-                    </div>
-                </div>
             </div>
 
-            <div className="board" style={{ marginLeft: '13%' }}>
+            <div className="board" style={{ width: '100%' }}>
                 <Table
                     columns={columns}
                     dataSource={data}
@@ -87,7 +67,6 @@ function MyTitleListPage(props) {
                 />
             </div>
         </div>
-
     )
 }
 

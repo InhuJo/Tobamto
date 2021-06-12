@@ -31,14 +31,17 @@ function MyOpinionPage(props) {
     })
 
     return (
-        <div style={{ marginTop: '100px', textAlign: 'left', marginLeft: '13%', marginBottom: '8%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+        <div style={{ width: '85%', margin: '0 auto' }}>
+            <div style={{ marginTop: '100px', textAlign: 'left', marginBottom: '8%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
             
-            <MyPageMenu/>
+            <MyPageMenu opinion></MyPageMenu>
 
             {mypros}
             {mycons}
             
+            </div>
         </div>
+        
     )
 }
 

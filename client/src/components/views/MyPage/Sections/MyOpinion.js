@@ -2,7 +2,7 @@ import React from "react";
 
 function MyOpinion(props) {
     return (
-        <div className="myopnion" style={{border: '2px solid lightgray', width:'80%',borderRadius:'20px', marginTop:'3%', padding:'2%'}}>
+        <div className="myopnion" style={{border: '2px solid lightgray', borderRadius:'20px', marginTop:'3%', padding:'2%'}}>
             <div>
                 <h4 style={{display:'inline'}}>토론 주제 : </h4>
                 <p style={{display:'inline',paddingLeft:'10px'}}>{props.subject}</p>
