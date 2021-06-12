@@ -17,6 +17,6 @@ const discussionRecommendSchema = mongoose.Schema({
     },
 }, { timestamps: true }) 
 
-const discussionRecommend = mongoose.model('Recommend', discussionRecommendSchema);
+const discussionRecommend = mongoose.model('DiscussionRecommend', discussionRecommendSchema);
 
 module.exports = { discussionRecommend }

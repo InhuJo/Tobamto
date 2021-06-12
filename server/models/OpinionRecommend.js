@@ -22,6 +22,6 @@ const opinionRecommendSchema = mongoose.Schema({
     }
 }, { timestamps: true }) 
 
-const opinionRecommend = mongoose.model('Recommend', opinionRecommendSchema);
+const opinionRecommend = mongoose.model('OpinionRecommend', opinionRecommendSchema);
 
 module.exports = { opinionRecommend }

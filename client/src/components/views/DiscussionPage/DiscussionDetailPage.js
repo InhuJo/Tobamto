@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Tooltip, Icon, Typography } from 'antd';
 import Axios from 'axios';
-import Like from './Sections/Like';
+import Recommend from './Sections/Recommend';
 
 const { Title } = Typography;
 
@@ -99,7 +99,7 @@ function DiscussionDetailPage(props) {
             </div>
         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
             <p>{pros.content}</p>
-            <Like userId={localStorage.getItem('userId')} ProsId={pros._id}/>
+            <Recommend Pros userId={localStorage.getItem('userId')} ProsId={pros._id} />
         </div>
     </div>
 
@@ -114,7 +114,7 @@ function DiscussionDetailPage(props) {
             </div>
         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
             <p>{cons.content}</p>
-            <Like userId={localStorage.getItem('userId')} ConsId={cons._id}/>
+            <Recommend Cons userId={localStorage.getItem('userId')} ConsId={cons._id}/>
         </div>
     </div>
 
