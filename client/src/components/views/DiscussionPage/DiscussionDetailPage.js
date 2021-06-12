@@ -180,11 +180,9 @@ function DiscussionDetailPage(props) {
                     <br />
                     <Divider />
                 <div className="agree-disagree">
-                    <h3>찬성 </h3>
-                    <h1> 63% </h1>
+                    <h2>찬성 </h2>
                     <h2>  VS  </h2>
-                    <h1> 37% </h1>
-                    <h3> 반대</h3>
+                    <h2> 반대</h2>
                 </div>
             </div>
 
