@@ -49,12 +49,12 @@ function MainPage() {
                     <div className="title">&#x1F525; Hottest Discussion &#x1F525;</div>
                     <div className="topic"> &lt; 안락사, 허용해야 한다 &gt;</div>
                     <div className="opinion-area">
-                        <div className="opinion" >
+                        <div className="hottest-opinion" >
                             <p className="nickname"> &#x1F646; <strong>조궁뎅</strong> 님 </p>
                             <div>고통 없이 죽여준다고? 이거 완전 이득아님?</div>
                         </div>
                         <span className="vs">VS</span>
-                        <div className="opinion" style={{ backgroundColor: '#fbe5d6' }}>
+                        <div className="hottest-opinion" style={{ backgroundColor: '#fbe5d6' }}>
                             <p className="nickname"> &#x1F645; <strong>코뚱땡이</strong> 님 </p>
                             <div>솔직히 너네 중에 죽고싶은 사람 있냐고 ㅋㅋㅋ 아 어이없네 ㅋㅋ루삥뽕</div>
                         </div>

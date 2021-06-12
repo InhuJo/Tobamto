@@ -64,7 +64,7 @@
     font-style: italic;
 }
 
-.opinion {
+.hottest-opinion {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -79,12 +79,12 @@
     border-radius: 10px;
 }
 
-.opinion .nickname {
+.hottest-opinion .nickname {
     font-size: 1.8rem;
     color: black;
 }
 
-.opinion div {
+.hottest-opinion div {
     font-size: 1.3rem;
     color: rgb(26, 26, 26);
 }
