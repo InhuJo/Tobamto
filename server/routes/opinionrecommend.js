@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const { opinionRecommend } = require("../models/OpinionRecommend");
+const { OpinionRecommend } = require("../models/OpinionRecommend");
 
 
 //=================================
@@ -8,35 +8,17 @@ const { opinionRecommend } = require("../models/OpinionRecommend");
 //=================================
 
 router.post("/saveOpinionRecommend", (req, res) => {
-    
-    const opinionrecommend = new opinionRecommend(req.body);
-
-    opinionrecommend.save((err, pros) => {
-        if(err) return res.json({success: false, err})
-        
-        opinionRecommend.find({'_id' : pros._id})
-        .populate('User')
-        .exec((err, result) => {
-            if(err) return res.json({success: false, err})
-            return res.status(200).json({success: true, result})
-        })
-    })
-})
-
-
-router.post("/recommend", (req, res) => {
 
     let variable = {}
 
-    if(req.body.videoId) {
-        variable = { videoId: req.body.videoId, userId: req.body.userId }
+    if(req.body.ProsId) {
+        variable = { userId: req.body.userId, ProsId: req.body.ProsId }
     } else {
-        variable = { commentId: req.body.commentId, userId: req.body.userId }
+        variable = { userId: req.body.userId, ConsId: req.body.ConsId }
     }
 
-
     // Like collection에다가 클릭 정보를 넣어줌
-    const recommend = new opinionRecommend(variable)
+    const recommend = new OpinionRecommend(variable)
 
     recommend.save((err, recommend) => {
         if(err) return res.json({ success: false, err })
@@ -45,6 +27,38 @@ router.post("/recommend", (req, res) => {
     })
 });
 
+
+router.post("/getOpinionRecommend", (req, res) => {
+
+    let variable = {}
+
+
+    OpinionRecommend.find(variable)
+        .exec((err, opinionRecommend) => {
+            if(err) return res.status(400).send(err)
+            res.status(200).json({ success: true, opinionRecommend})
+        })
+
+});
+
+
+router.post("/unRecommend", (req, res) => {
+
+    let variable = {}
+
+    if(req.body.ProsId) {
+        variable = { userId: req.body.userId, ProsId: req.body.ProsId }
+    } else {
+        variable = { userId: req.body.userId, ConsId: req.body.ConsId }
+    }
+
+    OpinionRecommend.findOneAndDelete(variable)
+        .exec((err, result)=> {
+            if(err) return res.status(400).json({ success: false, err })
+            res.status(200).json({ success: true })
+        })
+
+});
 
 
 

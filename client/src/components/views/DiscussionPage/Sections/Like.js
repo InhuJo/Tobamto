@@ -63,7 +63,7 @@ function Like(props) {
             <span key="comment-basic-like">
                 <Tooltip title="Like">
                     <Icon type="like"
-                        style={{ fontSize: "300%", color: "#f4bf4e" }}
+                        style={{ fontSize: "200%", color: "#f4bf4e" }}
                         theme={LikeAction === 'liked' ? 'filled' : 'outlined'}
                         onClick={onLike}
                     />
