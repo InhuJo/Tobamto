@@ -1,14 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { Typography, Divider } from 'antd';
 import Axios from 'axios';
-import Like from './Like';
+import Like from './Sections/Like';
 const { Title } = Typography;
 
-function DiscussionMoreDetailPage(props) {
+function DiscussionSubjectDetailPage(props) {
     const [UserName, setUserName] = useState("")
     const [Subject, setSubject] = useState("")
     const [Content, setContent] = useState("")
-    const id = window.location.pathname.substr(17, 24);
+    const id = window.location.pathname.substr(20, 24);
     const variable = { _id: id };
 
     useEffect(() => {
@@ -50,4 +50,4 @@ function DiscussionMoreDetailPage(props) {
     )
 }
 
-export default DiscussionMoreDetailPage
+export default DiscussionSubjectDetailPage

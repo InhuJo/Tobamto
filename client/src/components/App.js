@@ -7,19 +7,18 @@ import LoginPage from "./views/LoginPage/LoginPage.js";
 import RegisterPage from "./views/RegisterPage/RegisterPage.js";
 import InformationPage from './views/InformationPage/Information.js';
 import ContactPage from './views/ContactPage/ContactPage.js';
-import DiscussionMorePage from "./views/DiscussionPage/DiscussionMorePage";
+import DiscussionSubjectPage from "./views/DiscussionPage/DiscussionSubjectPage";
 import DiscussionApplyPage from "./views/DiscussionPage/DiscussionApplyPage";
 import OngoingDiscussionPage from "./views/DiscussionPage/OngoingDiscussionPage";
 import CompleteDiscussionPage from "./views/DiscussionPage/CompleteDiscussionPage";
 import NavBar from "./views/NavBar/NavBar";
 import Footer from "./views/Footer/Footer";
 import DeveloperPage from './views/InformationPage/Developer';
-import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetail';
+import DiscussionDetailPage from './views/DiscussionPage/DiscussionDetailPage';
 import MyOpinionPage from './views/MyPage/MyOpinionPage';
 import MyTitleListPage from './views/MyPage/MyTitleListPage';
 import EditInfoPage from './views/MyPage/EditInfoPage';
-import CompleteDiscussionDetailPage from './views/DiscussionPage/CompleteDiscussionDetail';
-import DiscussionMoreDetailPage from './views/DiscussionPage/DiscussionMoreDetailPage';
+import DiscussionSubjectDetailPage from './views/DiscussionPage/DiscussionSubjectDetailPage';
 
 
 //null   Anyone Can go inside
@@ -38,13 +37,12 @@ function App() {
           <Route exact path="/Developer" component={Auth(DeveloperPage, null)} />
           <Route exact path="/discussion/complete" component={Auth(CompleteDiscussionPage, null)} />
           <Route exact path="/information" component={Auth(InformationPage, null)} />
-          <Route exact path="/discussion/more/:_id" component={Auth(DiscussionMoreDetailPage, null)} />
-          <Route exact path="/discussion/more" component={Auth(DiscussionMorePage, null)} />
+          <Route exact path="/discussion/subject/:_id" component={Auth(DiscussionSubjectDetailPage, null)} />
+          <Route exact path="/discussion/subject" component={Auth(DiscussionSubjectPage, null)} />
           <Route exact path="/contact" component={Auth(ContactPage, null)} />
           <Route exact path="/discussion/apply" component={Auth(DiscussionApplyPage, null)} />
           <Route exact path="/discussion/ongoing" component={Auth(OngoingDiscussionPage, null)} />
-          <Route exact path="/discussion/detail/:subjectid" component={Auth(DiscussionDetailPage, null)} />
-          <Route exact path="/discussion/completedetail" component={Auth(CompleteDiscussionDetailPage, null)} />
+          <Route exact path="/discussion/:state/:_id" component={Auth(DiscussionDetailPage, null)} />
           <Route exact path="/mypage/opinion" component={Auth(MyOpinionPage, true)} />
           <Route exact path="/mypage/title" component={Auth(MyTitleListPage, true)} />
           <Route exact path="/mypage/edit" component={Auth(EditInfoPage, true)} />
