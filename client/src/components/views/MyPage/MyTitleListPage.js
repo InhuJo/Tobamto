@@ -57,7 +57,7 @@ function MyTitleListPage(props) {
                         type="primary" 
                         style={{ marginLeft: '1.5%', backgroundColor: "#1f294f", borderColor: "#1f294f" }} 
                         href="/mypage/edit">
-                        개인 정보 수정
+                        비밀번호 수정
                     </Button>
                 </div>
 

@@ -1,24 +1,23 @@
 import React from 'react'
+import { Divider } from 'antd'
 
-function Developer() {
+function DeveloperPage() {
     return (
 
-        <div>
-            <div class="Dev-info" style={{ marginTop: '100px', textAlign: 'center' }}>
-                <h1> <strong>개발자 소개</strong> </h1>
-            </div>
-
-            <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
-                <div class="juyoung" style={{ display: 'inline-block', textAlign: 'center' }} >
+        <div class="dev-info">
+            <h1> <strong>개발자 소개</strong> </h1>
+            <Divider />
+            <div class="developers">
+                <div class="developer-one" style={{  }} >
                     <img alt="img-concert" src={require("./Dev_juyoung.jpg")} width="250" />
                     <p></p>
                     <h4>경북대학교 컴퓨터학부</h4>
                     <h4>2018113910</h4>
                     <h4>김주영</h4>
-                    <h4>nulling@gmail.com</h4>
+                    <h4>nullyng@gmail.com</h4>
                 </div>
 
-                <div class="juyeong" style={{ display: 'inline-block', textAlign: 'center', margin: '80px' }}>
+                <div class="developer-one" style={{ margin: '2rem' }}>
                     <img alt="img-concert" src={require("./Dev_juyeong.jpg")} width="250" />
                     <p></p>
 
@@ -28,7 +27,7 @@ function Developer() {
                     <h4>wakemeup@knu.ac.kr</h4>
                 </div>
 
-                <div class="inhu" style={{ display: 'inline-block', textAlign: 'center' }}>
+                <div class="developer-one">
                     <img alt="img-concert" src={require("./Dev_inhu.jpg")} width="250" />
                     <p></p>
                     <h4>경북대학교 컴퓨터학부</h4>
@@ -42,4 +41,4 @@ function Developer() {
     )
 }
 
-export default Developer
+export default DeveloperPage
