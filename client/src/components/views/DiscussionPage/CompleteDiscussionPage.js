@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Row, Col } from 'antd';
-import { moment } from 'moment';
+import { Typography } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -10,7 +10,6 @@ function CompleteDiscussionPage() {
     const state = 'complete';
     const [Discussions, setDiscussions] = useState([]);
     const [OpinionCount, setOpinionCount] = useState([]);
-    let opinionCount = [];
 
     useEffect(() => {
 
@@ -20,20 +19,15 @@ function CompleteDiscussionPage() {
                 if (response.data.success) {
                     setDiscussions(response.data.list);
 
-                    for (let i = 0; i < response.data.list.length; i++) {
-                        axios.post('/api/opinion/count', response.data.list[i])
-                            .then(res => {
-                                if (res.data.success) {
-                                    opinionCount.push(res.data.count)
-
-                                    if(i == response.data.list.length - 1) {
-                                        setOpinionCount(opinionCount);
-                                    }
-                                } else {
-                                    alert('complete discussion opinion count load fail')
-                                }
-                            })
-                    }
+                    axios.post('/api/opinion/count', response.data.list)
+                        .then(res => {
+                            if (res.data.success) {
+                                console.log(res.data.opinionCount)
+                                setOpinionCount(res.data.opinionCount);
+                            } else {
+                                alert('complete discussion opinion count load fail')
+                            }
+                        })
                 } else {
                     alert('complete discussion list load fail')
                 }
@@ -41,16 +35,18 @@ function CompleteDiscussionPage() {
     }, [])
 
     const completeList = Discussions.map((discussion, index) => {
+        const date = moment(discussion.createdAt).format('YYYY-MM-DD');
+
         return <div className="discussion-list-one" key={index}>
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
-            <p> {discussion.createdAt.substr(0, 10)} | {OpinionCount[index]}개의 의견 </p>
+            <p> {date} | {OpinionCount[index]}개의 의견 </p>
         </div>
     })
 
     return (
         <div className="discussion">
-            <Title level={2} style={{display: 'flex'}}>지난 토론</Title>
+            <Title level={2} style={{ display: 'flex' }}>지난 토론</Title>
             <hr />
             <div className="discussion-list">
                 {completeList.reverse()}

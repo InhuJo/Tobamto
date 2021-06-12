@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Tooltip, Icon, Typography } from 'antd';
+import { Typography } from 'antd';
 import Axios from 'axios';
 import Recommend from './Sections/Recommend';
 import './Discussion.css'
@@ -123,13 +123,13 @@ function DiscussionDetailPage(props) {
 
     return (
         <div>
-            <div className="complete" style={{  }}>
+            <div className="complete">
                 <p>토론 주제</p>
                 <Title level={2}>  
                     {Subject}
                 </Title>
                     <br />
-                <div className="agree-disagree" style={{  }}>
+                <div className="agree-disagree">
                     <h1>찬성 63%</h1>
                     <h2>  VS  </h2>
                     <h1>37% 반대</h1>

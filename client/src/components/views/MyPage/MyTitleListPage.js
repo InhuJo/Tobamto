@@ -3,6 +3,7 @@ import { Button } from 'antd';
 import './MyPage.css';
 import { Table } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 
 function MyTitleListPage(props) {
     const userId = localStorage.getItem('userId');
@@ -25,7 +26,7 @@ function MyTitleListPage(props) {
     const data = MySubject.map((subject, index) => ({
         key: index,
         title: subject.subject,
-        date: subject.createdAt.substr(0, 10),
+        date: moment(subject.createdAt).format('YYYY-MM-DD'),
         discussionId: subject._id,
     }))
 

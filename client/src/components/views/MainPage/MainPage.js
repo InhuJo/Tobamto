@@ -62,7 +62,7 @@ function MainPage() {
                 </div>
                 <br/>
                 <br/>
-                <a> &#x27A1; 지금 바로 토론하러 가기 </a>
+                <a> <span>&#x27A1;</span> 지금 바로 토론하러 가기 </a>
                 </div>
             </div>
            

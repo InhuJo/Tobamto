@@ -31,7 +31,6 @@ router.get("/getSubjects", (req, res) => {
         .populate('userId')
         .exec((err, discussions) => {
             if(err) return res.status(400).send(err);
-            console.log(discussions);
             res.status(200).json({ success: true, discussions })
         })
 });
@@ -43,17 +42,6 @@ router.post("/getSubjectDetail", (req, res) => {
         .exec((err, discussion) => {
             if(err) return res.status(400).send(err);
             res.status(200).json({ success: true, discussion })
-        })
-});
-
-router.get("/getOngoingDiscussions", (req, res) => {
-    
-    Discussion.find({ "state" : 1 })
-        .populate('writer')
-        .exec((err, discussions) => {
-            console.log(discussions)
-            if(err) return res.status(400).send(err);
-            res.status(200).json({ success: true, discussions })
         })
 });
 
@@ -87,6 +75,34 @@ router.post("/mydiscussion", (req, res) => {
         })
 });
 
+/* 현재 진행 중인 토론 목록 가져오기 */
+router.get("/getOngoingDiscussions", (req, res) => {
+    let date1, date2;
+    let today = new Date().getDay();
+    let discussions = [];
+
+    switch (today) {
+        case 0: case 1: case 2: case 3: case 4: case 5:
+            date2 = moment().subtract(today + 1, 'days').format('YYYY-MM-DD');
+            break;
+        case 6:
+            date2 = moment().format('YYYY-MM-DD');
+    }
+
+    Discussion.find({ "state": 1 })
+        .exec((err, Discussions) => {
+            if (err) return res.status(400).send(err);
+            for (let discussion of Discussions) {
+                date1 = moment(discussion.createdAt).format('YYYY-MM-DD');
+
+                if (date1 >= date2) {
+                    discussions.push(discussion);
+                }
+            }
+            res.status(200).json({ success: true, discussions })
+        })
+});
+
 /* 지난 토론 목록 가져오기 */
 router.get("/complete", (req, res) => {
     
@@ -96,19 +112,19 @@ router.get("/complete", (req, res) => {
 
     switch(today) {
         case 0: case 1: case 2: case 3: case 4: case 5:
-            date2 = moment().subtract(today + 1, 'days').format();
+            date2 = moment().subtract(today + 1, 'days').format('YYYY-MM-DD');
             break;
         case 6:
-            date2 = moment().format();
+            date2 = moment().format('YYYY-MM-DD');
     }
 
     Discussion.find({'state' : 1 })
-        .exec((err, discussions) => {
+        .exec((err, Discussions) => {
             if(err) return res.status(400).send(err);
 
-            for(let discussion of discussions) {
-                date1 = moment(discussion.createdAt).format();
-                
+            for(let discussion of Discussions) {
+                date1 = moment(discussion.createdAt).format('YYYY-MM-DD');
+
                 if(date1 < date2) {
                     list.push(discussion);
                 }
