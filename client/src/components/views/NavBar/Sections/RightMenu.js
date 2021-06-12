@@ -34,7 +34,7 @@ function RightMenu(props) {
     return (
       <Menu mode={props.mode}>
         <Menu.Item key="mypage">
-        <a href="/mypage/opinion">마이 페이지</a>
+        <a href="/mypage/opinion">마이페이지</a>
         </Menu.Item>
         <Menu.Item key="logout">
           <a onClick={logoutHandler}>로그아웃</a>

@@ -8,77 +8,52 @@ const { Title } = Typography;
 function CompleteDiscussionPage() {
 
     const state = 'complete';
-    const id = 'idvalue';
     const [Discussions, setDiscussions] = useState([]);
+    const [OpinionCount, setOpinionCount] = useState([]);
+    let opinionCount = [];
 
     useEffect(() => {
 
-        /* 지난 토론 목록 불러오기 */
+        /* 지난 토론 목록 및 의견 수 불러오기 */
         axios.get('/api/discussion/complete')
             .then(response => {
                 if (response.data.success) {
                     setDiscussions(response.data.list);
+
+                    for (let i = 0; i < response.data.list.length; i++) {
+                        axios.post('/api/opinion/count', response.data.list[i])
+                            .then(res => {
+                                if (res.data.success) {
+                                    opinionCount.push(res.data.count)
+
+                                    if(i == response.data.list.length - 1) {
+                                        setOpinionCount(opinionCount);
+                                    }
+                                } else {
+                                    alert('complete discussion opinion count load fail')
+                                }
+                            })
+                    }
                 } else {
                     alert('complete discussion list load fail')
                 }
             })
-        
-        axios.post('/api/opinion/count')
-            .then(response => {
-                if(response.data.success) {
-
-                } else {
-                    alert('complete discussion opinion count load fail')
-                }
-            })
     }, [])
 
-    const ongoingList = Discussions.map((discussion, index) => {
-        
-        const variable =  { _id: discussion._id };
-
-        // Axios.post('/api/discussion/getProsOpinions', variable)
-        // .then(response => {
-        //     if (response.data.success) {
-        //         setPros(response.data.pros)
-        //     } else {
-        //         alert('찬성 의견을 불러오는 데에 실패했습니다.')
-        //     }
-        // })
-
-        // Axios.post('/api/discussion/getConsOpinions', variable)
-        // .then(response => {
-        //     if (response.data.success) {
-        //         setCons(response.data.cons)
-        //     } else {
-        //         alert('반대 의견을 불러오는 데에 실패했습니다.')
-        //     }
-        // })
-
-        return <div className="discussion-list-one">
+    const completeList = Discussions.map((discussion, index) => {
+        return <div className="discussion-list-one" key={index}>
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
-            <p> {discussion.createdAt.substr(0, 10)} | 개의 의견 </p>
+            <p> {discussion.createdAt.substr(0, 10)} | {OpinionCount[index]}개의 의견 </p>
         </div>
     })
 
-    // const renderCard = Discussions.map((discussion, index) => {
-
-    //     return <Col key={index} lg={4} md={6} xs={24}>
-    //         <div className="discussion-card">
-    //             <h3><strong><a href={`/discussion/${state}/${id}`}>안락사, 허용해야할까?</a></strong></h3>
-    //             <br />
-    //             <p className="discussion-date">2021-05-22 | 16개의 의견 </p>
-    //         </div>
-    //     </Col>
-    // })
-
     return (
         <div className="discussion">
-            <Title level={2}>현재 진행중인 토론</Title>
+            <Title level={2}>지난 토론</Title>
             <hr />
             <div className="discussion-list">
-                {ongoingList.reverse()}
+                {completeList.reverse()}
             </div>
         </div>
     )

@@ -5,11 +5,11 @@ import './Discussion.css'
 const { Title } = Typography;
 
 function OngoingDiscussionPage() {
-    const [Discussions, setDiscussions] = useState([]);
-    const [Pros, setPros] = useState([]);
-    const [Cons, setCons] = useState([]);
+
     const state = 'ongoing';
-    const id = 'idvalue';
+    const [Discussions, setDiscussions] = useState([]);
+    const [OpinionCount, setOpinionCount] = useState([]);
+    let opinionCount = [];
 
     useEffect(() => {
         
@@ -17,7 +17,21 @@ function OngoingDiscussionPage() {
         .then(response => {
             if (response.data.success) {
                 setDiscussions(response.data.discussions);
-                console.log(Discussions);
+                
+                for (let i = 0; i < response.data.discussions.length; i++) {
+                    Axios.post('/api/opinion/count', response.data.discussions[i])
+                        .then(res => {
+                            if (res.data.success) {
+                                opinionCount.push(res.data.count)
+
+                                if(i == response.data.discussions.length - 1) {
+                                    setOpinionCount(opinionCount);
+                                }
+                            } else {
+                                alert('complete discussion opinion count load fail')
+                            }
+                        })
+                }
             } else {
                 alert('진행중인 불러오는 데에 실패했습니다.')
             }
@@ -27,31 +41,10 @@ function OngoingDiscussionPage() {
 
     
     const ongoingList = Discussions.map((discussion, index) => {
-        
-        const variable =  { _id: discussion._id };
-
-        // Axios.post('/api/discussion/getProsOpinions', variable)
-        // .then(response => {
-        //     if (response.data.success) {
-        //         setPros(response.data.pros)
-        //     } else {
-        //         alert('찬성 의견을 불러오는 데에 실패했습니다.')
-        //     }
-        // })
-
-        // Axios.post('/api/discussion/getConsOpinions', variable)
-        // .then(response => {
-        //     if (response.data.success) {
-        //         setCons(response.data.cons)
-        //     } else {
-        //         alert('반대 의견을 불러오는 데에 실패했습니다.')
-        //     }
-        // })
-
         return <div className="discussion-list-one">
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
-            <p> {discussion.createdAt.substr(0, 10)} | 개의 의견 </p>
+            <p> {discussion.createdAt.substr(0, 10)} | {OpinionCount[index]}개의 의견 </p>
         </div>
     })
 

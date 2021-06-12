@@ -59,4 +59,22 @@ router.post("/myopinion", (req, res) => {
     })
 })
 
+router.post("/count", (req, res) => {
+   const list = req.body;
+
+   Cons.find({ 'discussionId': list._id })
+   .exec((err, cons) => {
+       if (err) return res.status(400).send(err);
+
+       Pros.find({ 'discussionId': list._id })
+       .exec((err, pros) => {
+           if(err) return res.status(400).send(err);
+           
+           const count = cons.length + pros.length;
+
+           return res.status(200).json({ success: true, count });
+       })
+   })
+})
+
 module.exports = router;
