@@ -12,7 +12,7 @@ function DiscussionSubjectDetailPage(props) {
     const variable = { _id: id };
 
     useEffect(() => {
-        Axios.post('/api/discussion/getTopicDetail', variable)
+        Axios.post('/api/discussion/getSubjectDetail', variable)
             .then(response => {
                 if (response.data.success) {
                     setUserName(response.data.discussion.userId.name)

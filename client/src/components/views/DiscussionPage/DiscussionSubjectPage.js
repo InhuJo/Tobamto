@@ -10,7 +10,7 @@ function DiscussionSubjectPage(props) {
     const [Discussions, setDiscussions] = useState([])
 
     useEffect(() => {
-        Axios.get('/api/discussion/getDiscussions')
+        Axios.get('/api/discussion/getSubjects')
             .then(response => {
                 if (response.data.success) {
                     console.log(Discussions)

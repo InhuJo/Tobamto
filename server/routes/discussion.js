@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const { Discussion } = require("../models/Discussion");
+const { Pros } = require("../models/Pros");
+const { Cons } = require("../models/Cons");
 
 const { auth } = require("../middleware/auth");
 
@@ -23,8 +25,7 @@ router.post("/saveDiscussion", (req, res) => {
     })
 });
 
-router.get("/getDiscussions", (req, res) => {
-
+router.get("/getSubjects", (req, res) => {
     Discussion.find({'state' : 0})
         .populate('userId')
         .exec((err, discussions) => {
@@ -34,7 +35,7 @@ router.get("/getDiscussions", (req, res) => {
         })
 });
 
-router.post("/getTopicDetail", (req, res) => {
+router.post("/getSubjectDetail", (req, res) => {
     
     Discussion.findOne({ "_id" : req.body._id})
         .populate('userId')
@@ -43,6 +44,27 @@ router.post("/getTopicDetail", (req, res) => {
             res.status(200).json({ success: true, discussion })
         })
 });
+
+router.post("/getProsOpinions", (req, res) => {
+    
+    Pros.find({ "discussionId" : req.body._id})
+        .populate('writer')
+        .exec((err, pros) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, pros })
+        })
+});
+
+router.post("/getConsOpinions", (req, res) => {
+    
+    Cons.find({ "discussionId" : req.body._id})
+        .populate('writer')
+        .exec((err, cons) => {
+            if(err) return res.status(400).send(err);
+            res.status(200).json({ success: true, cons })
+        })
+});
+
 
 router.post("/mydiscussion", (req, res) => {
     

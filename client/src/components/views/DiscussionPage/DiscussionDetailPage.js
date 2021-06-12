@@ -7,9 +7,48 @@ const { Title } = Typography;
 
 function DiscussionDetailPage(props) {
 
+    const [Subject, setSubject] = useState("")
     const [Opinion, setOpinion] = useState("");
-    const id = props.match.params._id;
+    const [Pros, setPros] = useState([]);
+    const [Cons, setCons] = useState([]);
     const state = props.match.params.state;
+
+    const discussionId = "60c380c2dfdfb236381fe9aa";
+    //const discussionId = window.location.pathname.substr(20, 24);
+    const variable = { _id: discussionId };
+
+
+    useEffect(() => {
+        
+        Axios.post('/api/discussion/getSubjectDetail', variable)
+        .then(response => {
+            if (response.data.success) {
+                console.log()
+                setSubject(response.data.discussion.subject);
+            } else {
+                alert('토론 주제를 불러오는 데에 실패했습니다.')
+            }
+        })
+
+            Axios.post('/api/discussion/getProsOpinions', variable)
+            .then(response => {
+                if (response.data.success) {
+                    setPros(response.data.pros)
+                } else {
+                    alert('찬성 의견을 불러오는 데에 실패했습니다.')
+                }
+            })
+
+            Axios.post('/api/discussion/getConsOpinions', variable)
+            .then(response => {
+                if (response.data.success) {
+                    setCons(response.data.cons)
+                } else {
+                    alert('반대 의견을 불러오는 데에 실패했습니다.')
+                }
+            })
+
+    }, [])
 
     const handleChange = (event) => {
         setOpinion(event.currentTarget.value);
@@ -19,7 +58,7 @@ function DiscussionDetailPage(props) {
 
         const variables = {
             writer: localStorage.getItem('userId'),
-            discussionId: '60c337aa3a6dc2455092d64b',
+            discussionId: discussionId,
             content: Opinion,
         }
 
@@ -38,7 +77,7 @@ function DiscussionDetailPage(props) {
 
         const variables = {
             writer: localStorage.getItem('userId'),
-            discussionId: '60c337aa3a6dc2455092d64b',
+            discussionId: discussionId,
             content: Opinion,
         }
 
@@ -53,86 +92,61 @@ function DiscussionDetailPage(props) {
             })
     }
 
+    const prosList = Pros.map((pros, index) => {
+
+        return <div class="opnion" style={{ marginBottom: '1rem'}}>
+        <div class="name" >
+            <p style={{ display: 'inline', marginRight: '2%' }}>{pros.writer.name}</p>
+            <img src={require("./alarm.png")} width="20" />
+            </div>
+        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
+            <p>{pros.content}</p>
+            <Like userId={localStorage.getItem('userId')} ProsId={pros._id}/>
+        </div>
+    </div>
+
+    })
+
+    const consList = Cons.map((cons, index) => {
+
+        return <div class="opnion" style={{ marginBottom: '1rem'}}>
+        <div class="name" >
+            <p style={{ display: 'inline', marginRight: '2%' }}>{cons.writer.name}</p>
+            <img src={require("./alarm.png")} width="20" />
+            </div>
+        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
+            <p>{cons.content}</p>
+            <Like userId={localStorage.getItem('userId')} ProsId={cons._id}/>
+        </div>
+    </div>
+
+    })
+
     return (
         <div>
-            <div class="complete" style={{ width: '85%', margin: '3rem auto', textAlign: 'center' }}>
-                <div style={{ display: 'inline-block', margin: '2%', padding: '1rem' }}>
-                    <h1><strong>안락사 허용해야 할까? </strong></h1>
+            <div class="complete" style={{ width: '85%', margin: 'auto', textAlign: 'center' }}>
+                <Title level={2} style={{ marginTop: '100px'}}> {Subject} </Title>
                     <br />
-                    <h2 style={{ display: 'inline' }}><strong>63%</strong></h2>
-                    <h1 style={{ display: 'inline' }}><strong>  VS  </strong></h1>
-                    <h2 style={{ display: 'inline' }}><strong>37%</strong></h2>
-
+                <div style={{ display: 'inline-block', padding: '1rem' }}>
+                    <h1 style={{ display: 'inline' }}><strong>찬성 63%</strong></h1>
+                    <h2 style={{ display: 'inline' }}><strong><i>  VS  </i></strong></h2>
+                    <h1 style={{ display: 'inline' }}><strong>37% 반대</strong></h1>
                 </div>
             </div>
-            <h4 style={{ display: 'inline-block', float: 'left', marginLeft: '10%' }}> 찬성 (안락사 허용) </h4>
-            <h4 style={{ display: 'inline-block', float: 'right', marginRight: '10%' }}> 반대 (안락사 금지) </h4>
 
 
             <div calss="chat" style={{ display: 'inline-block', width: '100%' }}>
                 <div class="agree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
-
-                    <div class="opnion">
-                        <div class="name" >
-                            <p style={{ display: 'inline', marginRight: '2%' }}>공대가 미래다</p>
-                            <img src={require("./alarm.png")} width="20" />
-                        </div>
-                        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
-                            <p>내가 태어나고 싶어서 태어난것도 아니고 죽을 권리정도는 사람한테 있지 ㅋㅋㅋ</p>
-                            <Like />
-                        </div>
-                    </div>
-
-                    <div class="opnion2" style={{ marginTop: '5%' }}>
-                        <div class="name">
-                            <p style={{ display: 'inline', marginTop: '5%', marginRight: '2%' }}>코딩 조아</p>
-                            <img src={require("./alarm.png")} width="20" />
-                        </div>
-                        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
-                            <p>제발 안락사 합법화 부탁드립니다..</p>
-                            <Like />
-                        </div>
-                    </div>
-
-                    <div class="opnion3" style={{ marginTop: '5%' }}>
-                        <div class="name">
-                            <p style={{ display: 'inline', marginTop: '5%', marginRight: '2%' }}>우리정글뭐해</p>
-                            <img src={require("./alarm.png")} width="20" />
-                        </div>
-                        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
-                            <p>죽는 게 사는 것보다 낫다니까</p>
-                            <Like />
-                        </div>
+                    <div>
+                        {prosList}
                     </div>
                 </div>
 
-
                 <div class="disagree" style={{ overflow: 'auto', width: '40%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
-
-                    <div class="opnion">
-                        <div class="name" >
-                            <p style={{ display: 'inline', marginRight: '2%' }}>문과붐은 온다</p>
-                            <img src={require("./alarm.png")} width="20" />
-                        </div>
-                        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
-                            <p>님들 자식들이 안락사 시킨다고 할 때 괜찮은 사람들만 찬성에 있는 거 맞죠?</p>
-                            <Like />
-                        </div>
+                    <div>
+                        {consList}
                     </div>
-
-                    <div class="opnion2" style={{ marginTop: '5%' }}>
-                        <div class="name">
-                            <p style={{ display: 'inline', marginTop: '5%', marginRight: '2%' }}>게임중독맞습니다</p>
-                            <img src={require("./alarm.png")} width="20" />
-                        </div>
-                        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
-                            <p>공대가 미래다님 사람한테 죽을 권리가 대체 어딨는데요? ㅋㅋ 님 이과죠?</p>
-                            <Like />
-                        </div>
-                    </div>
-
-
-
+                
                 </div>
             </div>
 
