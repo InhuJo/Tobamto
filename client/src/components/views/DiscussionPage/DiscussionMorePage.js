@@ -13,6 +13,7 @@ function DiscussionMorePage(props) {
         Axios.get('/api/discussion/getDiscussions')
             .then(response => {
                 if (response.data.success) {
+                    console.log(Discussions)
                     setDiscussions(response.data.discussions)
                 } else {
                     alert('목록을 불러오는 데에 실패했습니다.')

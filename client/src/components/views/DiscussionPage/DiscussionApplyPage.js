@@ -6,6 +6,7 @@ import { Form, Input, Typography } from 'antd';
 import Axios from 'axios'
 
 const { Title } = Typography;
+const { TextArea } = Input;
 
 const formItemLayout = {
     labelCol: {
@@ -113,10 +114,9 @@ function DiscussionApplyPage(props) {
                     errors.content && touched.content ? "error" : "success"
                   }
                 >
-                  <Input
+                  <TextArea
                     id="content"
                     placeholder="내용을 입력해주세요."
-                    type="textarea"
                     value={values.content}
                     onChange={handleChange}
                     onBlur={handleBlur}
