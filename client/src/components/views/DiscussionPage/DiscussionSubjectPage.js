@@ -4,7 +4,7 @@ import { Table } from 'antd';
 import './Discussion.css';
 import Axios from 'axios';
 
-function DiscussionMorePage(props) {
+function DiscussionSubjectPage(props) {
     const user = useSelector(state => state.user);
 
     const [Discussions, setDiscussions] = useState([])
@@ -27,7 +27,7 @@ function DiscussionMorePage(props) {
             key: 'title',
             render: (text, record, index) => {
                 var _id = data[index].discussionId;
-                return <a href={`/discussion/more/${_id}`}>{text}</a>
+                return <a href={`/discussion/subject/${_id}`}>{text}</a>
             }
         },
         {
@@ -77,4 +77,4 @@ function DiscussionMorePage(props) {
     )
 }
 
-export default DiscussionMorePage
+export default DiscussionSubjectPage

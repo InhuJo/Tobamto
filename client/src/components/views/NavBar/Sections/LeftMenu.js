@@ -21,7 +21,7 @@ function LeftMenu(props) {
         <a href="/discussion/complete">▶ 지난 토론</a>
         </Menu.Item>
         <Menu.Item key="setting:3">
-          <a href="/discussion/more">▶ 토론 주제 보기</a>
+          <a href="/discussion/subject">▶ 토론 주제 보기</a>
         </Menu.Item>
     </SubMenu>
     <SubMenu title={<span>문의하기</span>}>

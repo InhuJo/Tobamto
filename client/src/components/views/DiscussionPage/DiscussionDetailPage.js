@@ -1,12 +1,15 @@
-import React, { useEffect,useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Tooltip, Icon, Typography } from 'antd';
 import Axios from 'axios';
-import Like from './Like';
+import Like from './Sections/Like';
 
 const { Title } = Typography;
 
-function DiscussionDetail(props) {
+function DiscussionDetailPage(props) {
+
     const [Opinion, setOpinion] = useState("");
+    const id = props.match.params._id;
+    const state = props.match.params.state;
 
     const handleChange = (event) => {
         setOpinion(event.currentTarget.value);
@@ -21,17 +24,16 @@ function DiscussionDetail(props) {
         }
 
         Axios.post('/api/opinion/savePros', variables)
-        .then(response => {
-            if(response.data.success) {
-                alert('의견이 등록되었습니다.');
-                setOpinion("");
-            } else {
-                alert('의견 등록에 실패했습니다.');
-            }
-        })
+            .then(response => {
+                if (response.data.success) {
+                    alert('의견이 등록되었습니다.');
+                    setOpinion("");
+                } else {
+                    alert('의견 등록에 실패했습니다.');
+                }
+            })
     }
 
-    
     const onConsSubmit = (event) => {
 
         const variables = {
@@ -41,14 +43,14 @@ function DiscussionDetail(props) {
         }
 
         Axios.post('/api/opinion/saveCons', variables)
-        .then(response => {
-            if(response.data.success) {
-                alert('의견이 등록되었습니다.');
-                setOpinion("");
-            } else {
-                alert('의견 등록에 실패했습니다.');
-            }
-        })
+            .then(response => {
+                if (response.data.success) {
+                    alert('의견이 등록되었습니다.');
+                    setOpinion("");
+                } else {
+                    alert('의견 등록에 실패했습니다.');
+                }
+            })
     }
 
     return (
@@ -134,36 +136,45 @@ function DiscussionDetail(props) {
                 </div>
             </div>
 
-            <div className="comment" style={{ margin: '5%' }}>
-                <h2 style={{ marginLeft: '2%', marginRight:'3%', marginBottom:'1%' }}>의견 남기기</h2>
-                <form >
-                    <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
-                        <textarea
-                            value={Opinion}
-                            onChange={handleChange}
-                            style={{ width: '80%', height: '150px', resize: 'none', borderRadius: '5px', textAlign: 'center' }}
-                        />
-                      
-                        <button
-                            onClick={onProsSubmit}
-                            style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', margin: '2%'}} >
+            {
+                state == 'ongoing' &&
+                <div className="comment" style={{ margin: '5%' }}>
+                    <h2 style={{ marginLeft: '2%', marginRight: '3%', marginBottom: '1%' }}>의견 남기기</h2>
+                    <form >
+                        <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+                            <textarea
+                                value={Opinion}
+                                onChange={handleChange}
+                                style={{ width: '80%', height: '150px', resize: 'none', borderRadius: '5px', textAlign: 'center' }}
+                            />
+
+                            <button
+                                onClick={onProsSubmit}
+                                style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', margin: '2%' }} >
                                 찬성
-                        </button>
-                        <button
-                            onClick={onConsSubmit} 
-                            style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px' }} >
+                            </button>
+                            <button
+                                onClick={onConsSubmit}
+                                style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px' }} >
                                 반대
-                        </button>
-                    </div>
-                    <br />
-                    <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.
-</p>
-                </form>
-            </div>
+                            </button>
+                        </div>
+                        <br />
+                        <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.</p>
+                    </form>
+                </div>
+            }
+
+            {
+                state == 'complete' &&
+                <div className="comment" style={{ margin: '5%' }}>
+                    <h2 style={{ marginLeft: '5%', textAlign: 'center', color: 'gray' }}>종료된 토론입니다.</h2>
+                </div>
+            }
 
         </div>
 
     )
 }
 
-export default DiscussionDetail
+export default DiscussionDetailPage
