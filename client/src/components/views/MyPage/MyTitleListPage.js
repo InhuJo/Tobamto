@@ -37,7 +37,7 @@ function MyTitleListPage(props) {
             key: 'title',
             render: (text, record, index) => {
                 var id =  data[index].discussionId;
-                return <a href={`/discussion/more/${id}`}>{text}</a>
+                return <a href={`/discussion/subject/${id}`}>{text}</a>
             }
         },
         {

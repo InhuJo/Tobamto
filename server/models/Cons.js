@@ -1,7 +1,7 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const consShema = mongoose.Schema({
+const consSchema = mongoose.Schema({
     // 의견 제시한 유저의 아이디
     writer: {
         type: Schema.Types.ObjectId,
@@ -18,6 +18,6 @@ const consShema = mongoose.Schema({
 }, { timestamps: true }) 
 
 
-const Cons = mongoose.model('Cons', consShema);
+const Cons = mongoose.model('Cons', consSchema);
 
 module.exports = { Cons }
