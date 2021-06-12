@@ -1,32 +1,5 @@
 @import '~antd/dist/antd.css';
 
-.top {
-    /* margin-top: 7rem; */
-}
-
-.title {
-    display: inline-block;    
-}
-
-.writeBtn {
-    display: inline-block;
-    width: 130px;
-    height: 50px;
-    position: absolute;
-    right: 10%;
-    margin-top: 10px;
-    background-color: #1f294f;
-    color: white;
-    font-size: 20px;
-    border: 1px solid transparent;
-    border-color: white;
-    border-radius: 8px;
-}
-
-.writeBtn:hover {
-    cursor: pointer;
-}
-
 .board {
     width: 75%;
     text-align: center;

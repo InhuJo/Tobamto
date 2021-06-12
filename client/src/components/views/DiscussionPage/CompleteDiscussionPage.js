@@ -50,7 +50,7 @@ function CompleteDiscussionPage() {
 
     return (
         <div className="discussion">
-            <Title level={2}>지난 토론</Title>
+            <Title level={2} style={{display: 'flex'}}>지난 토론</Title>
             <hr />
             <div className="discussion-list">
                 {completeList.reverse()}

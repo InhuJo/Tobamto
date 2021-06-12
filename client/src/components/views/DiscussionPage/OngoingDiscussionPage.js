@@ -51,7 +51,7 @@ function OngoingDiscussionPage() {
 
      return (
         <div className="discussion">
-            <Title level={2}>현재 진행중인 토론</Title>
+            <Title level={2} style={{display: 'flex'}}>현재 진행중인 토론</Title>
             <hr />
             <div className="discussion-list">
                 {ongoingList.reverse()}
