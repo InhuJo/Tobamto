@@ -1,6 +1,7 @@
 const express = require('express');
 const router = express.Router();
 const { Discussion } = require("../models/Discussion");
+const moment = require('moment');
 
 const { auth } = require("../middleware/auth");
 
@@ -25,7 +26,7 @@ router.post("/saveDiscussion", (req, res) => {
 
 router.get("/getDiscussions", (req, res) => {
     
-    Discussion.find({'state' : 0})
+    Discussion.find({'state' : 0 })
         .populate('userId')
         .exec((err, discussions) => {
             if(err) return res.status(400).send(err);
@@ -43,6 +44,7 @@ router.post("/getTopicDetail", (req, res) => {
         })
 });
 
+/* 내가 쓴 주제 보기 */
 router.post("/mydiscussion", (req, res) => {
     
     Discussion.find({'userId':req.body.userId})
@@ -52,6 +54,35 @@ router.post("/mydiscussion", (req, res) => {
         })
 });
 
+/* 지난 토론 목록 가져오기 */
+router.get("/complete", (req, res) => {
+    
+    let date1, date2;
+    let today = new Date().getDay();
+    let list = [];
+
+    switch(today) {
+        case 0: case 1: case 2: case 3: case 4: case 5:
+            date2 = moment().subtract(today + 1, 'days').format();
+            break;
+        case 6:
+            date2 = moment().format();
+    }
+
+    Discussion.find({'state' : 1 })
+        .exec((err, discussions) => {
+            if(err) return res.status(400).send(err);
+
+            for(let discussion of discussions) {
+                date1 = moment(discussion.createdAt).format();
+                
+                if(date1 < date2) {
+                    list.push(discussion);
+                }
+            }
+            res.status(200).json({ success: true, list })
+        })
+});
 
 
 module.exports = router;

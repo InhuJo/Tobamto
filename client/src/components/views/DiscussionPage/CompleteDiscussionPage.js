@@ -1,25 +1,57 @@
-import React from 'react';
-import { Typography } from 'antd';
+import React, { useState, useEffect } from 'react';
+import { Typography, Row, Col } from 'antd';
+import { moment } from 'moment';
+import axios from 'axios';
+
 const { Title } = Typography;
 
 function CompleteDiscussionPage() {
 
     const state = 'complete';
     const id = 'idvalue';
+    const [Discussions, setDiscussions] = useState([]);
 
-     return (
+    useEffect(() => {
 
-        <div style={{ textAlign: 'center', marginTop: '100px', marginBottom: '50px' }}>
-        <Title level={3} style={{ width: '100%' }}> 지난 토론
-        </Title>
-        <div className="ongoing-discussion-lists" style={{ display: 'flex', justifyContent: 'space-around', alignItems: 'center', flexDirection: 'row', flexWrap: 'wrap', width: '100%', minWidth: '60%', paddingLeft: '100px', paddingRight: '100px'}}>
-            <div className="ongoing-discussion" style={{ display: 'flex', alignItems: 'center', width: '200px', height:'150px', background: '#F0F0F0', padding: '1rem', flexWrap: 'wrap', justifyContent: 'center', marginTop: '1rem', marginBottom: '1rem', marginLeft: '0.5rem', marginRight: '0.5rem'}}>
-            <h3><strong><a href={`/discussion/${state}/${id}`}>안락사, 허용해야할까?</a></strong></h3>
+        /* 지난 토론 목록 불러오기 */
+        axios.get('/api/discussion/complete')
+            .then(response => {
+                if (response.data.success) {
+                    setDiscussions(response.data.list);
+                } else {
+                    alert('complete discussion list load fail')
+                }
+            })
+        
+        axios.post('/api/opinion/count')
+            .then(response => {
+                if(response.data.success) {
+
+                } else {
+                    alert('complete discussion opinion count load fail')
+                }
+            })
+    }, [])
+
+    const renderCard = Discussions.map((discussion, index) => {
+
+        return <Col key={index} lg={4} md={6} xs={24}>
+            <div className="discussion-card">
+                <h3><strong><a href={`/discussion/${state}/${id}`}>안락사, 허용해야할까?</a></strong></h3>
                 <br />
-                <p>2021-05-22 | 16개의 의견 </p>
+                <p className="discussion-date">2021-05-22 | 16개의 의견 </p>
             </div>
+        </Col>
+    })
+
+    return (
+        <div style={{width: '85%', margin: '4rem auto' }}>
+            <Title level={2}>지난 토론</Title>
+            <hr />
+            <Row gutter={[16, 16]} style={{marginLeft: '3rem', marginTop: '1rem'}}>
+                {renderCard}
+            </Row>
         </div>
-    </div>
     )
 }
 
