@@ -155,23 +155,24 @@ function DiscussionDetailPage(props) {
                 <div className="comment" style={{ margin: '5%' }}>
                     <h2 style={{ marginLeft: '2%', marginRight: '3%', marginBottom: '1%' }}>의견 남기기</h2>
                     <form >
-                        <div style={{ display: 'flex', justifyContent: 'center', alignContent: 'center' }}>
+                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                             <textarea
                                 value={Opinion}
                                 onChange={handleChange}
-                                style={{ width: '80%', height: '150px', resize: 'none', borderRadius: '5px', textAlign: 'center' }}
+                                style={{ width: '80%', height: '120px', resize: 'none', borderRadius: '5px' }}
                             />
-
+                            <div style={{ display: 'flex', flexDirection: 'column' }}>
                             <button
                                 onClick={onProsSubmit}
-                                style={{ ackground: '#b4c7e7', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px', margin: '2%' }} >
-                                찬성
+                                style={{ background: '#b4c7e7', borderColor: '#b4c7e7', color: 'black', width: '150px', height: '50px', borderRadius: '10px', margin: '0.5rem'}} >
+                                <strong>찬성</strong>
                             </button>
                             <button
                                 onClick={onConsSubmit}
-                                style={{ background: '#fbe5d6', color: 'black', width: '100px', height: '100px', marginTop: '2%', borderRadius: '10px' }} >
-                                반대
+                                style={{ background: '#fbe5d6', borderColor: '#fbe5d6', color: 'black', width: '150px', height: '50px', borderRadius: '10px', margin: '0.5rem' }} >
+                                <strong>반대</strong>
                             </button>
+                            </div>
                         </div>
                         <br />
                         <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.</p>
