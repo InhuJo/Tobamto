@@ -5,7 +5,7 @@ function Information() {
         <div class="information" style={{ width: '85%', margin: '6rem auto', textAlign: 'center' }}>
         <h1> <strong>이용 안내</strong> </h1>
         <br/>
-        <img src="Tobamto_logo.png" width="500"></img>
+        <img alt="img-concert" src="Tobamto_logo.png" width="500"></img>
         <br/>
         <br/>
         <h4 style={{fontSize: '20px'}}>'토요일 밤에는 토론’(이하 토밤토)은 건전한 인터넷 토론 문화 정착을 위한 커뮤니티 사이트입니다.</h4>

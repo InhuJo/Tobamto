@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
-import { useDispatch } from "react-redux";
 import { Form, Input, Typography, message } from 'antd';
 import axios from 'axios';
 import { USER_SERVER } from '../../Config';
@@ -104,7 +103,6 @@ function EditInfoPage(props) {
           handleChange,
           handleBlur,
           handleSubmit,
-          handleReset,
         } = props;
         return (
           <div>

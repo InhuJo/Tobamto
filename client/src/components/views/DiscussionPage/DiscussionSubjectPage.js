@@ -1,11 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { useSelector } from 'react-redux';
 import { Table } from 'antd';
 import './Discussion.css';
 import Axios from 'axios';
 
 function DiscussionSubjectPage(props) {
-    const user = useSelector(state => state.user);
 
     const [Discussions, setDiscussions] = useState([])
 

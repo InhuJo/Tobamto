@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Tooltip, Icon, Typography } from 'antd';
+import { Typography } from 'antd';
 import Axios from 'axios';
 import Recommend from './Sections/Recommend';
 
@@ -95,7 +95,7 @@ function DiscussionDetailPage(props) {
         return <div className="opinion" style={{ marginBottom: '1rem'}}>
         <div className="name" >
             <p style={{ display: 'inline', marginRight: '2%' }}>{pros.writer.name}</p>
-            <img src={require("./alarm.png")} width="20" />
+            <img alt="no image" src={require("./alarm.png")} width="20" />
             </div>
         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
             <p>{pros.content}</p>
@@ -110,7 +110,7 @@ function DiscussionDetailPage(props) {
         return <div className="opinion" style={{ marginBottom: '1rem'}}>
         <div className="name" >
             <p style={{ display: 'inline', marginRight: '2%' }}>{cons.writer.name}</p>
-            <img src={require("./alarm.png")} width="20" />
+            <img alt="no image" src={require("./alarm.png")} width="20" />
             </div>
         <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
             <p>{cons.content}</p>
@@ -151,7 +151,7 @@ function DiscussionDetailPage(props) {
             </div>
 
             {
-                state == 'ongoing' &&
+                state === 'ongoing' &&
                 <div className="comment" style={{ margin: '5%' }}>
                     <h2 style={{ marginLeft: '2%', marginRight: '3%', marginBottom: '1%' }}>의견 남기기</h2>
                     <form >
@@ -180,7 +180,7 @@ function DiscussionDetailPage(props) {
             }
 
             {
-                state == 'complete' &&
+                state === 'complete' &&
                 <div className="comment" style={{ margin: '5%' }}>
                     <h2 style={{ marginLeft: '5%', textAlign: 'center', color: 'gray' }}>종료된 토론입니다.</h2>
                 </div>

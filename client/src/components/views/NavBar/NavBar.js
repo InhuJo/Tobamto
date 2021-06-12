@@ -20,7 +20,7 @@ function NavBar() {
     <nav className="menu" style={{ position: 'fixed',  }}>
       <div className="menu__logo">
         <a src="Tobamto_logo.png" href="/">
-        <img alt="img-concert" width="140" src={logo}/>
+        <img className="logo_img" alt="img-concert" width="135" src={logo}/>
         </a>
       </div>
       <div className="menu__container">

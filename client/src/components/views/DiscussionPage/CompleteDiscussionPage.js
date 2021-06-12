@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { Typography, Row, Col } from 'antd';
-import { moment } from 'moment';
+import { Typography } from 'antd';
 import axios from 'axios';
+import moment from 'moment';
 
 const { Title } = Typography;
 
@@ -26,7 +26,7 @@ function CompleteDiscussionPage() {
                                 if (res.data.success) {
                                     opinionCount.push(res.data.count)
 
-                                    if(i == response.data.list.length - 1) {
+                                    if(i === response.data.list.length - 1) {
                                         setOpinionCount(opinionCount);
                                     }
                                 } else {
@@ -41,10 +41,12 @@ function CompleteDiscussionPage() {
     }, [])
 
     const completeList = Discussions.map((discussion, index) => {
+        const date = moment(discussion.createdAt).format('YYYY-MM-DD');
+
         return <div className="discussion-list-one" key={index}>
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
-            <p> {discussion.createdAt.substr(0, 10)} | {OpinionCount[index]}개의 의견 </p>
+            <p> {date} | {OpinionCount[index]}개의 의견 </p>
         </div>
     })
 

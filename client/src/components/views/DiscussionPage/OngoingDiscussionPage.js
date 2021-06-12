@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Typography } from 'antd';
 import Axios from 'axios';
 import './Discussion.css'
+import moment from 'moment';
 const { Title } = Typography;
 
 function OngoingDiscussionPage() {
@@ -24,7 +25,7 @@ function OngoingDiscussionPage() {
                             if (res.data.success) {
                                 opinionCount.push(res.data.count)
 
-                                if(i == response.data.discussions.length - 1) {
+                                if(i === response.data.discussions.length - 1) {
                                     setOpinionCount(opinionCount);
                                 }
                             } else {
@@ -41,10 +42,12 @@ function OngoingDiscussionPage() {
 
     
     const ongoingList = Discussions.map((discussion, index) => {
+        const date = moment(discussion.createdAt).format('YYYY-MM-DD');
+
         return <div className="discussion-list-one">
             <h3><strong><a href={`/discussion/${state}/${discussion._id}`}>{discussion.subject}</a></strong></h3>
             <br />
-            <p> {discussion.createdAt.substr(0, 10)} | {OpinionCount[index]}개의 의견 </p>
+            <p> {date} | {OpinionCount[index]}개의 의견 </p>
         </div>
     })
 

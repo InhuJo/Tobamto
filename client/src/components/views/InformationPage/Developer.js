@@ -1,5 +1,4 @@
 import React from 'react'
-import { FaCode } from "react-icons/fa";
 
 function Developer() {
     return (
@@ -11,7 +10,7 @@ function Developer() {
 
             <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
                 <div class="juyoung" style={{ display: 'inline-block', textAlign: 'center' }} >
-                    <img src={require("./Dev_juyoung.jpg")} width="250" />
+                    <img alt="img-concert" src={require("./Dev_juyoung.jpg")} width="250" />
                     <p></p>
                     <h4>경북대학교 컴퓨터학부</h4>
                     <h4>2018113910</h4>
@@ -20,7 +19,7 @@ function Developer() {
                 </div>
 
                 <div class="juyeong" style={{ display: 'inline-block', textAlign: 'center', margin: '80px' }}>
-                    <img src={require("./Dev_juyeong.jpg")} width="250" />
+                    <img alt="img-concert" src={require("./Dev_juyeong.jpg")} width="250" />
                     <p></p>
 
                     <h4>경북대학교 컴퓨터학부</h4>
@@ -30,7 +29,7 @@ function Developer() {
                 </div>
 
                 <div class="inhu" style={{ display: 'inline-block', textAlign: 'center' }}>
-                    <img src={require("./Dev_inhu.jpg")} width="250" />
+                    <img alt="img-concert" src={require("./Dev_inhu.jpg")} width="250" />
                     <p></p>
                     <h4>경북대학교 컴퓨터학부</h4>
                     <h4>2018110861</h4>
