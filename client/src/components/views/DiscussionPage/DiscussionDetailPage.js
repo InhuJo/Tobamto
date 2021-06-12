@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { Typography } from 'antd';
+import { Typography, Divider } from 'antd';
 import Axios from 'axios';
 import Recommend from './Sections/Recommend';
+import './Discussion.css'
 
 const { Title } = Typography;
 
@@ -92,12 +93,12 @@ function DiscussionDetailPage(props) {
 
     const prosList = Pros.map((pros, index) => {
 
-        return <div className="opinion" style={{ marginBottom: '1rem'}}>
+        return <div className="opinion">
         <div className="name" >
-            <p style={{ display: 'inline', marginRight: '2%' }}>{pros.writer.name}</p>
-            <img alt="no image" src={require("./alarm.png")} width="20" />
+            <p>{pros.writer.name}</p>
+            <img src={require("./alarm.png")} width="20" />
             </div>
-        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
+        <div className="content" >
             <p>{pros.content}</p>
             <Recommend Pros userId={localStorage.getItem('userId')} ProsId={pros._id} />
         </div>
@@ -109,10 +110,10 @@ function DiscussionDetailPage(props) {
 
         return <div className="opinion" style={{ marginBottom: '1rem'}}>
         <div className="name" >
-            <p style={{ display: 'inline', marginRight: '2%' }}>{cons.writer.name}</p>
-            <img alt="no image" src={require("./alarm.png")} width="20" />
+            <p>{cons.writer.name}</p>
+            <img src={require("./alarm.png")} width="20" />
             </div>
-        <div style={{ width: '80%', height: '10%', background: '#FFF2CC', display: 'inline-block', padding: '3%' }}>
+        <div className="content">
             <p>{cons.content}</p>
             <Recommend Cons userId={localStorage.getItem('userId')} ConsId={cons._id}/>
         </div>
@@ -122,27 +123,31 @@ function DiscussionDetailPage(props) {
 
     return (
         <div>
-            <div className="complete" style={{ width: '85%', margin: 'auto', textAlign: 'center' }}>
-                <Title level={2} style={{ marginTop: '100px'}}>  
+            <div className="complete">
+                <p>토론 주제</p>
+                <Title level={2}>  
                     {Subject}
                 </Title>
                     <br />
-                <div style={{ display: 'inline-block', padding: '1rem' }}>
-                    <h1 style={{ display: 'inline' }}><strong>찬성 63%</strong></h1>
-                    <h2 style={{ display: 'inline' }}><strong><i>  VS  </i></strong></h2>
-                    <h1 style={{ display: 'inline' }}><strong>37% 반대</strong></h1>
+                    <Divider />
+                <div className="agree-disagree">
+                    <h3>찬성 </h3>
+                    <h1> 63% </h1>
+                    <h2>  VS  </h2>
+                    <h1> 37% </h1>
+                    <h3> 반대</h3>
                 </div>
             </div>
 
 
-            <div className="chat" style={{ display: 'inline-block', width: '100%' }}>
-                <div className="agree" style={{ overflow: 'auto', width: '44%', height: '500px', float: 'left', background: ' #b4c7e7', textAlign: 'left', padding: '2%', marginLeft: '5%', marginTop: '2%' }}>
+            <div className="chat">
+                <div className="agree">
                     <div>
                         {prosList}
                     </div>
                 </div>
 
-                <div className="disagree" style={{ overflow: 'auto', width: '44%', height: '500px', float: 'right', background: ' #fbe5d6', textAlign: 'right', padding: '2%', marginRight: '5%', marginTop: '2%' }}>
+                <div className="disagree">
                     <div>
                         {consList}
                     </div>
@@ -151,39 +156,38 @@ function DiscussionDetailPage(props) {
             </div>
 
             {
-                state === 'ongoing' &&
-                <div className="comment" style={{ margin: '5%' }}>
-                    <h2 style={{ marginLeft: '2%', marginRight: '3%', marginBottom: '1%' }}>의견 남기기</h2>
+                state == 'ongoing' &&
+                <div className="comment-ongoing">
+                    <h2>의견 남기기</h2>
                     <form >
-                        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center' }}>
+                        <div className="comment-write">
                             <textarea
                                 value={Opinion}
                                 onChange={handleChange}
-                                style={{ width: '80%', height: '120px', resize: 'none', borderRadius: '5px' }}
                             />
-                            <div style={{ display: 'flex', flexDirection: 'column' }}>
-                            <button
-                                onClick={onProsSubmit}
-                                style={{ background: '#b4c7e7', borderColor: '#b4c7e7', color: 'black', width: '150px', height: '50px', borderRadius: '10px', margin: '0.5rem'}} >
-                                <strong>찬성</strong>
-                            </button>
-                            <button
-                                onClick={onConsSubmit}
-                                style={{ background: '#fbe5d6', borderColor: '#fbe5d6', color: 'black', width: '150px', height: '50px', borderRadius: '10px', margin: '0.5rem' }} >
-                                <strong>반대</strong>
-                            </button>
+                            <div className="buttons">
+                                <button 
+                                    className="button-pros"
+                                    onClick={onProsSubmit}>
+                                    <strong>찬성</strong>
+                                </button>
+                                <button
+                                    className="button-cons"
+                                    onClick={onConsSubmit} >
+                                    <strong>반대</strong>
+                                </button>
                             </div>
                         </div>
                         <br />
-                        <p style={{ color: 'red', marginLeft: '2%' }}>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.</p>
+                        <p>* ‘토밤토’는 건전한 토론 문화를 지향합니다. 다른 사람을 향한 지나친 비방이나 욕설은 제재될 수 있습니다.</p>
                     </form>
                 </div>
             }
 
             {
-                state === 'complete' &&
-                <div className="comment" style={{ margin: '5%' }}>
-                    <h2 style={{ marginLeft: '5%', textAlign: 'center', color: 'gray' }}>종료된 토론입니다.</h2>
+                state == 'complete' &&
+                <div className="comment-complete">
+                    <h2>종료된 토론입니다.</h2>
                 </div>
             }
 

@@ -11,31 +11,47 @@ function Recommend(props) {
 
     if(props.Pros) {
         variable = { userId: props.userId, ProsId: props.ProsId } 
-    } else {
+    } else if(props.Cons) {
         variable = { userId: props.userId, ConsId: props.ConsId } 
+    } else if(props.Discussion) {
+        variable = { userId: props.userId, discussionId: props.discussionId } 
     }
 
     useEffect(() => {
 
-        Axios.post('/api/recommend/getOpinionRecommend', variable) 
-        .then(response => {
-            if(response.data.success) {
-                // 얼마나 많은 좋아요를 받았는지
-                setRecommend(response.data.recommend.length)
-
-                // 내가 이미 그 좋아요를 눌렀는지
-                response.data.recommend.map(recommend => {
-                    // userId는 localStorage.getItem('userId'), 즉 나 자신
-                    // like를 누른 많은 유저 정보들 중 나 자신이 있다면
-                    if(recommend.userId === props.userId) {
-                        setRecommendAction('recommend')
-                    }
-                })
-            } else {
-                alert('Recommend 대한 정보를 가져오지 못했습니다. ')
-            }
-        })
-
+        if(props.Discussion) {
+            Axios.post('/api/recommend/getDiscussionRecommend', variable) 
+            .then(response => {
+                if(response.data.success) {
+                    setRecommend(response.data.recommend.length)
+    
+                    response.data.recommend.map(recommend => {
+                        if(recommend.userId === props.userId) {
+                            setRecommendAction('recommend')
+                        }
+                    })
+                } else {
+                    alert('Recommend 대한 정보를 가져오지 못했습니다. ')
+                }
+            })
+        } else {
+            Axios.post('/api/recommend/getOpinionRecommend', variable) 
+            .then(response => {
+                if(response.data.success) {
+                    setRecommend(response.data.recommend.length)
+    
+                    response.data.recommend.map(recommend => {
+                        if(recommend.userId === props.userId) {
+                            setRecommendAction('recommend')
+                        }
+                    })
+                } else {
+                    alert('Recommend 대한 정보를 가져오지 못했습니다. ')
+                }
+            })
+    
+        }
+        
 
     }, [])
 
@@ -43,22 +59,39 @@ function Recommend(props) {
     const onRecommend = () => {
 
         if(RecommendAction === null) {
+            if(props.Discussion) {
+
+                Axios.post('/api/recommend/saveDiscussionRecommend', variable)
+                .then(response => {
+                    if(response.data.success) {
+                        setRecommend(Recommend + 1)
+                        setRecommendAction('recommend')
+    
+                    }else {
+                        alert('추천하지 못했습니다.')
+                    }
+                })
+    
+            } else {
+
+                Axios.post('/api/recommend/saveOpinionRecommend', variable)
+                .then(response => {
+                    if(response.data.success) {
+                        setRecommend(Recommend + 1)
+                        setRecommendAction('recommend')
+    
+                    }else {
+                        alert('추천하지 못했습니다.')
+                    }
+                })
+    
+            }
             
-            Axios.post('/api/recommend/saveOpinionRecommend', variable)
-            .then(response => {
-                if(response.data.success) {
-                    setRecommend(Recommend + 1)
-                    setRecommendAction('recommend')
-
-                }else {
-                    alert('추천하지 못했습니다.')
-                }
-            })
-
         } else {
+            if(props.Discussion) {
 
-            Axios.post('/api/recommend/unRecommend', variable)
-            .then(response => {
+                Axios.post('/api/recommend/unDiscussionRecommend', variable)
+                .then(response => {
                 if(response.data.success) {
 
                     setRecommend(Recommend - 1)
@@ -68,6 +101,23 @@ function Recommend(props) {
                     alert('추천을 취소하지 못했습니다.')
                 }
             })
+
+            } else {
+
+                Axios.post('/api/recommend/unOpinionRecommend', variable)
+                .then(response => {
+                if(response.data.success) {
+
+                    setRecommend(Recommend - 1)
+                    setRecommendAction(null)
+
+                }else {
+                    alert('추천을 취소하지 못했습니다.')
+                }
+            })
+
+            }
+            
 
         }
 
