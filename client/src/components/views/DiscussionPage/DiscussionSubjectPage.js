@@ -59,10 +59,10 @@ function DiscussionSubjectPage(props) {
     return (
         <div>
             <div className="top">
-                <div className="subject-title" style={{ fontWeight: 700, marginLeft: '12%', fontSize: 30 }}>새로 올라온 주제</div>
-                <button className="writeBtn" onClick={routeChange} style={{ marginRight: '3%'}}>주제 신청</button>
+                <div className="discussion-page-title" style={{ marginLeft: '10%', fontSize: '40px' }}>새로 올라온 주제</div>
+                <button className="writeBtn" onClick={routeChange} style={{ marginRight: '1%'}}>주제 신청</button>
             </div>
-            <div className="board">
+            <div className="subject-board">
                 <Table
                     columns={columns}
                     dataSource={data.reverse()}

@@ -3,6 +3,7 @@ import { Table } from 'antd';
 import axios from 'axios';
 import moment from 'moment';
 import MyPageMenu from './Sections/MyPageMenu';
+import './Sections/MyPage.css';
 
 function MyTitleListPage(props) {
     const userId = localStorage.getItem('userId');
@@ -48,7 +49,7 @@ function MyTitleListPage(props) {
 
     return (
         <div style={{ width: '85%', margin: '0 auto' }}>
-            <div style={{ marginTop: '100px', textAlign: 'left',marginBottom: '8%', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
+            <div style={{ marginTop: '100px', textAlign: 'left',marginBottom: '30px', display: 'flex', justifyContent: 'space-evenly', flexDirection: 'column' }}>
             
             <MyPageMenu title></MyPageMenu>
 

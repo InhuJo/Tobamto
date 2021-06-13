@@ -144,7 +144,7 @@ function DiscussionDetailPage(props) {
                 width="20" 
                 onClick={() => onReport(pros.writer, 0, pros._id)} />
             </div>
-        <div className="content" >
+        <div className="pros-content" >
             <p>{pros.content}</p>
             <Recommend Pros userId={localStorage.getItem('userId')} ProsId={pros._id} />
         </div>
@@ -162,7 +162,7 @@ function DiscussionDetailPage(props) {
                 width="20"
                 onClick={() => onReport(cons.writer, 1, cons._id)} />
             </div>
-        <div className="content">
+        <div className="cons-content">
             <p>{cons.content}</p>
             <Recommend Cons userId={localStorage.getItem('userId')} ConsId={cons._id}/>
         </div>
@@ -174,15 +174,12 @@ function DiscussionDetailPage(props) {
         <div>
             <div className="complete">
                 <p>토론 주제</p>
-                <Title level={2}>  
-                    {Subject}
-                </Title>
-                    <br />
+                    <div className="topic" style={{fontSize: '40px'}}>&#128630; {Subject} &#128631;</div>
                     <Divider />
                 <div className="agree-disagree">
-                    <h2>찬성 </h2>
+                    <h1>찬성 </h1>
                     <h2>  VS  </h2>
-                    <h2> 반대</h2>
+                    <h1> 반대</h1>
                 </div>
             </div>
 

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 import MyOpinion from './Sections/MyOpinion';
 import MyPageMenu from './Sections/MyPageMenu';
+import './Sections/MyPage.css';
 
 function MyOpinionPage(props) {
     const userId = localStorage.getItem('userId');

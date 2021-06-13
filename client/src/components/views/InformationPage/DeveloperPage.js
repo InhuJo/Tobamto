@@ -1,5 +1,6 @@
-import React from 'react'
-import { Divider } from 'antd'
+import React from 'react';
+import { Divider } from 'antd';
+import './information.css';
 
 function DeveloperPage() {
     return (

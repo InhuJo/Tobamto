@@ -1,13 +1,27 @@
 @import '~antd/dist/antd.css';
 @import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&display=swap');
+@font-face {
+    font-family: 'HangeulNuri-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_three@1.0/HangeulNuri-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'paybooc-Bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/paybooc-Bold.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 
 .top {
     margin-top: 5rem;
 }
 
-.subject-title {
+.discussion-page-title {
     display: inline-block;  
     color:black;
+    font-family: 'HangeulNuri-Bold';
 }
 
 .writeBtn {
@@ -29,7 +43,7 @@
     cursor: pointer;
 }
 
-.board {
+.subject-board {
     width: 80%;
     text-align: center;
     margin: 0 auto;
@@ -114,30 +128,43 @@
 }
 
 .opinion {
+    font-family: 'paybooc-Bold';
     margin-bottom: 1rem;
 }
 
 .opinion .name p {
+    
     display: inline;
     margin-right: 2%;
+    font-size: 20px;
 }
 
-.opinion .content {
+.opinion .pros-content, .opinion .cons-content {
     width: 80%;
     height: 10%;
     background: #FFF2CC;
     display: inline-block;
     padding: 3%;
+    border-radius: 10px;
+}
+
+.cons-content {   
+    box-shadow: 4px 4px 3px rgba(119, 136, 153, 0.301);
+}
+
+.pros-content {
+    box-shadow: 4px 4px 3px rgba(119, 136, 153, 0.377);
 }
 
 .complete {
     width: 85%;
     margin: 0 auto;
     text-align: center;
+    font-family: 'HangeulNuri-Bold';
 }
 
 .complete p {
-    font-size: 14px;
+    font-size: 13px;
     margin-top: 100px;
 }
 
@@ -154,7 +181,6 @@
 .complete h2 {
     display: inline;
     font-weight: bold;
-    font-style: italic;
 }
 
 .complete h3 {
@@ -168,6 +194,7 @@
 }
 
 .chat .agree {
+    border: 1px solid rgb(173, 173, 173);
     overflow: auto; 
     width: 44%; 
     height: 500px; 
@@ -179,6 +206,7 @@
 }
 
 .chat .disagree {
+    border: 1px solid rgb(173, 173, 173);
     overflow: auto; 
     width: 44%; 
     height: 500px; 
@@ -190,6 +218,7 @@
 }
 
 .comment-ongoing {
+    font-family: 'paybooc-Bold';
     margin-top: 5%;
     margin-left: 5%;
     margin-right: 5%;
@@ -211,6 +240,7 @@
 .comment-ongoing .comment-write .buttons {
     display: flex;
     float: right;
+    border: none;
 }
 
 .comment-ongoing .comment-write .button-pros {
