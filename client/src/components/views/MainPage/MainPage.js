@@ -9,7 +9,6 @@ import './Sections/main.css';
 
 function MainPage() {
     const [Discussions, setDiscussions] = useState([]);
-    const [maxIndex, setmaxIndex] = useState(0);
 
     var settings = {
         dots: true,
@@ -32,15 +31,17 @@ function MainPage() {
                         .then(res => {
                             if (res.data.success) {
                                 let max = res.data.opinionCount[0];
+                                let maxindex = 0;
 
                                 for (let i = 1; i < res.data.opinionCount.length; i++) {
                                     if (max < res.data.opinionCount[i]) {
                                         max = res.data.opinionCount[i];
-                                        setmaxIndex(i);
+                                        maxindex = i;
                                     }
 
                                     if (i === res.data.opinionCount.length - 1) {
-                                        window.localStorage.setItem('hot', response.data.discussions[maxIndex]._id);
+                                        console.log(maxindex)
+                                        window.localStorage.setItem('hot', response.data.discussions[maxindex]._id);
                                     }
                                 }
                             } else {
