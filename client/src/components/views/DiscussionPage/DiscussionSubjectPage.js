@@ -56,6 +56,10 @@ function DiscussionSubjectPage(props) {
         discussionId: discussion._id,
     }))
 
+    const onTableChange = () => {
+
+    }
+
     return (
         <div>
             <div className="top">
@@ -67,10 +71,11 @@ function DiscussionSubjectPage(props) {
                     columns={columns}
                     dataSource={data.reverse()}
                     pagination={{
-                        total: {SubjectCount},
+                        total: 30,
                         pageSize: 7,
                         hideOnSinglePage: true,
                         //position: ['none', 'bottomCenter']
+                        
                     }}
                 />
             </div>

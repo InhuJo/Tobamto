@@ -60,7 +60,7 @@ function MyTitleListPage(props) {
                     columns={columns}
                     dataSource={data}
                     pagination={{
-                        total: {SubjectCount},
+                        total: 100,
                         pageSize: 6,
                         hideOnSinglePage: true,
                         //position: ['none', 'bottomCenter']
