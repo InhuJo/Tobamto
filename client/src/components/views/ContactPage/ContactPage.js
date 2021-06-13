@@ -1,4 +1,5 @@
 import React from "react";
+import emailjs from 'emailjs-com';
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { Form, Input, Typography } from 'antd';
@@ -30,6 +31,10 @@ const tailFormItemLayout = {
   },
 };
 function ContactPage(props) {
+  const sendEmail = (e) => {
+    emailjs.sendForm('service_hcwwato', 'template_v44begs', e.target, 'user_wEAyWHORQDGx0WUrcOYiK');
+    alert('문의가 제출되었습니다.');
+  }
   return (
     <Formik
       initialValues={{
@@ -44,12 +49,6 @@ function ContactPage(props) {
           .required("이메일을 작성해주세요."),
         content: Yup.string().required("문의 내용을 작성해주세요."),
       })}
-      onSubmit={(values, { setSubmitting }) => {
-        setTimeout(() => {
-          alert('문의가 제출되었습니다.');
-          setSubmitting(false);
-        }, 500);
-      }}
     >
       {(props) => {
         const {
@@ -59,7 +58,6 @@ function ContactPage(props) {
           isSubmitting,
           handleChange,
           handleBlur,
-          handleSubmit,
         } = props;
 
         return (
@@ -71,11 +69,12 @@ function ContactPage(props) {
               <Form
                 style={{ minWidth: "40%" }}
                 {...formItemLayout}
-                onSubmit={handleSubmit}
+                onSubmit={sendEmail}
               >
                 <Form.Item required label="제목">
                   <Input
                     id="title"
+                    name="title"
                     placeholder="제목을 입력해주세요."
                     type="text"
                     value={values.title}
@@ -102,6 +101,7 @@ function ContactPage(props) {
                 >
                   <Input
                     id="email"
+                    name="email"
                     placeholder="이메일을 입력해주세요."
                     type="email"
                     value={values.email}
@@ -128,6 +128,7 @@ function ContactPage(props) {
                 >
                   <TextArea
                     id="content"
+                    name="content"
                     placeholder="내용을 입력해주세요."
                     value={values.content}
                     onChange={handleChange}
@@ -147,7 +148,7 @@ function ContactPage(props) {
                 <Form.Item {...tailFormItemLayout}>
                   <button
                     className="submitBtn"
-                    onClick={handleSubmit}
+                    onClick={sendEmail}
                     disabled={isSubmitting}
                     style={{ width: '30%', marginLeft:'-35%'}}
                   >
