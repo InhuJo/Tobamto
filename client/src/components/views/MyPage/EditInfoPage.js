@@ -4,6 +4,7 @@ import * as Yup from 'yup';
 import { Form, Input, Typography, message } from 'antd';
 import axios from 'axios';
 import { USER_SERVER } from '../../Config';
+import './Sections/MyPage.css';
 
 const { Title } = Typography;
 

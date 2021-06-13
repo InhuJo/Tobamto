@@ -1,11 +1,12 @@
 import React from 'react';
 import { Button, Divider } from 'antd';
+import './MyPage.css';
 
 function MyPageMenu(props) {
     
     const welcome = () => {
         return (
-        <div className='welcome'>
+        <div>
             <span style={{ fontSize: '20px' }}><strong>{localStorage.getItem('userName')}</strong>님, 환영합니다.</span>
             <Button
                 type="primary"
@@ -22,7 +23,7 @@ function MyPageMenu(props) {
         return (
             <div>
                 {welcome()}
-                <div className="mylist" style={{ marginTop: '3%' }}>
+                <div className="mylist" style={{ marginTop: '1%' }}>
                     <div>
                         <a href="/mypage/opinion">
                             <span style={{ fontSize: '21px', color: '#b3b3b3' }}>작성한 의견</span>
@@ -40,7 +41,7 @@ function MyPageMenu(props) {
         return (
             <div>
                 {welcome()}
-                <div className="mylist" style={{ marginTop: '3%' }}>
+                <div className="mylist" style={{ marginTop: '1%' }}>
                     <div>
                         <a href="/mypage">
                             <span style={{ fontSize: '21px', color: '#1f294f', fontWeight: '750' }}>작성한 의견</span>

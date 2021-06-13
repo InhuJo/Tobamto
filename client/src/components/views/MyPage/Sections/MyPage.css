@@ -4,7 +4,6 @@
     width: 75%;
     text-align: center;
     margin: 0 auto;
-    padding-top: 30px;
 }
 
 .ant-table-thead > tr > th {
@@ -65,8 +64,4 @@
     font-size: 21px;
     color: #1f294f;
     font-weight: 750;
-}
-
-.board {
-    margin-left: 13%;
 }
