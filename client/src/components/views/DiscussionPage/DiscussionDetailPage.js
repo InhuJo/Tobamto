@@ -14,7 +14,7 @@ function DiscussionDetailPage(props) {
     const [Cons, setCons] = useState([]);
     const state = props.match.params.state;
     const discussionId =  props.match.params._id;
-    var swearWord = new Array("ㅅㅂ", "씨발", "시발", "병신", "존나", "ㅈㄴ", "미친");
+    var swearWord = new Array("ㅅㅂ", "씨발", "시발", "병신", "존나", "ㅈㄴ", "미친", "ㅁㅊ");
 
     const variable = { _id: discussionId };
 
@@ -68,6 +68,10 @@ function DiscussionDetailPage(props) {
 
     /* 찬성 의견 제출 */
     const onProsSubmit = (event) => {
+        if(Opinion=="") {
+            alert("의견을 입력해주세요.");
+            return;
+        }
         if(checkSwearWord() == 1) return;
 
         const variables = {
@@ -89,6 +93,10 @@ function DiscussionDetailPage(props) {
 
     /* 반대 의견 제출 */
     const onConsSubmit = (event) => {
+        if(Opinion=="") {
+            alert("의견을 입력해주세요.");
+            return;
+        }
         if(checkSwearWord() == 1) return;
 
         const variables = {
