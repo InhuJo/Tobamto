@@ -2,6 +2,7 @@ const express = require('express');
 const router = express.Router();
 const { OpinionRecommend } = require("../models/OpinionRecommend");
 const { DiscussionRecommend } = require("../models/DiscussionRecommend");
+const { Discussion} = require("../models/Discussion")
 
 
 //=================================
@@ -83,10 +84,24 @@ router.post("/saveDiscussionRecommend", (req, res) => {
 
     recommend.save((err, recommend) => {
         if(err) return res.json({ success: false, err })
-        res.status(200).json({ success: true, recommend })
-
+        // 추천 현황 살펴보고
+        DiscussionRecommend.find({ discussionId: req.body.discussionId })
+            .exec((err, recommended) => {
+                if(err) return res.json({ success: false, err })
+                // 만약 그 의견의 추천이 10개를 넘으면
+                if(recommended.length >= 10) {
+                    // 그 의견의 상태 업데이트
+                    Discussion.findOneAndUpdate({ _id: req.body.discussionId }, { state: 1 })
+                        .exec((err, result) => {
+                           if(err) return res.json({ success: false, err })
+                        })
+                }
+            })
+        
+        res.status(200).json({ success: true, recommend})
     })
 });
+            
 
 
 router.post("/unDiscussionRecommend", (req, res) => {
