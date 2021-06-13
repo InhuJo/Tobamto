@@ -14,6 +14,7 @@ function DiscussionDetailPage(props) {
     const [Cons, setCons] = useState([]);
     const state = props.match.params.state;
     const discussionId =  props.match.params._id;
+    var swearWord = new Array("ㅅㅂ", "씨발", "시발", "병신", "존나", "ㅈㄴ", "미친");
 
     const variable = { _id: discussionId };
 
@@ -53,7 +54,21 @@ function DiscussionDetailPage(props) {
         setOpinion(event.currentTarget.value);
     }
 
+    /* 욕설 검사 */
+    const checkSwearWord =() => {
+        for(var i=0; i<swearWord.length; i++) {
+            if(Opinion.indexOf(swearWord[i]) !== -1) {
+                alert('욕설이 담긴 의견은 등록하실 수 없습니다.');
+                return 1;
+            }
+        }
+
+        return 0;
+    }
+
+    /* 찬성 의견 제출 */
     const onProsSubmit = (event) => {
+        if(checkSwearWord() == 1) return;
 
         const variables = {
             writer: localStorage.getItem('userId'),
@@ -72,7 +87,9 @@ function DiscussionDetailPage(props) {
             })
     }
 
+    /* 반대 의견 제출 */
     const onConsSubmit = (event) => {
+        if(checkSwearWord() == 1) return;
 
         const variables = {
             writer: localStorage.getItem('userId'),
