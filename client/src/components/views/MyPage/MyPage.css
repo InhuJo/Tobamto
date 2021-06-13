@@ -34,7 +34,6 @@
 
 .section {
     margin-top: 100px;
-    margin-left: 13%;
     text-align: left;
     display: flex;
     justify-content: space-evenly;
@@ -70,5 +69,4 @@
 
 .board {
     margin-left: 13%;
-    margin-bottom: 100px;
 }

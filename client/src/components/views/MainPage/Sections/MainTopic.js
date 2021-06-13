@@ -31,7 +31,7 @@ function MainTopic() {
                 setHotPros(response.data.pros);
                 setProsName(response.data.pros.writer.name);
             } else {
-                alert('fail to load pros')
+                alert('fail to load pros');
             }
         })
 
